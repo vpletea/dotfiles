@@ -58,8 +58,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
  
   # Configure printing
@@ -144,6 +144,7 @@
   ];
 
   environment.gnome.excludePackages = with pkgs; [
+      gedit
       gnome-console
       gnome-photos
       gnome-text-editor
@@ -153,7 +154,6 @@
       gnome.epiphany
       gnome.evince
       gnome.geary
-      gnome.gedit
       gnome.gnome-calendar
       gnome.gnome-characters
       gnome.gnome-clocks
@@ -300,6 +300,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
