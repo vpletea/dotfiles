@@ -276,6 +276,7 @@
     autoUpgrade = {
       enable = true;
       dates = "monthly";
+      channel = "https://channels.nixos.org/nixos-24.05";
     };
   };
 
