@@ -1,0 +1,9 @@
+❯ cat config
+
+Host *
+    AddKeysToAgent yes
+
+Host github
+        HostName github.com
+        User vpletea
+        IdentityFile ~/.ssh/github
