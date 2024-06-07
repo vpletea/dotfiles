@@ -1,0 +1,10 @@
+❯ brew list
+==> Formulae
+ansible			cffi			helm			kubelogin		mpdecimal		python@3.11		starship		xz
+azure-cli		cryptography		htop			kubernetes-cli		ncurses			python@3.12		telnet			zsh-autosuggestions
+ca-certificates		dos2unix		k3d			libyaml			openssl@3		readline		terraform
+certifi			fzf			kubectx			md5sha1sum		pycparser		sqlite			watch
+
+==> Casks
+caffeine			iterm2				microsoft-teams			rectangle			sourcetree
+font-fira-code-nerd-font	microsoft-auto-update		rancher				slack				visual-studio-code
