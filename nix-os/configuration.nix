@@ -13,11 +13,16 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = 2;
+  boot.loader.timeout = 1;
   boot.plymouth.enable = true;
   boot.initrd.systemd.enable = true;
   boot.kernelParams = ["quiet"];
 
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "4e98920d";
+  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -33,7 +38,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
 
   # Install nerdfonts
   fonts.packages = with pkgs; [
@@ -245,7 +249,7 @@
       IdentityFile ~/.ssh/github.key
   '';
   };
-
+  
   ## FZF Setup
   programs.fzf = {
     fuzzyCompletion = true;
@@ -283,17 +287,17 @@
   # Power settings
   powerManagement.enable = true;
   services.thermald.enable = true;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-  battery = {
-     governor = "powersave";
-     turbo = "never";
-     };
-  charger = {
-     governor = "performance";
-     turbo = "auto";
-     };
-  };
+#  services.auto-cpufreq.enable = true;
+#  services.auto-cpufreq.settings = {
+#  battery = {
+#     governor = "powersave";
+#     turbo = "never";
+#     };
+#  charger = {
+#     governor = "performance";
+#     turbo = "auto";
+#     };
+#  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
