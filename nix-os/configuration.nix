@@ -19,16 +19,12 @@
   boot.kernelParams = ["quiet"];
 
   # Enable zfs support
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.forceImportRoot = false;
-  networking.hostId = "4e98920d";
+  # boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs.forceImportRoot = false;
+  # networking.hostId = "4e98920d";
   
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # Define your hostname.
+  networking.hostName = "nixos"; 
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -50,7 +46,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-    
+  
   # Setting favorite apps in gnome
   services.xserver.desktopManager.gnome = {
     extraGSettingsOverrides = ''
@@ -58,7 +54,6 @@
       favorite-apps=['firefox.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']
     '';
   };  
-  
 
   # Configure keymap in X11
   services.xserver = {
@@ -84,44 +79,37 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Docker setup
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
   
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define user account
   users.users.valentin = {
     isNormalUser = true;
     description = "Valentin";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
+  # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  # nixpkgs.config.packageOverrides = pkgs: {
-  #   intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  # };
+  ### Accelerated Video Playback
+  nixpkgs.config.packageOverrides = pkgs: {
+     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+   };
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965
+      intel-media-driver
+      intel-vaapi-driver
       libvdpau-va-gl
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Packages installed in system profile. To search, run: nix search wget
   environment.systemPackages = with pkgs; [
     ansible
     bottles
@@ -173,37 +161,26 @@
       snapshot
    ];
 
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   ## ZSH Setup
   programs.zsh = {
   enable = true;
   autosuggestions.enable = true;
   autosuggestions.extraConfig = {
-  "ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE" = "20";
-  "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE" = "fg=60";
+    "ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE" = "20";
+    "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE" = "fg=60";
   };
   # Set zsh prompt for zsh autocomplete with up arrow
   promptInit = ''
-  autoload -Uz history-search-end
-  zle -N history-beginning-search-backward-end history-search-end
-  zle -N history-beginning-search-forward-end history-search-end
-  bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
-  bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
-  user=$(whoami | awk '{print $1}')
-  if [[ $user = valentin ]]
-  then
-    ssh-add -q ~/.ssh/github.key
-  fi  
-
-
+    autoload -Uz history-search-end
+    zle -N history-beginning-search-backward-end history-search-end
+    zle -N history-beginning-search-forward-end history-search-end
+    bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+    bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+    user=$(whoami | awk '{print $1}')
+    if [[ $user = valentin ]]
+    then
+      ssh-add -q ~/.ssh/github.key
+    fi  
   '';
   loginShellInit = "
   #Set favorite apps in dock and enable extensions
@@ -224,7 +201,6 @@
     ne = "sudo nano /etc/nixos/configuration.nix";
     };
   };
-  # programs.zsh.completionInit = ["emacs"];
   environment.pathsToLink = [ "/share/zsh" ];
   
   ## Starship prompt setup
@@ -262,24 +238,17 @@
   # Set default shell to zsh
   users.defaultUserShell = pkgs.zsh;
 
-  # List services that you want to enable:
-  
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
+  # Enable firewall
   networking.firewall.enable = true;
 
+  # NixOS garbage control - remove older generations
   nix.gc = {
     automatic = true;
     dates = "monthly";
     options = "--delete-older-than 14d";
   };
 
+  # System autoupgrade and channel setup
   system = {
     autoUpgrade = {
       enable = true;
@@ -290,20 +259,23 @@
 
   # Power settings
   services.power-profiles-daemon.enable = false;
-  powerManagement.enable = true;
   services.thermald.enable = true;
+  powerManagement.enable = true;
 
   services.tlp = {
       enable = true;
       settings = {
+        PLATFORM_PROFILE_ON_AC = "balanced";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+        
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-	CPU_BOOST_ON_AC = "1";
+	      CPU_BOOST_ON_AC = "1";
         CPU_BOOST_ON_BAT = "0";
 
-	CPU_HWP_DYN_BOOST_ON_AC = "1";
-	CPU_HWP_DYN_BOOST_ON_BAT = "0";
+	      CPU_HWP_DYN_BOOST_ON_AC = "1";
+	      CPU_HWP_DYN_BOOST_ON_BAT = "0";
 
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
@@ -312,7 +284,7 @@
         CPU_MAX_PERF_ON_AC = 100;
       
         CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 35;
+        CPU_MAX_PERF_ON_BAT = 30;
       };
    };
 
