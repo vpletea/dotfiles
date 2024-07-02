@@ -13,12 +13,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = 1;
+  boot.loader.timeout = 0;  #### Use the space key at boot for generations menu
   boot.plymouth.enable = true;
   boot.initrd.systemd.enable = true;
   boot.kernelParams = ["quiet"];
 
-
+  # Enable zfs support
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
   networking.hostId = "4e98920d";
@@ -114,7 +114,7 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965
       libvdpau-va-gl
     ];
   };
@@ -130,7 +130,6 @@
     git
     gnome.gnome-terminal
     gnomeExtensions.dash-to-dock
-    gnomeExtensions.power-profile-switcher
     google-chrome
     htop
     k3d
@@ -198,13 +197,18 @@
   zle -N history-beginning-search-forward-end history-search-end
   bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
   bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
-  ssh-add -q ~/.ssh/github.key
+  user=$(whoami | awk '{print $1}')
+  if [[ $user = valentin ]]
+  then
+    ssh-add -q ~/.ssh/github.key
+  fi  
+
+
   '';
   loginShellInit = "
   #Set favorite apps in dock and enable extensions
   dconf reset /org/gnome/shell/favorite-apps
   gnome-extensions enable dash-to-dock@micxgx.gmail.com
-  gnome-extensions enable power-profile-switcher@eliapasquali.github.io
   ";
   syntaxHighlighting.enable = true;
   histFile = "$HOME/.histfile";
@@ -285,19 +289,33 @@
   };
 
   # Power settings
+  services.power-profiles-daemon.enable = false;
   powerManagement.enable = true;
   services.thermald.enable = true;
-#  services.auto-cpufreq.enable = true;
-#  services.auto-cpufreq.settings = {
-#  battery = {
-#     governor = "powersave";
-#     turbo = "never";
-#     };
-#  charger = {
-#     governor = "performance";
-#     turbo = "auto";
-#     };
-#  };
+
+  services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+	CPU_BOOST_ON_AC = "1";
+        CPU_BOOST_ON_BAT = "0";
+
+	CPU_HWP_DYN_BOOST_ON_AC = "1";
+	CPU_HWP_DYN_BOOST_ON_BAT = "0";
+
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+      
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 35;
+      };
+   };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
