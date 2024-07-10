@@ -1,4 +1,4 @@
-### /etc/nixos/configuration.nix - requires sudo
+### Goes to /etc/nixos/configuration.nix - requires sudo
 { config, pkgs, ... }:
 
 {
@@ -63,30 +63,6 @@
     pulse.enable = true;
   };
 
-  # Docker setup
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
-  
-  # Define user account
-  users.users.valentin = {
-    isNormalUser = true;
-    description = "Valentin";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
-  
-  # ZSH setup
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
-  
-  # Starship prompt setup
-  programs.starship = {
-    enable = true;
-  };
-
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
-
   # Configure printing - for hp printers
   services.printing = {
     enable = true;
@@ -95,58 +71,9 @@
 
   # Enable pcscd service - required for yubikey
   services.pcscd.enable = true;
-  
-  # Accelerated Video Playback
-  nixpkgs.config.packageOverrides = pkgs: {
-     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-   };
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-      libvdpau-va-gl
-    ];
-  };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-
-  # Packages installed in system profile
-  environment.systemPackages = with pkgs; [
-    firefox
-    git
-    gnome.file-roller
-    gnome.gnome-calculator
-    gnome.gnome-disk-utility
-    gnome.gnome-terminal
-    gnome.nautilus
-    gnomeExtensions.dash-to-dock
-    home-manager
-    loupe
-    popsicle
-  ];
-
-  # SSH agent setup
-  programs.ssh = {
-  startAgent = true;
-  };
-
-  # Enable firewall
-  networking.firewall.enable = true;
-
-  # NixOS garbage control - removes older generations
-  nix.gc = {
-    automatic = true;
-    dates = "monthly";
-    options = "--delete-older-than 20d";
-  };
-
-  # System autoupgrade
-  system = {
-    autoUpgrade = {
-      enable = true;
-      dates = "monthly";
-    };
-  };
+  # Docker setup
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
 
   # Power settings
   services.power-profiles-daemon.enable = false;
@@ -178,6 +105,79 @@
         CPU_MAX_PERF_ON_BAT = 30;
       };
    };
+  
+  # Define user account
+  users.users.valentin = {
+    isNormalUser = true;
+    description = "Valentin";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
+  
+  # Allow unfree software
+  nixpkgs.config.allowUnfree = true;
+  
+  # SSH agent setup
+  programs.ssh = {
+  startAgent = true;
+  };
+
+  # ZSH setup
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
+  
+  # Starship prompt setup
+  programs.starship = {
+    enable = true;
+  };
+
+  # Accelerated Video Playback
+  nixpkgs.config.packageOverrides = pkgs: {
+     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+   };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  # Packages installed in system profile
+  environment.systemPackages = with pkgs; [
+    firefox
+    git
+    gnome.file-roller
+    gnome.gnome-calculator
+    gnome.gnome-disk-utility
+    gnome.gnome-terminal
+    gnome.nautilus
+    gnomeExtensions.dash-to-dock
+    home-manager
+    loupe
+    plymouth
+    popsicle
+  ];
+
+  # Enable firewall
+  networking.firewall.enable = true;
+
+  # NixOS garbage control - removes older generations
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+    options = "--delete-older-than 20d";
+  };
+
+  # System autoupgrade
+  system = {
+    autoUpgrade = {
+      enable = true;
+      dates = "monthly";
+    };
+  };
   # It‘s perfectly fine and recommended to leave this value 
   # at the release version of the first install of this system.
   system.stateVersion = "24.05";

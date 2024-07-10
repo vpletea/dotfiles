@@ -1,16 +1,19 @@
-### ~/.config/home-manager/home.nix - no sudo required
+### Goes to  ~/.config/home-manager/home.nix - no sudo required
 { config, pkgs, lib, unstablePkgs, ... }:
 {
-  
+
+  # No need to change the version
   home.stateVersion = "24.05";
+
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+
   programs.home-manager.enable = true;
+
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
   };
-  
   
   programs.fzf = {
     enable = true;
@@ -23,7 +26,7 @@
     settings.show_program_path = true;
   };
 
-   ## ZSH Setup
+  ## ZSH Setup
   programs.zsh = {
   enable = true;
   enableCompletion = true;
@@ -36,6 +39,7 @@
     zle -N history-beginning-search-forward-end history-search-end
     bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
     bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+    ssh-add -q ~/.ssh/github.key
   '';
   shellAliases = {
       ll = "ls -alh";
@@ -48,10 +52,8 @@
     };
   };
 
-
-  ## Starship prompt setup
+  # Starship prompt setup
   programs.starship = {
-    enable = true;
     settings = {
       kubernetes = {
       disabled = false;
@@ -59,32 +61,10 @@
     };
   };
 
-  # User software installation
-  home.packages = with pkgs;  [
-    ansible
-    bottles
-    google-chrome
-    htop
-    k3d
-    kubectl
-    kubectx
-    kubernetes-helm
-    plymouth
-    terraform
-    vim
-    vlc
-    vscode
-    wget
-    wine
-    yubioath-flutter
-  ];
-
-
   # SSH setup
   programs.ssh = {
     enable = true;
     extraConfig = ''
-    AddKeysToAgent yes
     StrictHostKeyChecking no
     CanonicalizeHostname yes
     CanonicalDomains h-net.xyz
@@ -118,6 +98,25 @@
       };
     };
   };
+
+  # User software installation
+  home.packages = with pkgs;  [
+    ansible
+    bottles
+    google-chrome
+    htop
+    k3d
+    kubectl
+    kubectx
+    kubernetes-helm
+    terraform
+    vim
+    vlc
+    vscode
+    wget
+    wine
+    yubioath-flutter
+  ];
 
   # Customize Gnome settings 
   dconf.settings = {
