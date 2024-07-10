@@ -29,6 +29,7 @@
   ## ZSH Setup
   programs.zsh = {
   enable = true;
+  autocd = true;
   enableCompletion = true;
   autosuggestion.enable = true;
   history.extended = true;
@@ -145,15 +146,5 @@
     "org/gnome/mutter" = { 
       dynamic-workspaces = true ;
     };
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = [
-        "nothing"
-      ];
-    };
-    "org/gnome/desktop/session" = {
-      idle-delay = [
-        "uint32 900"
-      ];
-    }; 
-  };
+  }; 
 }
