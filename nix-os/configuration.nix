@@ -1,7 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
+### /etc/nixos/configuration.nix - requires sudo
 { config, pkgs, ... }:
 
 {
@@ -10,7 +7,7 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Bootloader setup
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 0;  #### Use the space key at boot for generations menu
@@ -18,7 +15,7 @@
   boot.initrd.systemd.enable = true;
   boot.kernelParams = ["quiet"];
 
-  # Enable zfs support
+  # Enable ZFS support - enable for mounting truenas drives
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
@@ -43,32 +40,17 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.excludePackages = [pkgs.xterm];
+  
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
-  # Setting favorite apps in gnome
-  services.xserver.desktopManager.gnome = {
-    extraGSettingsOverrides = ''
-      [org.gnome.shell]
-      favorite-apps=['firefox.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']
-    '';
-  };  
-
+  services.gnome.core-utilities.enable = false; 
+ 
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
   };
- 
-  # Configure printing
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
-  };
-
-  # Enable pcscd service for yubikey
-  services.pcscd.enable = true;
   
   # Enable sound with pipewire.
   sound.enable = true;
@@ -91,11 +73,30 @@
     description = "Valentin";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
+  
+  # ZSH setup
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
+  
+  # Starship prompt setup
+  programs.starship = {
+    enable = true;
+  };
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  ### Accelerated Video Playback
+  # Configure printing - for hp printers
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+
+  # Enable pcscd service - required for yubikey
+  services.pcscd.enable = true;
+  
+  # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
    };
@@ -109,151 +110,41 @@
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  # Packages installed in system profile. To search, run: nix search wget
+  # Packages installed in system profile
   environment.systemPackages = with pkgs; [
-    ansible
-    bottles
-    docker
     firefox
     git
+    gnome.file-roller
+    gnome.gnome-calculator
+    gnome.gnome-disk-utility
     gnome.gnome-terminal
+    gnome.nautilus
     gnomeExtensions.dash-to-dock
-    google-chrome
-    htop
-    k3d
-    kubectl
-    kubectx
-    kubernetes-helm
-    plymouth
-    terraform
-    vim
-    vlc
-    vscode
-    wget
-    wine
-    yubioath-flutter
+    home-manager
+    loupe
+    popsicle
   ];
 
-  environment.gnome.excludePackages = with pkgs; [
-      gedit
-      gnome-console
-      gnome-photos
-      gnome-text-editor
-      gnome-tour
-      gnome.atomix
-      gnome.cheese
-      gnome.epiphany
-      gnome.evince
-      gnome.geary
-      gnome.gnome-calendar
-      gnome.gnome-characters
-      gnome.gnome-clocks
-      gnome.gnome-contacts
-      gnome.gnome-maps
-      gnome.gnome-music
-      gnome.hitori
-      gnome.iagno
-      gnome.seahorse
-      gnome.simple-scan
-      gnome.tali
-      gnome.totem
-      gnome.yelp
-      snapshot
-   ];
-
-  ## ZSH Setup
-  programs.zsh = {
-  enable = true;
-  autosuggestions.enable = true;
-  autosuggestions.extraConfig = {
-    "ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE" = "20";
-    "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE" = "fg=60";
-  };
-  # Set zsh prompt for zsh autocomplete with up arrow
-  promptInit = ''
-    autoload -Uz history-search-end
-    zle -N history-beginning-search-backward-end history-search-end
-    zle -N history-beginning-search-forward-end history-search-end
-    bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
-    bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
-    user=$(whoami | awk '{print $1}')
-    if [[ $user = valentin ]]
-    then
-      ssh-add -q ~/.ssh/github.key
-    fi  
-  '';
-  loginShellInit = "
-  #Set favorite apps in dock and enable extensions
-  dconf reset /org/gnome/shell/favorite-apps
-  gnome-extensions enable dash-to-dock@micxgx.gmail.com
-  ";
-  syntaxHighlighting.enable = true;
-  histFile = "$HOME/.histfile";
-  histSize = 10000;
-  enableBashCompletion = true;
-  shellAliases = {
-    ll = "ls -alh";
-    ls = "ls --color=auto --group-directories-first";
-    grep = "grep -n --color";
-    kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
-    kd = "k3d cluster delete";
-    nr = "sudo nixos-rebuild switch";
-    ne = "sudo nano /etc/nixos/configuration.nix";
-    };
-  };
-  environment.pathsToLink = [ "/share/zsh" ];
-  
-  ## Starship prompt setup
-  programs.starship = {
-  enable = true;
-  settings = {
-     kubernetes = {
-     disabled = false;
-     };
-   };
-  };
-
-  ## SSH setup
+  # SSH agent setup
   programs.ssh = {
   startAgent = true;
-  extraConfig = ''
-    StrictHostKeyChecking no
-    CanonicalizeHostname yes
-    CanonicalDomains h-net.xyz
-    Host *
-      User devops
-      IdentityFile ~/.ssh/homelab.key
-    Host gitub
-      HostName github.com
-      User vpletea
-      IdentityFile ~/.ssh/github.key
-  '';
   };
-  
-  ## FZF Setup
-  programs.fzf = {
-    fuzzyCompletion = true;
-  };
-
-  # Set default shell to zsh
-  users.defaultUserShell = pkgs.zsh;
 
   # Enable firewall
   networking.firewall.enable = true;
 
-  # NixOS garbage control - remove older generations
+  # NixOS garbage control - removes older generations
   nix.gc = {
     automatic = true;
     dates = "monthly";
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 20d";
   };
 
-  # System autoupgrade and channel setup
+  # System autoupgrade
   system = {
     autoUpgrade = {
       enable = true;
       dates = "monthly";
-      channel = "https://channels.nixos.org/nixos-24.05";
     };
   };
 
@@ -287,14 +178,7 @@
         CPU_MAX_PERF_ON_BAT = 30;
       };
    };
-
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
+  # It‘s perfectly fine and recommended to leave this value 
+  # at the release version of the first install of this system.
+  system.stateVersion = "24.05";
 }
