@@ -8,12 +8,17 @@
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
+  # Home manager to manage itself
   programs.home-manager.enable = true;
 
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
   };
+
+  programs.vscode = {
+    enable = true;
+  }; 
   
   programs.fzf = {
     enable = true;
@@ -99,25 +104,6 @@
       };
     };
   };
-
-  # User software installation
-  home.packages = with pkgs;  [
-    ansible
-    bottles
-    google-chrome
-    htop
-    k3d
-    kubectl
-    kubectx
-    kubernetes-helm
-    terraform
-    vim
-    vlc
-    vscode
-    wget
-    wine
-    yubioath-flutter
-  ];
 
   # Customize Gnome settings 
   dconf.settings = {
