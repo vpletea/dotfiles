@@ -25,6 +25,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  
+  # Define user account
+  users.users.valentin = {
+    isNormalUser = true;
+    description = "Valentin";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
@@ -44,7 +51,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-utilities.enable = false; 
+  # services.gnome.core-utilities.enable = false; 
  
   # Configure keymap in X11
   services.xserver = {
@@ -75,46 +82,7 @@
   # Docker setup
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-
-  # Power settings
-  services.power-profiles-daemon.enable = false;
-  services.thermald.enable = true;
-  powerManagement.enable = true;
-
-  # TLP settings
-  services.tlp = {
-    enable = true;
-    settings = {
-      PLATFORM_PROFILE_ON_AC = "balanced";
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_BOOST_ON_AC = "1";
-      CPU_BOOST_ON_BAT = "0";
-
-      CPU_HWP_DYN_BOOST_ON_AC = "1";
-      CPU_HWP_DYN_BOOST_ON_BAT = "0";
-
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 30;
-    };
-  };
-  
-  # Define user account
-  users.users.valentin = {
-    isNormalUser = true;
-    description = "Valentin";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
-  
+    
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
   
@@ -147,21 +115,90 @@
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  # Packages installed in system profile
+  # Packages installed system wide
   environment.systemPackages = with pkgs; [
+    ansible
+    bottles
+    docker
     firefox
     git
-    gnome.file-roller
-    gnome.gnome-calculator
-    gnome.gnome-disk-utility
     gnome.gnome-terminal
-    gnome.nautilus
     gnomeExtensions.dash-to-dock
+    google-chrome
     home-manager
-    loupe
+    htop
+    k3d
+    kubectl
+    kubectx
+    kubernetes-helm
     plymouth
-    popsicle
+    terraform
+    vim
+    vlc
+    wget
+    wine
+    yubioath-flutter
   ];
+
+  # Packages uninstalled system wide
+  environment.gnome.excludePackages = with pkgs; [
+    gedit
+    gnome-console
+    gnome-photos
+    gnome-text-editor
+    gnome-tour
+    gnome.atomix
+    gnome.cheese
+    gnome.epiphany
+    gnome.evince
+    gnome.geary
+    gnome.gnome-calendar
+    gnome.gnome-characters
+    gnome.gnome-clocks
+    gnome.gnome-contacts
+    gnome.gnome-maps
+    gnome.gnome-music
+    gnome.hitori
+    gnome.iagno
+    gnome.seahorse
+    gnome.simple-scan
+    gnome.tali
+    gnome.totem
+    gnome.yelp
+    snapshot
+   ];
+
+  # Power settings
+  services.power-profiles-daemon.enable = false;
+  services.thermald.enable = true;
+  powerManagement.enable = true;
+
+  # TLP settings
+  services.tlp = {
+    enable = true;
+    settings = {
+      PLATFORM_PROFILE_ON_AC = "balanced";
+      PLATFORM_PROFILE_ON_BAT = "low-power";
+
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_BOOST_ON_AC = "1";
+      CPU_BOOST_ON_BAT = "0";
+
+      CPU_HWP_DYN_BOOST_ON_AC = "1";
+      CPU_HWP_DYN_BOOST_ON_BAT = "0";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 30;
+    };
+  };
 
   # Enable firewall
   networking.firewall.enable = true;
