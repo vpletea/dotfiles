@@ -1,1 +1,1 @@
-# misc
+# Devices setup repo 
