@@ -51,7 +51,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  # services.gnome.core-utilities.enable = false; 
+  services.gnome.core-utilities.enable = false; 
  
   # Configure keymap in X11
   services.xserver = {
@@ -123,6 +123,11 @@
     firefox
     git
     gnome.gnome-terminal
+    gnome.nautilus
+    gnome.gnome-calculator
+    gnome.gnome-disk-utility
+    gnome.gnome-font-viewer
+    gnome.file-roller
     gnomeExtensions.dash-to-dock
     google-chrome
     home-manager
@@ -131,6 +136,8 @@
     kubectl
     kubectx
     kubernetes-helm
+    loupe
+    popsicle
     plymouth
     terraform
     vim
@@ -142,31 +149,8 @@
 
   # Packages uninstalled system wide
   environment.gnome.excludePackages = with pkgs; [
-    gedit
-    gnome-console
-    gnome-photos
-    gnome-text-editor
     gnome-tour
-    gnome.atomix
-    gnome.cheese
-    gnome.epiphany
-    gnome.evince
-    gnome.geary
-    gnome.gnome-calendar
-    gnome.gnome-characters
-    gnome.gnome-clocks
-    gnome.gnome-contacts
-    gnome.gnome-maps
-    gnome.gnome-music
-    gnome.hitori
-    gnome.iagno
-    gnome.seahorse
-    gnome.simple-scan
-    gnome.tali
-    gnome.totem
-    gnome.yelp
-    snapshot
-   ];
+  ];
 
   # Power settings
   services.power-profiles-daemon.enable = false;
