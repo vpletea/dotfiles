@@ -11,21 +11,30 @@
   # Home manager to manage itself
   programs.home-manager.enable = true;
 
+  # User settings
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
   };
 
+  # Vscode Setup
   programs.vscode = {
     enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      hashicorp.hcl
+      redhat.vscode-yaml
+      bbenoist.nix
+    ];
   }; 
   
+  # Enable FZF
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
     tmux.enableShellIntegration = true;
   };
-
+  
+  # Htop intall
   programs.htop = {
     enable = true;
     settings.show_program_path = true;
@@ -54,7 +63,8 @@
       kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
       kd = "k3d cluster delete";
       nr = "sudo nixos-rebuild switch";
-      ne = "sudo nano /etc/nixos/configuration.nix";
+      ne = "sudo nixos-rebuild edit";
+      hs = "home-manager switch";
     };
   };
 

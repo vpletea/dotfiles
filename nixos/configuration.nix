@@ -117,34 +117,35 @@
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
-    ansible
-    bottles
-    docker
+
+    # Base apps
+    home-manager
     firefox
-    git
     gnome.gnome-terminal
     gnome.nautilus
-    gnome.gnome-calculator
     gnome.gnome-disk-utility
-    gnome.gnome-font-viewer
     gnome.file-roller
     gnomeExtensions.dash-to-dock
     google-chrome
-    home-manager
+    loupe
+    popsicle
+    vim
+    vlc
     htop
+    plymouth
+    yubioath-flutter
+    wget
+    wine
+
+    # Dev tools
+    ansible
+    docker
+    git
     k3d
     kubectl
     kubectx
     kubernetes-helm
-    loupe
-    popsicle
-    plymouth
     terraform
-    vim
-    vlc
-    wget
-    wine
-    yubioath-flutter
   ];
 
   # Packages uninstalled system wide
