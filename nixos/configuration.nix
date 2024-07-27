@@ -125,19 +125,23 @@
     gnome.nautilus
     gnome.gnome-disk-utility
     gnome.file-roller
+    gnome.sushi # Select a file in Nautilus, hit the spacebar and it will show a quick preview
     gnomeExtensions.dash-to-dock
     google-chrome
+    evince
     loupe
-    popsicle
     vim
     vlc
-    htop
     plymouth
     yubioath-flutter
+
+    # Sysadmin
     wget
     wine
+    htop 
+    ventoy-full # Use sudo ventoy-web for the GUI        
 
-    # Dev tools
+    # Development
     ansible
     docker
     git
