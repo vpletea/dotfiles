@@ -22,8 +22,9 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       hashicorp.hcl
-      redhat.vscode-yaml
       bbenoist.nix
+      redhat.vscode-yaml
+      catppuccin.catppuccin-vsc
     ];
   }; 
   
