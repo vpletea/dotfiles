@@ -26,6 +26,9 @@
       hashicorp.terraform
       catppuccin.catppuccin-vsc
     ];
+    userSettings = {
+      "workbench.colorTheme"= "Catppuccin Mocha";
+    };
   }; 
   
   # Enable FZF
