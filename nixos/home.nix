@@ -30,6 +30,7 @@
       "workbench.colorTheme"= "Catppuccin Mocha";
       "git.enableSmartCommit"= true;
     };
+    mutableExtensionsDir = false; 
   }; 
   
   # Enable FZF
