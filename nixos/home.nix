@@ -28,6 +28,7 @@
     ];
     userSettings = {
       "workbench.colorTheme"= "Catppuccin Mocha";
+      "git.enableSmartCommit"= true;
     };
   }; 
   
