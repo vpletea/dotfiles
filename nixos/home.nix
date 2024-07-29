@@ -21,9 +21,9 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
-      hashicorp.hcl
       bbenoist.nix
       redhat.vscode-yaml
+      hashicorp.terraform
       catppuccin.catppuccin-vsc
     ];
   }; 
