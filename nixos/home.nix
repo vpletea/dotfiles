@@ -20,6 +20,8 @@
   # Vscode Setup
   programs.vscode = {
     enable = true;
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       redhat.vscode-yaml
@@ -27,18 +29,22 @@
       catppuccin.catppuccin-vsc
     ];
     userSettings = {
+      "workbench.startupEditor"= "none";
       "workbench.colorTheme"= "Catppuccin Mocha";
       "git.enableSmartCommit"= true;
       "git.confirmSync"= false;
+      "git.mergeEditor"= true;
       "editor.formatOnType"= true;
       "editor.inlineSuggest.enabled"= true;
       "editor.bracketPairColorization.enabled"=true;
-
+      "editor.minimap.enabled"= false;
       "editor.fontSize" = 16;
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "terminal.integrated.fontSize" = 16;
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-      
+      "telemetry.telemetryLevel" = "off";
+      "update.showReleaseNotes" = false;
+
     };
   }; 
   
@@ -49,7 +55,7 @@
     tmux.enableShellIntegration = true;
   };
   
-  # Htop intall
+  # Htop install
   programs.htop = {
     enable = true;
     settings.show_program_path = true;
