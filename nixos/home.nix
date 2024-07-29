@@ -29,8 +29,7 @@
     userSettings = {
       "workbench.colorTheme"= "Catppuccin Mocha";
       "git.enableSmartCommit"= true;
-      "git.confirmSync":= false;
-      #Test
+      "git.confirmSync"= false;
     };
   }; 
   
