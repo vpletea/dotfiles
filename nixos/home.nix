@@ -35,6 +35,7 @@
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "terminal.integrated.fontSize" = 16;
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
+      "editor.formatOnType"= true;
     };
   }; 
   
