@@ -60,6 +60,7 @@
       ll = "ls -alh";
       ls = "ls --color=auto --group-directories-first";
       grep = "grep -n --color";
+      amt = "docker run -d --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64 && firefox http://localhost:3000 && docker stop mesh-mini";
       kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
       kd = "k3d cluster delete";
       nr = "sudo nixos-rebuild switch";

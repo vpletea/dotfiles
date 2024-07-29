@@ -138,7 +138,8 @@
     # Sysadmin
     wget
     wine
-    htop 
+    htop
+    popsicle
     ventoy-full # Use sudo ventoy-web for the GUI        
 
     # Development
