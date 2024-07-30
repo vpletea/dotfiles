@@ -119,28 +119,28 @@
   environment.systemPackages = with pkgs; [
 
     # Base apps
-    home-manager
+    alacritty
+    evince
     firefox
-    gnome.gnome-terminal
-    gnome.nautilus
-    gnome.gnome-disk-utility
     gnome.file-roller
+    gnome.gnome-disk-utility
+    gnome.nautilus
     gnome.sushi # Select a file in Nautilus, hit the spacebar and it will show a quick preview
     gnomeExtensions.dash-to-dock
     google-chrome
-    evince
+    home-manager
     loupe
+    plymouth
     vim
     vlc
-    plymouth
     yubioath-flutter
 
     # Sysadmin
-    wget
-    wine
     htop
     popsicle
-    ventoy-full # Use sudo ventoy-web for the GUI        
+    ventoy-full # Use sudo ventoy-web for the GUI
+    wget
+    wine      
 
     # Development
     ansible

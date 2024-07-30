@@ -1,7 +1,6 @@
 ### Goes to  ~/.config/home-manager/home.nix - no sudo required
 { config, pkgs, lib, unstablePkgs, ... }:
 {
-
   # No need to change the version
   home.stateVersion = "24.05";
 
@@ -17,6 +16,22 @@
     homeDirectory = "/home/valentin";
   };
 
+  # Alacritty settings
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.normal.family = "FiraCode Nerd Font";
+      font.size = 16;
+      env.TERM = "xterm-256color";
+      colors.primary.background = "#1e1e2e";
+      colors.primary.foreground = "#cdd6f4";
+      colors.primary.dim_foreground = "#7f849c";
+      colors.primary.bright_foreground = "#cdd6f4";
+      colors.cursor.text = "#1e1e2e";
+      colors.cursor.cursor = "#f5e0dc";
+    };
+  };
+
   # Vscode Setup
   programs.vscode = {
     enable = true;
@@ -26,6 +41,7 @@
       bbenoist.nix
       hashicorp.terraform
       catppuccin.catppuccin-vsc
+      waderyan.gitblame
     ];
     userSettings = {
       "workbench.startupEditor"= "none";
@@ -43,23 +59,9 @@
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "telemetry.telemetryLevel" = "off";
       "update.showReleaseNotes" = false;
-
     };
   }; 
   
-  # Enable FZF
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    tmux.enableShellIntegration = true;
-  };
-  
-  # Htop install
-  programs.htop = {
-    enable = true;
-    settings.show_program_path = true;
-  };
-
   ## ZSH Setup
   programs.zsh = {
   enable = true;
@@ -136,13 +138,26 @@
     };
   };
 
+  # Enable FZF
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    tmux.enableShellIntegration = true;
+  };
+  
+  # Htop install
+  programs.htop = {
+    enable = true;
+    settings.show_program_path = true;
+  };
+  
   # Customize Gnome settings 
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
         "code.desktop"
-        "org.gnome.Terminal.desktop"
+        "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       disable-user-extensions = false;
