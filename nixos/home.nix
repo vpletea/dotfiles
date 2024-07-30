@@ -14,11 +14,102 @@
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
-    # sessionVariables = {
-    #   XCURSOR_THEME = "Adwaita alacritty";
-    # };
   };
   
+  # Alacritty settings
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      # General settings
+      font.normal.family = "FiraCode Nerd Font";
+      font.size = 16;
+      env = {
+        TERM = "xterm-256color";
+        XCURSOR_THEME = "Adwaita alacritty";
+      };
+      mouse.hide_when_typing= false;
+      selection.save_to_clipboard = true;
+      # Catppucing mocha theme
+      colors.primary = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+        dim_foreground = "#7f849c";
+        bright_foreground = "#cdd6f4";
+      };
+      colors.cursor = {
+        text = "#1e1e2e";
+        cursor = "#f5e0dc";
+      };
+      colors.vi_mode_cursor = {
+        text = "#1e1e2e";
+        cursor = "#b4befe";
+      };
+        
+      colors.search.matches = {
+        foreground = "#1e1e2e";
+        background = "#a6adc8";
+      };
+
+      colors.search.focused_match = {
+        foreground = "#1e1e2e";
+        background = "#a6e3a1";
+      };
+
+      colors.footer_bar = {
+        foreground = "#1e1e2e";
+        background = "#a6adc8";
+      };
+
+      colors.hints.start = {
+        foreground = "#1e1e2e";
+        background = "#f9e2af";
+      };
+
+      colors.hints.end = {
+        foreground = "#1e1e2e";
+        background = "#a6adc8";
+      };
+
+      colors.selection = {
+        text = "#1e1e2e";
+        background = "#f5e0dc";
+      };
+
+      colors.normal = {
+        black = "#45475a";
+        red = "#f38ba8";
+        green = "#a6e3a1";
+        yellow = "#f9e2af";
+        blue = "#89b4fa";
+        magenta = "#f5c2e7";
+        cyan = "#94e2d5";
+        white = "#bac2de";
+      };
+
+      colors.bright = {
+        black = "#585b70";
+        red = "#f38ba8";
+        green = "#a6e3a1";
+        yellow = "#f9e2af";
+        blue = "#89b4fa";
+        magenta = "#f5c2e7";
+        cyan = "#94e2d5";
+        white = "#a6adc8";
+      };
+
+      colors.dim = {
+        black = "#45475a";
+        red = "#f38ba8";
+        green = "#a6e3a1";
+        yellow = "#f9e2af";
+        blue = "#89b4fa";
+        magenta = "#f5c2e7";
+        cyan = "#94e2d5";
+        white = "#bac2de";
+      };
+    };
+  };
+
   # # Kitty settings
   # programs.kitty = {
   #   enable = true;
@@ -34,35 +125,7 @@
   #     size = 16;
   #   };
   # };
-
-  # Alacritty settings
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.normal.family = "FiraCode Nerd Font";
-      font.size = 16;
-      env = {
-        TERM = "xterm-256color";
-        XCURSOR_THEME = "Adwaita alacritty";
-      };
-      colors.primary.background = "#1e1e2e";
-      colors.primary.foreground = "#cdd6f4";
-      colors.primary.dim_foreground = "#7f849c";
-      colors.primary.bright_foreground = "#cdd6f4";
-      colors.cursor.text = "#1e1e2e";
-      colors.cursor.cursor = "#f5e0dc";
-      mouse.hide_when_typing= false;
-      selection.save_to_clipboard = true;
-    };
-    # xdg.configFile."alacritty.toml" = {
-  #   text = ''
-  #     [window]
-  #     padding.x = 10
-  #     padding.y = 10
-  #   '';
-  #   #executable = true;
-  };
-
+  
   # Vscode Setup
   programs.vscode = {
     enable = true;
@@ -91,6 +154,7 @@
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "telemetry.telemetryLevel" = "off";
       "update.showReleaseNotes" = false;
+       "extensions.ignoreRecommendations" = true;
     };
   }; 
   
