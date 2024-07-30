@@ -23,12 +23,12 @@
       # General settings
       font.normal.family = "FiraCode Nerd Font";
       font.size = 16;
+      mouse.hide_when_typing= false;
+      selection.save_to_clipboard = true;
       env = {
         TERM = "xterm-256color";
         XCURSOR_THEME = "Adwaita alacritty";
       };
-      mouse.hide_when_typing= false;
-      selection.save_to_clipboard = true;
       # Catppucing mocha theme
       colors.primary = {
         background = "#1e1e2e";
@@ -125,7 +125,7 @@
   #     size = 16;
   #   };
   # };
-  
+
   # Vscode Setup
   programs.vscode = {
     enable = true;
