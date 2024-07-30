@@ -24,7 +24,6 @@
     enableExtensionUpdateCheck = false;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
-      redhat.vscode-yaml
       hashicorp.terraform
       catppuccin.catppuccin-vsc
     ];
