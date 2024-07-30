@@ -16,20 +16,20 @@
     homeDirectory = "/home/valentin";
   };
   
-    # Alacritty settings
+  # Kitty settings
   programs.kitty = {
     enable = true;
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 16;
-      };
     settings = {
       copy_on_select = "yes";
       scrollback_lines = "10000";
       detect_urls = "yes";
       remember_window_size = "yes";
-      };
+    };
     theme = "Catppuccin-Mocha";
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 16;
+    };
   };
 
   # Vscode Setup
