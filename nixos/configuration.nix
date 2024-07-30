@@ -119,7 +119,6 @@
   environment.systemPackages = with pkgs; [
 
     # Base apps
-    kitty
     evince
     firefox
     gnome.file-roller
@@ -143,14 +142,17 @@
     wine      
 
     # Development
+    alacritty
     ansible
     docker
     git
     k3d
+    # kitty
     kubectl
     kubectx
     kubernetes-helm
     terraform
+    vscode
   ];
 
   # Packages uninstalled system wide

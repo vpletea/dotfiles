@@ -14,22 +14,53 @@
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
+    # sessionVariables = {
+    #   XCURSOR_THEME = "Adwaita alacritty";
+    # };
   };
   
-  # Kitty settings
-  programs.kitty = {
+  # # Kitty settings
+  # programs.kitty = {
+  #   enable = true;
+  #   settings = {
+  #     copy_on_select = "yes";
+  #     scrollback_lines = "10000";
+  #     detect_urls = "yes";
+  #     remember_window_size = "yes";
+  #   };
+  #   theme = "Catppuccin-Mocha";
+  #   font = {
+  #     name = "FiraCode Nerd Font";
+  #     size = 16;
+  #   };
+  # };
+
+  # Alacritty settings
+  programs.alacritty = {
     enable = true;
     settings = {
-      copy_on_select = "yes";
-      scrollback_lines = "10000";
-      detect_urls = "yes";
-      remember_window_size = "yes";
+      font.normal.family = "FiraCode Nerd Font";
+      font.size = 16;
+      env = {
+        TERM = "xterm-256color";
+        XCURSOR_THEME = "Adwaita alacritty";
+      };
+      colors.primary.background = "#1e1e2e";
+      colors.primary.foreground = "#cdd6f4";
+      colors.primary.dim_foreground = "#7f849c";
+      colors.primary.bright_foreground = "#cdd6f4";
+      colors.cursor.text = "#1e1e2e";
+      colors.cursor.cursor = "#f5e0dc";
+      mouse.hide_when_typing= false;
+      selection.save_to_clipboard = true;
     };
-    theme = "Catppuccin-Mocha";
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 16;
-    };
+    # xdg.configFile."alacritty.toml" = {
+  #   text = ''
+  #     [window]
+  #     padding.x = 10
+  #     padding.y = 10
+  #   '';
+  #   #executable = true;
   };
 
   # Vscode Setup
@@ -37,6 +68,7 @@
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       hashicorp.terraform
@@ -53,9 +85,9 @@
       "editor.inlineSuggest.enabled"= true;
       "editor.bracketPairColorization.enabled"=true;
       "editor.minimap.enabled"= false;
-      "editor.fontSize" = 16;
+      "editor.fontSize" = 15;
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-      "terminal.integrated.fontSize" = 16;
+      "terminal.integrated.fontSize" = 15;
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "telemetry.telemetryLevel" = "off";
       "update.showReleaseNotes" = false;
@@ -157,7 +189,7 @@
       favorite-apps = [
         "firefox.desktop"
         "code.desktop"
-        "kitty.desktop"
+        "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       disable-user-extensions = false;
