@@ -119,7 +119,7 @@
   environment.systemPackages = with pkgs; [
 
     # Base apps
-    alacritty
+    kitty
     evince
     firefox
     gnome.file-roller

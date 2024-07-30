@@ -15,22 +15,37 @@
     username = "valentin";
     homeDirectory = "/home/valentin";
   };
-
-  # Alacritty settings
-  programs.alacritty = {
+  
+    # Alacritty settings
+  programs.kitty = {
     enable = true;
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 16;
+      };
     settings = {
-      font.normal.family = "FiraCode Nerd Font";
-      font.size = 16;
-      env.TERM = "xterm-256color";
-      colors.primary.background = "#1e1e2e";
-      colors.primary.foreground = "#cdd6f4";
-      colors.primary.dim_foreground = "#7f849c";
-      colors.primary.bright_foreground = "#cdd6f4";
-      colors.cursor.text = "#1e1e2e";
-      colors.cursor.cursor = "#f5e0dc";
-    };
+      copy_on_select = "yes";
+      scrollback_lines = "10000";
+      detect_urls = "yes";
+      remember_window_size = "yes";
+      };
+    theme = "Catppuccin-Mocha";
   };
+  # # Alacritty settings
+  # programs.alacritty = {
+  #   enable = true;
+  #   settings = {
+  #     font.normal.family = "FiraCode Nerd Font";
+  #     font.size = 16;
+  #     env.TERM = "xterm-256color";
+  #     colors.primary.background = "#1e1e2e";
+  #     colors.primary.foreground = "#cdd6f4";
+  #     colors.primary.dim_foreground = "#7f849c";
+  #     colors.primary.bright_foreground = "#cdd6f4";
+  #     colors.cursor.text = "#1e1e2e";
+  #     colors.cursor.cursor = "#f5e0dc";
+  #   };
+  # };
 
   # Vscode Setup
   programs.vscode = {
@@ -82,7 +97,7 @@
       ll = "ls -alh";
       ls = "ls --color=auto --group-directories-first";
       grep = "grep -n --color";
-      amt = "docker run -d --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64 && firefox http://localhost:3000 && docker stop mesh-mini";
+      amt = "docker run --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64";
       kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
       kd = "k3d cluster delete";
       nr = "sudo nixos-rebuild switch";
@@ -157,7 +172,7 @@
       favorite-apps = [
         "firefox.desktop"
         "code.desktop"
-        "Alacritty.desktop"
+        "kitty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       disable-user-extensions = false;
