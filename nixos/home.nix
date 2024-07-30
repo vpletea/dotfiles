@@ -31,21 +31,6 @@
       };
     theme = "Catppuccin-Mocha";
   };
-  # # Alacritty settings
-  # programs.alacritty = {
-  #   enable = true;
-  #   settings = {
-  #     font.normal.family = "FiraCode Nerd Font";
-  #     font.size = 16;
-  #     env.TERM = "xterm-256color";
-  #     colors.primary.background = "#1e1e2e";
-  #     colors.primary.foreground = "#cdd6f4";
-  #     colors.primary.dim_foreground = "#7f849c";
-  #     colors.primary.bright_foreground = "#cdd6f4";
-  #     colors.cursor.text = "#1e1e2e";
-  #     colors.cursor.cursor = "#f5e0dc";
-  #   };
-  # };
 
   # Vscode Setup
   programs.vscode = {
