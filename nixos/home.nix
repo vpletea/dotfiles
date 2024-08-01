@@ -143,6 +143,7 @@
   # Starship prompt setup
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       kubernetes = {
       disabled = false;

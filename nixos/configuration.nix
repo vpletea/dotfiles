@@ -88,7 +88,7 @@
   
   # SSH agent setup
   programs.ssh = {
-  startAgent = true;
+    startAgent = true;
   };
 
   # ZSH setup
