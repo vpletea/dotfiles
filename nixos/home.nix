@@ -16,118 +16,25 @@
     homeDirectory = "/home/valentin";
   };
   
-  # Alacritty settings
-  programs.alacritty = {
+  # Kitty settings
+  programs.kitty = {
     enable = true;
     settings = {
-      # General settings
-      font.normal.family = "FiraCode Nerd Font";
-      font.size = 15;
-      mouse.hide_when_typing= false;
-      selection.save_to_clipboard = true;
-      env = {
-        TERM = "xterm-256color";
-        XCURSOR_THEME = "Adwaita alacritty";
-      };
-      
-      # Catppucin mocha theme
-      colors.primary = {
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-        dim_foreground = "#7f849c";
-        bright_foreground = "#cdd6f4";
-      };
-
-      colors.cursor = {
-        text = "#1e1e2e";
-        cursor = "#f5e0dc";
-      };
-      
-      colors.vi_mode_cursor = {
-        text = "#1e1e2e";
-        cursor = "#b4befe";
-      };
-        
-      colors.search.matches = {
-        foreground = "#1e1e2e";
-        background = "#a6adc8";
-      };
-
-      colors.search.focused_match = {
-        foreground = "#1e1e2e";
-        background = "#a6e3a1";
-      };
-
-      colors.footer_bar = {
-        foreground = "#1e1e2e";
-        background = "#a6adc8";
-      };
-
-      colors.hints.start = {
-        foreground = "#1e1e2e";
-        background = "#f9e2af";
-      };
-
-      colors.hints.end = {
-        foreground = "#1e1e2e";
-        background = "#a6adc8";
-      };
-
-      colors.selection = {
-        text = "#1e1e2e";
-        background = "#f5e0dc";
-      };
-
-      colors.normal = {
-        black = "#45475a";
-        red = "#f38ba8";
-        green = "#a6e3a1";
-        yellow = "#f9e2af";
-        blue = "#89b4fa";
-        magenta = "#f5c2e7";
-        cyan = "#94e2d5";
-        white = "#bac2de";
-      };
-
-      colors.bright = {
-        black = "#585b70";
-        red = "#f38ba8";
-        green = "#a6e3a1";
-        yellow = "#f9e2af";
-        blue = "#89b4fa";
-        magenta = "#f5c2e7";
-        cyan = "#94e2d5";
-        white = "#a6adc8";
-      };
-
-      colors.dim = {
-        black = "#45475a";
-        red = "#f38ba8";
-        green = "#a6e3a1";
-        yellow = "#f9e2af";
-        blue = "#89b4fa";
-        magenta = "#f5c2e7";
-        cyan = "#94e2d5";
-        white = "#bac2de";
-      };
+      copy_on_select = "yes";
+      scrollback_lines = "10000";
+      detect_urls = "yes";
+      remember_window_size = "yes";
+      hide_window_decorations = "yes";
+      tab_bar_edge = "top";
+      tab_bar_style = "slant";
+      tab_bar_min_tabs = "2"; 
+    };
+    theme = "Catppuccin-Mocha";
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 16;
     };
   };
-
-  # # Kitty settings
-  # programs.kitty = {
-  #   enable = true;
-  #   settings = {
-  #     copy_on_select = "yes";
-  #     scrollback_lines = "10000";
-  #     detect_urls = "yes";
-  #     remember_window_size = "yes";
-  #   };
-  #   theme = "Catppuccin-Mocha";
-  #   font = {
-  #     name = "FiraCode Nerd Font";
-  #     size = 16;
-  #   };
-  # };
 
   # Vscode Setup
   programs.vscode = {
@@ -256,7 +163,7 @@
       favorite-apps = [
         "firefox.desktop"
         "code.desktop"
-        "Alacritty.desktop"
+        "kitty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       disable-user-extensions = false;

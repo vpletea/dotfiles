@@ -142,12 +142,11 @@
     wine      
 
     # Development
-    alacritty
     ansible
     docker
     git
     k3d
-    # kitty
+    kitty
     kubectl
     kubectx
     kubernetes-helm
@@ -165,30 +164,17 @@
   services.thermald.enable = true;
   powerManagement.enable = true;
 
-  # TLP settings
-  services.tlp = {
-    enable = true;
-    settings = {
-      PLATFORM_PROFILE_ON_AC = "balanced";
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_BOOST_ON_AC = "1";
-      CPU_BOOST_ON_BAT = "0";
-
-      CPU_HWP_DYN_BOOST_ON_AC = "1";
-      CPU_HWP_DYN_BOOST_ON_BAT = "0";
-
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 30;
+  # Auto-cpufreq settings
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+      energy_performance_preference = "power";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
     };
   };
 
