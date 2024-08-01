@@ -34,6 +34,11 @@
       name = "FiraCode Nerd Font";
       size = 15;
     };
+    keybindings = {
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+v" = "paste_from_clipboard";
+    };
+    shellIntegration.enableZshIntegration = true;
   };
 
   # Vscode Setup
