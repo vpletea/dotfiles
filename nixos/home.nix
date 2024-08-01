@@ -85,6 +85,15 @@
   autosuggestion.enable = true;
   history.extended = true;
   syntaxHighlighting.enable = true;
+#   historySubstringSearch = {
+# .   enable = true;
+#     searchUpKey = [
+#       "^[[A"
+#     ];
+#     searchDownKey = [
+#     "^[[B"
+#     ];
+#   };
   initExtra = ''
     autoload -Uz history-search-end
     zle -N history-beginning-search-backward-end history-search-end
