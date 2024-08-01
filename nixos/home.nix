@@ -102,15 +102,6 @@
     };
   };
 
-  # Starship prompt setup
-  programs.starship = {
-    settings = {
-      kubernetes = {
-      disabled = false;
-      };
-    };
-  };
-
   # SSH setup
   programs.ssh = {
     enable = true;
@@ -149,6 +140,16 @@
     };
   };
 
+  # Starship prompt setup
+  programs.starship = {
+    enable = true;
+    settings = {
+      kubernetes = {
+      disabled = false;
+      };
+    };
+  };
+  
   # Enable FZF
   programs.fzf = {
     enable = true;

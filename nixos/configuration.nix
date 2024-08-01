@@ -96,11 +96,6 @@
   users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
   
-  # Starship prompt setup
-  programs.starship = {
-    enable = true;
-  };
-
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
@@ -118,7 +113,7 @@
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
 
-    # Base apps
+    # Base
     evince
     firefox
     gnome.file-roller
@@ -130,23 +125,24 @@
     home-manager
     loupe
     plymouth
+    starship
     vim
     vlc
     yubioath-flutter
 
-    # Sysadmin
+    # Tools
     htop
+    kitty
     popsicle
     ventoy-full # Use sudo ventoy-web for the GUI
     wget
     wine      
 
-    # Development
+    # Dev
     ansible
     docker
     git
     k3d
-    kitty
     kubectl
     kubectx
     kubernetes-helm
