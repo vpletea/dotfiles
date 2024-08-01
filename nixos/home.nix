@@ -15,7 +15,7 @@
     username = "valentin";
     homeDirectory = "/home/valentin";
   };
-  
+
   # Kitty settings
   programs.kitty = {
     enable = true;
@@ -27,7 +27,7 @@
       hide_window_decorations = "yes";
       tab_bar_edge = "top";
       tab_bar_style = "slant";
-      tab_bar_min_tabs = "2"; 
+      tab_bar_min_tabs = "2";
     };
     theme = "Catppuccin-Mocha";
     font = {
@@ -69,10 +69,14 @@
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "telemetry.telemetryLevel" = "off";
       "update.showReleaseNotes" = false;
-       "extensions.ignoreRecommendations" = true;
+      "extensions.ignoreRecommendations" = true;
+      "files.trimTrailingWhitespace" = true;
+      "files.trimFinalNewlines" = true;
+      "files.insertFinalNewline" = true;
+      "diffEditor.ignoreTrimWhitespace" = false;
     };
-  }; 
-  
+  };
+
   ## ZSH Setup
   programs.zsh = {
   enable = true;
@@ -150,21 +154,21 @@
       };
     };
   };
-  
+
   # Enable FZF
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
     tmux.enableShellIntegration = true;
   };
-  
+
   # Htop install
   programs.htop = {
     enable = true;
     settings.show_program_path = true;
   };
-  
-  # Customize Gnome settings 
+
+  # Customize Gnome settings
   dconf.settings = {
     "org/gnome/shell" = {
       favorite-apps = [
@@ -175,7 +179,7 @@
       ];
       disable-user-extensions = false;
       disabled-extensions = [
-        "@as" 
+        "@as"
       ];
       enabled-extensions = [
         "dash-to-dock@micxgx.gmail.com"
@@ -188,11 +192,11 @@
     "org/gnome/desktop/interface" = {
       enable-hot-corners = false;
     };
-    "org/gnome/mutter" = { 
+    "org/gnome/mutter" = {
       dynamic-workspaces = true ;
     };
-  }; 
-  
+  };
+
   # AutoUpgrade settings
   services.home-manager.autoUpgrade = {
     enable = true;
