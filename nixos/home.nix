@@ -185,4 +185,14 @@
       dynamic-workspaces = true ;
     };
   }; 
+  services.home-manager.autoUpgrade = {
+    enable = true;
+    frequency = "monthly";
+  };
+    # NixOS garbage control - removes older generations
+  nix.gc = {
+    automatic = true;
+    frequency = "monthly";
+    options = "--delete-older-than 20d";
+  };
 }
