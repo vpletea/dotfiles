@@ -185,6 +185,8 @@
       dynamic-workspaces = true ;
     };
   }; 
+  
+  # AutoUpgrade settings
   services.home-manager.autoUpgrade = {
     enable = true;
     frequency = "monthly";
