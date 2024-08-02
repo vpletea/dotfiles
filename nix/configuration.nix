@@ -19,13 +19,13 @@
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
-  
+
   # Define your hostname.
-  networking.hostName = "nixos"; 
+  networking.hostName = "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
-  
+
   # Define user account
   users.users.valentin = {
     isNormalUser = true;
@@ -47,18 +47,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.excludePackages = [pkgs.xterm];
-  
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-utilities.enable = false; 
- 
+  services.gnome.core-utilities.enable = false;
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
   };
-  
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -82,10 +82,10 @@
   # Docker setup
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-    
+
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
-  
+
   # SSH agent setup
   programs.ssh = {
     startAgent = true;
@@ -95,7 +95,7 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
-  
+
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
@@ -114,16 +114,14 @@
   environment.systemPackages = with pkgs; [
 
     # Base
-    evince
     firefox
-    gnome.file-roller
+    gnome.file-roller # File archiver
     gnome.gnome-disk-utility
-    gnome.nautilus
-    gnome.sushi # Select a file in Nautilus, hit the spacebar and it will show a quick preview
+    gnome.nautilus # File manager
     gnomeExtensions.dash-to-dock
     google-chrome
     home-manager
-    loupe
+    loupe # Image viewer
     plymouth
     starship
     vim
@@ -136,7 +134,7 @@
     popsicle
     ventoy-full # Use sudo ventoy-web for the GUI
     wget
-    wine      
+    wine
 
     # Dev
     ansible
@@ -191,7 +189,7 @@
       dates = "monthly";
     };
   };
-  # It‘s perfectly fine and recommended to leave this value 
+  # It‘s perfectly fine and recommended to leave this value
   # at the release version of the first install of this system.
   system.stateVersion = "24.05";
 }
