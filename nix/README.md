@@ -8,4 +8,4 @@
 
 # Symlinks
         sudo ln -s $PWD/configuration.nix /etc/nixos/configuration.nix
-        ln -s $PWD/home.nix ~/.config/home-manager/home.nixs
+        ln -s $PWD/home.nix ~/.config/home-manager/home.nix

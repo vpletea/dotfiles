@@ -112,7 +112,6 @@
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
-
     # Base
     firefox
     gnome.file-roller # File archiver
@@ -127,7 +126,6 @@
     vim
     vlc
     yubioath-flutter
-
     # Tools
     htop
     kitty
@@ -135,14 +133,12 @@
     ventoy-full # Use sudo ventoy-web for the GUI
     wget
     wine
-
     # Dev
     ansible
     docker
     git
     k3d
     kubectl
-    kubectx
     kubernetes-helm
     terraform
     vscode
@@ -178,15 +174,15 @@
   # NixOS garbage control - removes older generations
   nix.gc = {
     automatic = true;
-    dates = "monthly";
-    options = "--delete-older-than 20d";
+    dates = "weekly";
+    options = "--delete-older-than 10d";
   };
 
   # System autoupgrade
   system = {
     autoUpgrade = {
       enable = true;
-      dates = "monthly";
+      dates = "weekly";
     };
   };
   # It‘s perfectly fine and recommended to leave this value
