@@ -24,9 +24,10 @@
       scrollback_lines = "10000";
       detect_urls = "yes";
       remember_window_size = "yes";
-      hide_window_decorations = "yes";
+      linux_display_server = "X11";
       tab_bar_edge = "top";
-      tab_bar_style = "slant";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "round";
       tab_bar_min_tabs = "2";
     };
     theme = "Catppuccin-Mocha";
