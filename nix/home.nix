@@ -127,20 +127,11 @@
   # Git setup
   programs.git = {
     enable = true;
-    userEmail = "vali.pletea@gmail.com";
+    userEmail = "vpletea@gmail.com";
     userName = "vpletea";
-    diff-so-fancy.enable = true;
-    lfs.enable = true;
     extraConfig = {
       init = {
         defaultBranch = "main";
-      };
-      merge = {
-        conflictStyle = "diff3";
-          tool = "meld";
-        };
-      pull = {
-        rebase = false;
       };
     };
   };
