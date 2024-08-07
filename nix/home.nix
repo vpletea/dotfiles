@@ -154,7 +154,7 @@
   };
 
   # Customize Gnome settings
-  dconf.settings = {
+  dconf.settings = let inherit (lib.hm.gvariant) mkTuple mkUint32 mkVariant; in {
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
@@ -178,7 +178,13 @@
       enable-hot-corners = false;
     };
     "org/gnome/mutter" = {
-      dynamic-workspaces = true ;
+      dynamic-workspaces = true;
+    };
+    "org/gnome/desktop/session" = {
+      "idle-delay" = mkUint32 900;
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      "sleep-inactive-ac-type" = "nothing";
     };
   };
 
