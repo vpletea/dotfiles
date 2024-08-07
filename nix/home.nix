@@ -154,7 +154,7 @@
   };
 
   # Customize Gnome settings
-  dconf.settings = let inherit (lib.hm.gvariant) mkTuple mkUint32 mkVariant; in {
+  dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
