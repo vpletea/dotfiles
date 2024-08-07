@@ -185,6 +185,8 @@
     };
     "org/gnome/settings-daemon/plugins/power" = {
       "sleep-inactive-ac-type" = "nothing";
+      "sleep-inactive-battery-type" = "suspend";
+      "sleep-inactive-battery-timeout" = 900;
     };
   };
 
