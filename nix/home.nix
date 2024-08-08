@@ -29,7 +29,7 @@
       kubectl
       kubernetes-helm
       terraform
-      ventoy-full # Use sudo ventoy-web for the GUI
+      ventoy-full # Use "sudo ventoy-web" for the Web GUI
       vlc
       yubioath-flutter
     ];
