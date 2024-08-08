@@ -33,16 +33,17 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
+  # Global shell and prompt setup
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.starship.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -70,31 +71,27 @@
     pulse.enable = true;
   };
 
-  # Configure printing - for hp printers
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
-  };
-
-  # Enable pcscd service - required for yubikey
-  services.pcscd.enable = true;
-
-  # Docker setup
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
-
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  # SSH agent setup
-  programs.ssh = {
-    startAgent = true;
-  };
+  # Packages installed system wide
+  environment.systemPackages = with pkgs; [
+    firefox
+    gnome.file-roller # File archiver
+    gnome.gnome-disk-utility
+    gnome.nautilus # File manager
+    google-chrome
+    home-manager
+    htop
+    loupe # Image viewer
+    plymouth
+    vim
+  ];
 
-  # ZSH setup
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  # Packages uninstalled system wide
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+  ];
 
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
@@ -110,44 +107,26 @@
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  # Packages installed system wide
-  environment.systemPackages = with pkgs; [
-    # Base
-    firefox
-    gnome.file-roller # File archiver
-    gnome.gnome-disk-utility
-    gnome.nautilus # File manager
-    gnomeExtensions.dash-to-dock
-    google-chrome
-    home-manager
-    loupe # Image viewer
-    plymouth
-    starship
-    vim
-    vlc
-    yubioath-flutter
-    # Tools
-    htop
-    kitty
-    popsicle
-    ventoy-full # Use sudo ventoy-web for the GUI
-    wget
-    wine
-    # Dev
-    ansible
-    docker
-    git
-    k3d
-    kubectl
-    kubernetes-helm
-    terraform
-    vscode
+  # Docker setup
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
+
+  # Install nerdfonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-  # Packages uninstalled system wide
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-  ];
+  # Configure printing - for hp printers
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+
+  # Enable pcscd service - required for yubikey
+  services.pcscd.enable = true;
+
+  # SSH agent setup
+  programs.ssh.startAgent = true;
 
   # Power settings
   services.power-profiles-daemon.enable = false;
