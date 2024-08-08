@@ -188,6 +188,22 @@
       "sleep-inactive-battery-type" = "suspend";
       "sleep-inactive-battery-timeout" = 900;
     };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "binding" = "<Super>t";
+      "command" = "kitty";
+       "name" = "Terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      "binding" = "<Super>f";
+      "command" = "firefox";
+      "name" = "Firefox";
+    };
   };
 
   # XDG Settings
