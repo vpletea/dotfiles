@@ -127,7 +127,7 @@
   # Git setup
   programs.git = {
     enable = true;
-    userEmail = "notmyemail@gmail.com";
+    userEmail = "84437690+vpletea@users.noreply.github.com";
     userName = "vpletea";
     extraConfig = {
       init = {
