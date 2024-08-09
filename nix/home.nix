@@ -101,15 +101,15 @@
       waderyan.gitblame
     ];
     userSettings = {
-      "workbench.startupEditor"= "none";
-      "workbench.colorTheme"= "Catppuccin Mocha";
+      "workbench.startupEditor" = "none";
+      "workbench.colorTheme" = "Catppuccin Mocha";
       "git.enableSmartCommit"= true;
-      "git.confirmSync"= false;
-      "git.mergeEditor"= true;
-      "editor.formatOnType"= true;
-      "editor.inlineSuggest.enabled"= true;
-      "editor.bracketPairColorization.enabled"=true;
-      "editor.minimap.enabled"= false;
+      "git.confirmSync" = false;
+      "git.mergeEditor" = true;
+      "editor.formatOnType" = true;
+      "editor.inlineSuggest.enabled" = true;
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.minimap.enabled" = false;
       "editor.fontSize" = 15;
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "terminal.integrated.fontSize" = 15;
