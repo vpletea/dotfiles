@@ -204,6 +204,9 @@
       "command" = "firefox";
       "name" = "Firefox";
     };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden = true;
+    };
   };
 
   # XDG Settings
