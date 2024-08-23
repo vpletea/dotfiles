@@ -1,15 +1,17 @@
-### Goes to ~/.nixpkgs/darwin-configuration.nix
 { config, pkgs, ... }:
 
 {
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
+  # Define your hostname.
+  networking.hostName = "macbook";
 
   nixpkgs.config.allowUnfree = true;
 
   # Packages installed system wide
-    environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     home-manager
+    htop
   ];
 
   # Install nerdfonts
@@ -41,7 +43,8 @@
   };
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
-homebrew = {
+
+  homebrew = {
     enable = true;
     casks = [
       "amazon-workspaces"
@@ -53,7 +56,7 @@ homebrew = {
       "rectangle"
       "skype"
     ];
-};
+  };
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 
