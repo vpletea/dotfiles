@@ -1,4 +1,4 @@
-### Goes to  ~/.config/home-manager/home.nix
+### Goes to  ~/.config/home-manager/home.nix - no sudo required
 { config, pkgs, lib, unstablePkgs, ... }:
 {
   # No need to change the version
@@ -16,10 +16,13 @@
       ls = "ls --color=auto";
       grep = "grep -n --color";
       kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
+      kd = "k3d cluster delete";
+      dr = "darwin-rebuild switch";
       hs = "home-manager switch -b backup";
     };
     packages = with pkgs; [
       ansible
+      k3d
       kubectl
       kubernetes-helm
       terraform
@@ -63,10 +66,11 @@
       detect_urls = "yes";
       remember_window_size = "yes";
       linux_display_server = "X11";
-      tab_bar_edge = "top";
+      tab_bar_edge = "bottom";
       tab_bar_style = "powerline";
-      tab_powerline_style = "round";
+      tab_powerline_style = "slanted";
       tab_bar_min_tabs = "2";
+      enabled_layouts = "Tall, *";
     };
     theme = "Catppuccin-Mocha";
     font = {
