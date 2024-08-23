@@ -1,3 +1,4 @@
+### Goes to ~/.nixpkgs/darwin-configuration.nix
 { config, pkgs, ... }:
 
 {
