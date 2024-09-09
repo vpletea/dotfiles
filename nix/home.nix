@@ -3,12 +3,12 @@
 {
     imports =
   [
-    modules/starship.nix
-    modules/kitty.nix
-    modules/vscode.nix
-    modules/ssh.nix
     modules/git.nix
     modules/gnome.nix
+    modules/kitty.nix
+    modules/ssh.nix
+    modules/starship.nix
+    modules/vscode.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";

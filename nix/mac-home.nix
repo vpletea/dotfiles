@@ -3,11 +3,11 @@
 {
   imports =
   [
-    modules/starship.nix
-    modules/kitty.nix
-    modules/vscode.nix
-    modules/ssh.nix
     modules/git.nix
+    modules/kitty.nix
+    modules/ssh.nix
+    modules/starship.nix
+    modules/vscode.nix
   ];
 
   # User settings
