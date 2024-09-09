@@ -56,5 +56,11 @@
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+    # NixOS garbage control - removes older generations
+  nix.gc = {
+    automatic = true;
+    frequency = "weekly";
+    options = "--delete-older-than 10d";
+  };
 
 }
