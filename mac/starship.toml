@@ -1,3 +1,0 @@
-❯ cat starship.toml
-[kubernetes]
-disabled = false
