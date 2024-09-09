@@ -15,6 +15,7 @@
   fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
+
   homebrew = {
     enable = true;
     casks = [
