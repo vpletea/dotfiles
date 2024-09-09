@@ -9,3 +9,7 @@
 # Symlinks
         sudo ln -s $PWD/configuration.nix /etc/nixos/configuration.nix
         ln -s $PWD/home.nix ~/.config/home-manager/home.nix
+
+        ln -s $PWD/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
+        ln -s $PWD/mac-home.nix ~/.config/home-manager/home.nix
+        
