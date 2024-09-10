@@ -47,6 +47,8 @@
     finder._FXShowPosixPathInTitle = true;
   };
 
+  environment.pathsToLink = [ "/share/zsh" ];
+
   # system.keyboard.enableKeyMapping = true;
   # system.keyboard.remapCapsLockToEscape = true;
   # Auto upgrade nix package and the daemon service.
