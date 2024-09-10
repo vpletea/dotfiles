@@ -7,9 +7,8 @@
         mv ~/.config/home-manager/home.nix ~/.config/home-manager/home.nix.bkp
 
 # Symlinks
-        sudo ln -s $PWD/configuration.nix /etc/nixos/configuration.nix
-        ln -s $PWD/home.nix ~/.config/home-manager/home.nix
+        sudo ln -s $PWD/nix-configuration.nix /etc/nixos/configuration.nix
+        ln -s $PWD/nix-home.nix ~/.config/home-manager/home.nix
 
         ln -s $PWD/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
-        ln -s $PWD/mac-home.nix ~/.config/home-manager/home.nix
-        
+        ln -s $PWD/darwin-home.nix ~/.config/home-manager/home.nix
