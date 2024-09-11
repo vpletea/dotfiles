@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      modules/aliases.nix
+    ];
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
   # Define your hostname.
@@ -10,7 +14,15 @@
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
     home-manager
+    ansible
+    htop
+    k3d
+    kubectl
+    kubernetes-helm
+    terraform
+    watch
   ];
+
   # Install nerdfonts
   fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
@@ -18,6 +30,11 @@
 
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
     casks = [
       "amazon-workspaces"
       "caffeine"
@@ -49,8 +66,6 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  # system.keyboard.enableKeyMapping = true;
-  # system.keyboard.remapCapsLockToEscape = true;
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;

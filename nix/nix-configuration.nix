@@ -5,6 +5,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      modules/aliases.nix
     ];
 
   # Bootloader setup
@@ -76,6 +77,15 @@
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
+    ansible
+    gnomeExtensions.dash-to-dock
+    k3d
+    kubectl
+    kubernetes-helm
+    terraform
+    ventoy-full # Use "sudo ventoy-web" for the Web GUI
+    vlc
+    yubioath-flutter
     firefox
     gnome.file-roller # File archiver
     gnome.gnome-disk-utility

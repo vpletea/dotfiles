@@ -11,6 +11,7 @@
     modules/vscode.nix
     modules/zsh.nix
   ];
+
   # No need to change the version
   home.stateVersion = "24.05";
 
@@ -21,28 +22,6 @@
   home = {
     username = "valentin";
     homeDirectory = "/home/valentin";
-    shellAliases = {
-      ll = "ls -alh";
-      ls = "ls --color=auto --group-directories-first";
-      grep = "grep -n --color";
-      amt = "docker run --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64";
-      kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
-      kd = "k3d cluster delete";
-      nr = "sudo nixos-rebuild switch";
-      ne = "sudo nixos-rebuild edit";
-      hs = "home-manager switch -b backup";
-    };
-    packages = with pkgs; [
-      ansible
-      gnomeExtensions.dash-to-dock
-      k3d
-      kubectl
-      kubernetes-helm
-      terraform
-      ventoy-full # Use "sudo ventoy-web" for the Web GUI
-      vlc
-      yubioath-flutter
-    ];
   };
 
   # AutoUpgrade settings
@@ -50,7 +29,8 @@
     enable = true;
     frequency = "weekly";
   };
-    # NixOS garbage control - removes older generations
+
+  # Garbage control - removes older generations
   nix.gc = {
     automatic = true;
     frequency = "weekly";
