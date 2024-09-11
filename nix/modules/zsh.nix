@@ -10,6 +10,12 @@
     history.extended = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
+    historySubstringSearch.searchDownKey = [
+      "$terminfo[kcud1]"
+    ];
+    historySubstringSearch.searchUpKey = [
+      "$terminfo[kcuu1]"
+    ];
     initExtra = ''
       # autoload -Uz history-search-end
       # zle -N history-beginning-search-backward-end history-search-end
