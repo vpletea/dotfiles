@@ -10,11 +10,13 @@
     history.extended = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
-    historySubstringSearch.searchDownKey = [
-      "$terminfo[kcud1]"
-    ];
     historySubstringSearch.searchUpKey = [
       "$terminfo[kcuu1]"
+      "^[[A"
+    ];
+    historySubstringSearch.searchDownKey = [
+      "$terminfo[kcud1]"
+      "^[[B"
     ];
     initExtra = ''
       ssh-add -q ~/.ssh/github.key
