@@ -47,6 +47,7 @@
     ];
   };
 
+  system.startup.chime = false;
   system.defaults = {
     dock.mru-spaces = false;
     dock.minimize-to-application = true;
