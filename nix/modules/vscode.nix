@@ -12,7 +12,6 @@
       hashicorp.terraform
       catppuccin.catppuccin-vsc
       waderyan.gitblame
-      redhat.vscode-yaml
     ];
     userSettings = {
       "[terraform-vars]" = {
