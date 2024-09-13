@@ -78,6 +78,8 @@
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
     ansible
+    ansible-lint
+    python3
     gnomeExtensions.dash-to-dock
     k3d
     kubectl

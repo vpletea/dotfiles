@@ -51,7 +51,7 @@
       "update.showReleaseNotes" = false;
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.startupEditor" = "none";
-      "ansible.python.interpreterPath" = "/usr/bin/python3";
+      "ansible.python.interpreterPath" = "/run/current-system/sw/bin/python";
     };
   };
 }
