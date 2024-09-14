@@ -15,8 +15,6 @@
   environment.systemPackages = with pkgs; [
     home-manager
     ansible
-    ansible-lint
-    python3
     htop
     k3d
     kubectl
