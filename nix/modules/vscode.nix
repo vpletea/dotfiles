@@ -13,7 +13,6 @@
       catppuccin.catppuccin-vsc
       waderyan.gitblame
       oderwat.indent-rainbow
-      tim-koehler.helm-intellisense
     ];
     userSettings = {
       "[terraform-vars]" = {
