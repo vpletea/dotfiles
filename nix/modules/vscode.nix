@@ -13,6 +13,8 @@
       catppuccin.catppuccin-vsc
       waderyan.gitblame
       oderwat.indent-rainbow
+      tim-koehler.helm-intellisense
+      wholroyd.jinja
     ];
     userSettings = {
       "[terraform-vars]" = {
