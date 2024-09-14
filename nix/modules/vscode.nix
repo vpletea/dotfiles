@@ -17,6 +17,7 @@
       bbenoist.nix
       hashicorp.terraform
       tim-koehler.helm-intellisense
+
     ];
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
@@ -36,6 +37,7 @@
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.mergeEditor" = true;
+      "gitblame.inlineMessageEnabled" = true;
       "telemetry.telemetryLevel" = "off";
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
       "terminal.integrated.fontSize" = 15;
@@ -43,6 +45,8 @@
       "update.showReleaseNotes" = false;
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.startupEditor" = "none";
+      "workbench.editor.historyBasedLanguageDetection" = true;
+      "workbench.editor.languageDetection" = true;
     };
   };
 }
