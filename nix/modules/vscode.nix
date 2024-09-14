@@ -8,23 +8,17 @@
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      hashicorp.terraform
+      # Theme
       catppuccin.catppuccin-vsc
+      # Tools
       waderyan.gitblame
       oderwat.indent-rainbow
+      # Languages
+      bbenoist.nix
+      hashicorp.terraform
       tim-koehler.helm-intellisense
-      wholroyd.jinja
     ];
     userSettings = {
-      "[terraform-vars]" = {
-        "editor.defaultFormatter" = "hashicorp.terraform";
-        "editor.formatOnSave" = true;
-      };
-      "[terraform]" = {
-        "editor.defaultFormatter" = "hashicorp.terraform";
-        "editor.formatOnSave" = true;
-      };
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
