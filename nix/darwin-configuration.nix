@@ -36,6 +36,7 @@
       upgrade = true;
     };
     casks = [
+      "adobe-acrobat-reader"
       "amazon-workspaces"
       "caffeine"
       "firefox"
