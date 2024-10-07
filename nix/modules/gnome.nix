@@ -107,6 +107,11 @@
         exec = "";
         noDisplay = true;
       };
+      vim = {
+        name = "Vim";
+        exec = "";
+        noDisplay = true;
+      };
     };
   };
 }
