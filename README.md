@@ -10,5 +10,5 @@
         sudo ln -s $PWD/nixos/nixos-config.nix /etc/nixos/configuration.nix
         ln -s $PWD/nixos/nixos-home.nix ~/.config/home-manager/home.nix
 
-        ln -s $PWD/macos/mac-config.nix ~/.nixpkgs/darwin-configuration.nix
-        ln -s $PWD/macos/mac-home.nix ~/.config/home-manager/home.nix
+        ln -s $PWD/macos/macos-config.nix ~/.nixpkgs/darwin-configuration.nix
+        ln -s $PWD/macos/macos-home.nix ~/.config/home-manager/home.nix
