@@ -3,7 +3,7 @@
 {
   imports =
     [
-      modules/aliases.nix
+      ../common/aliases.nix
     ];
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";

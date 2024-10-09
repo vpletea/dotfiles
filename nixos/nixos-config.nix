@@ -5,7 +5,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      modules/aliases.nix
+      ../common/aliases.nix
     ];
 
   # Bootloader setup
