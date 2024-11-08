@@ -14,6 +14,13 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
+      services.nix-daemon.enable = true;
+
+      programs.zsh.enable = true;
+
+      # Allow unfree software
+      nixpkgs.config.allowUnfree = true;
+
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
