@@ -1,23 +1,24 @@
-{pkgs, ...}: let
-  username = "vali.pletea";
-  homeDirectory = "/Users/${username}";
-in {
-  users.users."${username}" = {
-  home = homeDirectory;
+
+{ config, pkgs, lib, unstablePkgs, ... }:
+{
+
+  # No need to change the version
+  home.stateVersion = "24.05";
+
+  # Allow unfree software
+  nixpkgs.config.allowUnfree = true;
+
+  # User settings
+  home = {
+    username = "vali.pletea";
+    homeDirectory = "/Users/vali.pletea";
   };
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users."${username}" = {
-      home = {
-        inherit homeDirectory username;
-        stateVersion = "23.11";
-      };
-    imports = [
-	      ./starship.nix
-        ./kitty.nix
-      ];
-    };
+
+  # Garbage control - removes older generations
+  nix.gc = {
+    automatic = true;
+    frequency = "weekly";
+    options = "--delete-older-than 10d";
   };
-  system.stateVersion = 4;
+
 }
