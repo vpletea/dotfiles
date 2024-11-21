@@ -11,28 +11,13 @@
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
     let
-    mac-configuration = { pkgs, ... }: {
+    mac-config = { pkgs, ... }: {
       nixpkgs.hostPlatform = "x86_64-darwin";
-      nix.settings.experimental-features = "nix-command flakes";
-      # Set your time zone.
-      time.timeZone = "Europe/Bucharest";
-      nixpkgs.config.allowUnfree = true;
-      environment.pathsToLink = [ "/share/zsh" ];
-
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-      security.pam.enableSudoTouchIdAuth = true;
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      system.stateVersion = 4;
     };
     in {
       darwinConfigurations."Valis-iMac-Pro" = nix-darwin.lib.darwinSystem {
       modules = [
-        mac-configuration
+        mac-config
         ./modules/macos-config.nix
         ./modules/aliases.nix
         ];
