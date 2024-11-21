@@ -35,14 +35,15 @@
         mac-configuration
         ./modules/macos-config.nix
         ./modules/aliases.nix
+        ./modules/macos-home.nix
         ];
       };
 
-      homeConfigurations."vali.pletea" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-darwin";
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./modules/macos-home.nix ];
-      };
+      # homeConfigurations."vali.pletea" = home-manager.lib.homeManagerConfiguration {
+      # pkgs = nixpkgs.legacyPackages."x86_64-darwin";
+      #   # Specify your home configuration modules here, for example,
+      #   # the path to your home.nix.
+      #   modules = [ ./modules/macos-home.nix ];
+      # };
     };
 }

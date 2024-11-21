@@ -10,7 +10,7 @@
     ./vscode.nix
     ./zsh.nix
   ];
-
+  nixpkgs.legacyPackages."x86_64-darwin";
   # No need to change the version
   home.stateVersion = "24.05";
 
