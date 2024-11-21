@@ -3,12 +3,12 @@
 {
   imports =
   [
-    ./modules/git.nix
-    ./modules/kitty.nix
-    ./modules/ssh.nix
-    ./modules/starship.nix
-    ./modules/vscode.nix
-    ./modules/zsh.nix
+    ./git.nix
+    ./kitty.nix
+    ./ssh.nix
+    ./starship.nix
+    ./vscode.nix
+    ./zsh.nix
   ];
 
   # No need to change the version
