@@ -11,10 +11,10 @@
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
     let
-    configuration = { pkgs, ... }: {
+    mac-configuration = { pkgs, ... }: {
     imports =
     [
-      ../common/aliases.nix
+      ./modules/aliases.nix
     ];
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -42,7 +42,7 @@
     in {
       darwinConfigurations."Valis-iMac-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ 
-        configuration 
+        mac-configuration 
         ];
      };
       homeConfigurations."vali.pletea" = home-manager.lib.homeManagerConfiguration {
