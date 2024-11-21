@@ -11,12 +11,8 @@
   };
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
-    in {
-      darwinConfigurations."Valis-iMac-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [
-        ./modules/macos-config.nix
-        ./modules/aliases.nix
-        ];
+    let
+    mac-configuration = { pkgs, ... }: {
       nixpkgs.hostPlatform = "x86_64-darwin";
       nix.settings.experimental-features = "nix-command flakes";
       # Set your time zone.
@@ -33,6 +29,14 @@
 
       # Used for backwards compatibility, please read the changelog before changing.
       system.stateVersion = 4;
+    };
+    in {
+      darwinConfigurations."Valis-iMac-Pro" = nix-darwin.lib.darwinSystem {
+      modules = [
+        mac-configuration
+        ./modules/macos-config.nix
+        ./modules/aliases.nix
+        ];
       };
 
       homeConfigurations."vali.pletea" = home-manager.lib.homeManagerConfiguration {
