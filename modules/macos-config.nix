@@ -4,7 +4,6 @@
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
-    home-manager
     ansible
     htop
     k3d

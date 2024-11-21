@@ -91,7 +91,6 @@
     gnome.gnome-disk-utility
     gnome.nautilus # File manager
     google-chrome
-    home-manager
     htop
     loupe # Image viewer
     plymouth
