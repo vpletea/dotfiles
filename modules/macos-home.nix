@@ -3,12 +3,12 @@
 {
   imports =
   [
-    ../common/git.nix
-    ../common/kitty.nix
-    ../common/ssh.nix
-    ../common/starship.nix
-    ../common/vscode.nix
-    ../common/zsh.nix
+    ./modules/git.nix
+    ./modules/kitty.nix
+    ./modules/ssh.nix
+    ./modules/starship.nix
+    ./modules/vscode.nix
+    ./modules/zsh.nix
   ];
 
   # No need to change the version
@@ -18,10 +18,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # User settings
-  home = {
-    username = "valentin.pletea";
-    homeDirectory = "/Users/valentin.pletea";
-  };
+  home.username = "vali.pletea";
+  home.homeDirectory = "/Users/vali.pletea";
 
   # Garbage control - removes older generations
   nix.gc = {
@@ -30,4 +28,6 @@
     options = "--delete-older-than 10d";
   };
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }

@@ -46,7 +46,7 @@
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       "binding" = "<Super>t";
       "command" = "kitty";
-       "name" = "Terminal";
+      "name" = "Terminal";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       "binding" = "<Super>f";
