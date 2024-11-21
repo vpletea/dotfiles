@@ -35,7 +35,6 @@
         mac-configuration
         ./modules/macos-config.nix
         ./modules/aliases.nix
-        ./modules/macos-home.nix
         ];
       };
 
