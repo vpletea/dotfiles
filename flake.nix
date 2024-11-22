@@ -11,7 +11,7 @@
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
   {
-    darwinConfigurations."Valis-iMac-Pro" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     # system.configurationRevision = self.rev or self.dirtyRev or null;
     modules = [
         ./modules/macos-config.nix
