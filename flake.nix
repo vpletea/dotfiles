@@ -24,18 +24,17 @@
       ];
     };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem  {
-            system = "x86_64-linux";
-            modules = [
-            ./modules/nixos-config.nix
-            ./modules/aliases.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."vali.pletea" = import ./modules/nixos-home.nix;
-            }
-        ];
-      };
+        system = "x86_64-linux";
+        modules = [
+        ./modules/nixos-config.nix
+        ./modules/aliases.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users."vali.pletea" = import ./modules/nixos-home.nix;
+        }
+      ];
     };
   };
 }
