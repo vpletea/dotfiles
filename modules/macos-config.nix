@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, customArgs, ... }:
+{ config, inputs, pkgs, lib, unstablePkgs, ...  }:
 
 {
   nixpkgs.hostPlatform = "x86_64-darwin";
