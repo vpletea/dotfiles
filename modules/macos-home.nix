@@ -1,5 +1,5 @@
 ### Goes to  ~/.config/home-manager/home.nix - no sudo required
-{ config, pkgs, lib, unstablePkgs, ... }:
+{ config, inputs, pkgs, lib, unstablePkgs, ...  }:
 {
   imports =
   [
@@ -19,7 +19,10 @@
   # User settings
   home.username = "vali.pletea";
   home.homeDirectory = "/Users/vali.pletea";
-
+	home.sessionPath = [
+		"/run/current-system/sw/bin"
+		"$HOME/.nix-profile/bin"
+	];
   # Garbage control - removes older generations
   nix.gc = {
     automatic = true;
