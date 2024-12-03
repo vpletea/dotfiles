@@ -4,8 +4,7 @@
 - Download the dotfiles repo in the home directory
 - Install flake:
   ```
-  nix --extra-experimental-features "nix-command flakes" build .#macos
-  ./result/sw/bin/darwin-rebuild switch --flake ~/dotfiles
+ nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
   ```
 - After install we can use:
   ```
