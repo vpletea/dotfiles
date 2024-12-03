@@ -12,6 +12,7 @@
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
+    nixpkgs.hostPlatform = "x86_64-darwin";
     # system.configurationRevision = self.rev or self.dirtyRev or null;
     modules = [
         ./modules/macos-config.nix
