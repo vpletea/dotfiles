@@ -10,3 +10,7 @@
   ```
   darwin-rebuild switch --flake .#macos
   ```
+- To update your configuration, you can run:
+  ```
+  nix flake update
+  ```
