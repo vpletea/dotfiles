@@ -25,7 +25,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  nix.settings.experimental-features = "nix-command flakes";
   systemd.tpm2.enable = false;
   # Define user account
   users.users.valentin = {
