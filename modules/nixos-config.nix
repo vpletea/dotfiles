@@ -167,16 +167,7 @@
     dates = "weekly";
     options = "--delete-older-than 10d";
   };
-  # System auto upgrade
-  system = {
-    autoUpgrade = {
-      enable = true;
-      flake = "github:vpletea/dotfiles#nixos";
-      flags = [ "--update-input" "nixpkgs" ];
-      dates = "weekly";
-      randomizedDelaySec = "45min";
-    };
-  };
+
   # It‘s perfectly fine and recommended to leave this value
   # at the release version of the first install of this system.
   system.stateVersion = "24.05";
