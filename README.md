@@ -20,6 +20,11 @@
   ```
   sudo nix-channel --remove nixos
   ```
+- Backup configuration.nix:
+  ```
+  sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup
+  ```
+
 - Temporary run git:
   ```
   nix-shell -p git
