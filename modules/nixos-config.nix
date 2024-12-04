@@ -98,6 +98,8 @@
     loupe # Image viewer
     plymouth
     vim
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   # Packages uninstalled system wide
@@ -123,10 +125,10 @@
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
 
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
+  # # Install nerdfonts
+  # fonts.packages = with pkgs; [
+  #   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  # ];
 
   # Configure printing - for hp printers
   services.printing = {
