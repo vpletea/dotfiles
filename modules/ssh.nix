@@ -8,13 +8,13 @@
     StrictHostKeyChecking no
     CanonicalizeHostname yes
     CanonicalDomains h-net.xyz
-    Host *
-      User devops
-      IdentityFile ~/.ssh/homelab.key
-    Host gitub
+    Host github
       HostName github.com
       User vpletea
       IdentityFile ~/.ssh/github.key
+    Host *
+      User devops
+      IdentityFile ~/.ssh/homelab.key
     '';
   };
 }
