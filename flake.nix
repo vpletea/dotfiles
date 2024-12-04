@@ -19,7 +19,9 @@
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.users."vali.pletea" = import ./modules/macos-home.nix;
+
         }
       ];
     };
@@ -32,8 +34,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users."valentin" = import ./modules/nixos-home.nix;
           home-manager.backupFileExtension = "backup";
+          home-manager.users."valentin" = import ./modules/nixos-home.nix;
+
         }
       ];
     };

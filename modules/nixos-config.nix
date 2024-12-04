@@ -26,6 +26,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  systemd.tpm2.enable = false;
   # Define user account
   users.users.valentin = {
     isNormalUser = true;

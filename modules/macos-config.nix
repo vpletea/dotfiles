@@ -11,7 +11,7 @@
     name = "vali.pletea";
     home = "/Users/vali.pletea";
   };
-  home-manager.backupFileExtension = "backup";
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
