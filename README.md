@@ -27,7 +27,7 @@
 - Clone the repository
 - Install the flake:
   ```
-  nixos-rebuild switch --impure --flake .#nixos
+  sudo nixos-rebuild switch --impure --flake .#nixos
   ```
 - To update your configuration, you can run:
   ```
