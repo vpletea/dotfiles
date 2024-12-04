@@ -20,7 +20,6 @@
     nix flake update && darwin-rebuild switch --flake .#macos
     ```
 
-
 # Howto NixOS
 - The flake can be installed directly:
   ```
