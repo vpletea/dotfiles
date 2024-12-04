@@ -171,21 +171,6 @@
     options = "--delete-older-than 10d";
   };
 
-  # System autoupgrade
-  system = {
-    autoUpgrade = {
-      enable = true;
-      flake = /home/valentin/dotfiles;
-      flags = [
-        "--update-input"
-        "nixpkgs"
-        "--no-write-lock-file"
-        "-L" # print build logs
-      ];
-      dates = "weekly";
-      randomizedDelaySec = "45min";
-    };
-  };
   # It‘s perfectly fine and recommended to leave this value
   # at the release version of the first install of this system.
   system.stateVersion = "24.05";
