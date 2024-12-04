@@ -1,7 +1,7 @@
 # Howto Mac
 - Install Nix using Determinate Systems installer: https://determinate.systems/nix-installer/
 - Install Homebrew from:  https://brew.sh/
-- Download the dotfiles repo in the home directory
+- Clone the dotfiles repo in home directory
 - Install flake:
   ```
    nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
@@ -29,7 +29,7 @@
   ```
   nix-shell -p git
   ```
-- Clone the repository
+- Clone the dotfiles repo in home directory
 - Install the flake:
   ```
   sudo nixos-rebuild switch --impure --flake .#nixos
