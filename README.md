@@ -36,5 +36,5 @@
   ```
 - To update your configuration, you can run:
   ```
-  nix flake update
+  sudo nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
   ```
