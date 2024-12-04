@@ -90,9 +90,9 @@
     vlc
     yubioath-flutter
     firefox
-    gnome.file-roller # File archiver
-    gnome.gnome-disk-utility
-    gnome.nautilus # File manager
+    file-roller # File archiver
+    gnome-disk-utility
+    nautilus # File manager
     google-chrome
     htop
     loupe # Image viewer
@@ -107,9 +107,9 @@
 
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
-     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-   };
-  hardware.opengl = {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
