@@ -3,13 +3,13 @@
 {
     imports =
   [
-    ../common/git.nix
-    ../common/gnome.nix
-    ../common/kitty.nix
-    ../common/ssh.nix
-    ../common/starship.nix
-    ../common/vscode.nix
-    ../common/zsh.nix
+    ./git.nix
+    ./gnome.nix
+    ./kitty.nix
+    ./ssh.nix
+    ./starship.nix
+    ./vscode.nix
+    ./zsh.nix
   ];
 
   # No need to change the version
