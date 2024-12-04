@@ -16,7 +16,7 @@
       tab_bar_min_tabs = "2";
       enabled_layouts = "Tall, *";
     };
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     font = {
       name = "FiraCode Nerd Font";
       size = 15;
