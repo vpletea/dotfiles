@@ -175,7 +175,15 @@
   system = {
     autoUpgrade = {
       enable = true;
+      flake = inputs.self.outPath;
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "--no-write-lock-file"
+        "-L" # print build logs
+      ];
       dates = "weekly";
+      randomizedDelaySec = "45min";
     };
   };
   # It‘s perfectly fine and recommended to leave this value
