@@ -35,13 +35,13 @@
 - Clone the dotfiles repo in home directory
 - Install the flake:
   ```
-  sudo nixos-rebuild switch --impure --flake .#nixos
+  nixos-rebuild switch --impure --flake .#nixos
   ```
 - To update your configuration, you can run:
   ```
-  nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
+  nix flake update && nixos-rebuild switch --impure --flake .#nixos
   ```
 - Alternatively the flake can be installed directly:
   ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
+  nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
   ```
