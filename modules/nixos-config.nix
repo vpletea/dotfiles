@@ -14,7 +14,8 @@
   boot.plymouth.enable = true;
   boot.initrd.systemd.enable = true;
   boot.kernelParams = ["quiet"];
-
+  systemd.tpm2.enable = false;
+  boot.initrd.systemd.tpm2.enable = false;
   # Enable ZFS support - enable for mounting truenas drives
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
@@ -25,8 +26,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Enable flakes support
   nix.settings.experimental-features = "nix-command flakes";
-  systemd.tpm2.enable = false;
+
   # Define user account
   users.users.valentin = {
     isNormalUser = true;
