@@ -14,3 +14,22 @@
   ```
   nix flake update
   ```
+
+# Howto Nixos
+- Remove the nixos channel:
+  ```
+  sudo nix-channel --remove nixos
+  ```
+- Temporary run git:
+  ```
+  nix-shell -p git
+  ```
+- Clone the repository
+- Install the flake:
+  ```
+  nixos-rebuild switch --impure --flake .#nixos
+  ```
+- To update your configuration, you can run:
+  ```
+  nix flake update
+  ```
