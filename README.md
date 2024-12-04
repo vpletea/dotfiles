@@ -16,7 +16,7 @@
   ```
 - Alternatively you can install the flake without download:
   ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
+  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake github:vpletea/dotfiles#macos
   ```
 
 # Howto Nixos
