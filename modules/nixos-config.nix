@@ -175,7 +175,7 @@
   system = {
     autoUpgrade = {
       enable = true;
-      flake = inputs.self.outPath;
+      flake = /home/valentin/dotfiles;
       flags = [
         "--update-input"
         "nixpkgs"
