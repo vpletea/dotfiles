@@ -12,7 +12,11 @@
   ```
 - To update your configuration, you can run:
   ```
-  nix flake update --commit-lock-file
+  nix flake update && darwin-rebuild switch --flake .#macos
+  ```
+- Alternatively you can install the flake without download:
+  ```
+  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
   ```
 
 # Howto Nixos
@@ -24,7 +28,6 @@
   ```
   sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup
   ```
-
 - Temporary run git:
   ```
   nix-shell -p git
@@ -36,5 +39,9 @@
   ```
 - To update your configuration, you can run:
   ```
-  sudo nix flake update --commit-lock-file && sudo nixos-rebuild switch --impure --flake .#nixos
+  nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
+  ```
+- Alternatively you can install the flake without download:
+  ```
+  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
   ```
