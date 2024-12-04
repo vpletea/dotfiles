@@ -12,7 +12,7 @@
   ```
 - To update your configuration, you can run:
   ```
-  nix flake update
+  nix flake update --commit-lock-file
   ```
 
 # Howto Nixos
@@ -36,5 +36,5 @@
   ```
 - To update your configuration, you can run:
   ```
-  sudo nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
+  sudo nix flake update --commit-lock-file && sudo nixos-rebuild switch --impure --flake .#nixos
   ```
