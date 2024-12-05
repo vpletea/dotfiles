@@ -90,6 +90,7 @@
     yubioath-flutter
     firefox
     file-roller # File archiver
+    gnome-console
     gnome-disk-utility
     nautilus # File manager
     google-chrome
