@@ -17,8 +17,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # User settings
-  home.username = "vali.pletea";
-  home.homeDirectory = "/Users/vali.pletea";
+  home.username = "valentin.pletea";
+  home.homeDirectory = "/Users/valentin.pletea";
 	home.sessionPath = [
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
