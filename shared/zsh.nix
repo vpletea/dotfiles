@@ -20,6 +20,11 @@
     ];
     initExtra = ''
       ssh-add -q ~/.ssh/github.key
+      #Brew path for M1mac 
+      if [[ $(uname -m) == 'arm64' ]]; then
+           eval "$(/opt/homebrew/bin/brew shellenv)"
+       fi
     '';
+
   };
 }
