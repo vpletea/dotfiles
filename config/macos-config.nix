@@ -7,9 +7,9 @@
   time.timeZone = "Europe/Bucharest";
   nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
-  users.users."vali.pletea" = {
-    name = "vali.pletea";
-    home = "/Users/vali.pletea";
+  users.users."valentin.pletea" = {
+    name = "valentin.pletea";
+    home = "/Users/valentin.pletea";
   };
 
   # Auto upgrade nix package and the daemon service.
