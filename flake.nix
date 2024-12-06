@@ -12,7 +12,7 @@
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-    # system.configurationRevision = self.rev or self.dirtyRev or null;
+    system = "aarch64-darwin";
     modules = [
         ./config/macos-config.nix
         ./shared/aliases.nix
