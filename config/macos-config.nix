@@ -37,26 +37,6 @@
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-  homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "uninstall";
-      upgrade = true;
-    };
-    casks = [
-      "adobe-acrobat-reader"
-      "amazon-workspaces"
-      "caffeine"
-      "firefox"
-      "google-chrome"
-      "microsoft-edge"
-      "rancher"
-      "rectangle"
-      "skype"
-    ];
-  };
-
   system.startup.chime = false;
   system.defaults = {
     dock.mru-spaces = false;

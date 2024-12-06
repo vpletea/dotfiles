@@ -7,6 +7,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
@@ -21,7 +23,29 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users."valentin.pletea" = import ./home/macos-home.nix;
-
+          nix-homebrew.darwinModules.nix-homebrew {
+              nix-homebrew = {
+              enable = true;
+              user = "valentin.pletea";
+              autoMigrate = true;
+              onActivation = {
+                autoUpdate = true;
+                cleanup = "uninstall";
+                upgrade = true;
+              };
+              casks = [
+                "adobe-acrobat-reader"
+                "amazon-workspaces"
+                "caffeine"
+                "firefox"
+                "google-chrome"
+                "microsoft-edge"
+                "rancher"
+                "rectangle"
+                "skype"
+              ];
+            };
+          };
         }
       ];
     };
