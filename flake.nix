@@ -21,7 +21,8 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users."valentin.pletea" = import ./home/macos-home.nix;
-          };
+          }
+        };
       ];
     };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem  {
@@ -35,7 +36,6 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users."valentin" = import ./home/nixos-home.nix;
-
         }
       ];
     };
