@@ -25,8 +25,8 @@
       ];
     };
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem  {
-        system = "x86_64-linux";
-        modules = [
+    system = "x86_64-linux";
+    modules = [
         ./config/nixos-config.nix
         ./shared/aliases.nix
         home-manager.nixosModules.home-manager
