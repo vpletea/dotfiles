@@ -20,7 +20,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users."vali.pletea" = import ./home/macos-home.nix;
+          home-manager.users."valentin.pletea" = import ./home/macos-home.nix;
 
         }
       ];
