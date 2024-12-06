@@ -33,26 +33,25 @@
   ];
 
   homebrew = {
-  enable = true;
-  user = "valentin.pletea";
-  autoMigrate = true;
-  onActivation = {
-    autoUpdate = true;
-    cleanup = "uninstall";
-    upgrade = true;
-  };
-  casks = [
-    "adobe-acrobat-reader"
-    "amazon-workspaces"
-    "caffeine"
-    "firefox"
-    "google-chrome"
-    "microsoft-edge"
-    "rancher"
-    "rectangle"
-    "skype"
+    enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
+    casks = [
+      "adobe-acrobat-reader"
+      "amazon-workspaces"
+      "caffeine"
+      "firefox"
+      "google-chrome"
+      "microsoft-edge"
+      "rancher"
+      "rectangle"
+      "skype"
     ];
   };
+
   # Install nerdfonts
   fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
