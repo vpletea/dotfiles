@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {  self, nixpkgs, nix-darwin, home-manager, nix-homebrew, ...  }:
+  outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     # system.configurationRevision = self.rev or self.dirtyRev or null;
