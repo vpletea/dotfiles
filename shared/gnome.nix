@@ -25,6 +25,7 @@
         };
     "org/gnome/desktop/interface" = {
       enable-hot-corners = false;
+      show-battery-percentage = true;
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
