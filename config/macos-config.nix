@@ -1,15 +1,17 @@
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
 
 {
+  username = "valentin.pletea";
+  homeDirectory = "/Users/${username}";
 #  nixpkgs.hostPlatform = "x86_64-darwin";
   nix.settings.experimental-features = "nix-command flakes";
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
   nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
-  users.users."valentin.pletea" = {
-    name = "valentin.pletea";
-    home = "/Users/valentin.pletea";
+  users.users."${username}" = {
+    name = "${username}";
+    home = "homeDirectory";
   };
 
   # Auto upgrade nix package and the daemon service.
