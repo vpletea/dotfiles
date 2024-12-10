@@ -1,8 +1,9 @@
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
-
+  let
+    username = "apearwin";
+    homeDirectory = "/Users/${username}";
+  in
 {
-  username = "valentin.pletea";
-  homeDirectory = "/Users/${username}";
 #  nixpkgs.hostPlatform = "x86_64-darwin";
   nix.settings.experimental-features = "nix-command flakes";
   # Set your time zone.
