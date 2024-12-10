@@ -1,4 +1,8 @@
 { config, pkgs, lib, unstablePkgs, ... }:
+  let
+    username = "valentin";
+    homeDirectory = "/home/valentin";
+  in
 {
     imports =
   [
@@ -19,8 +23,8 @@
 
   # User settings
   home = {
-    username = "valentin";
-    homeDirectory = "/home/valentin";
+    username = "${username}";
+    homeDirectory = homeDirectory;
   };
 
   # AutoUpgrade settings
