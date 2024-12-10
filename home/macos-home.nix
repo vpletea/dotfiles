@@ -1,6 +1,7 @@
-### Goes to  ~/.config/home-manager/home.nix - no sudo required
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
-{
+{ 
+  username = "valentin.pletea";
+  homeDirectory = "/Users/${username}";
   imports =
   [
     ../shared/git.nix
@@ -17,8 +18,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # User settings
-  home.username = "valentin.pletea";
-  home.homeDirectory = "/Users/valentin.pletea";
+  home.username = "${username}";
+  home.homeDirectory = homeDirectory;
 	home.sessionPath = [
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
