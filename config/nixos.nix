@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
   let
-    username = "valentin";
+    nixos-username = "valentin";
   in
 {
   imports =
@@ -32,9 +32,9 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   # Define user account
-  users.users."${username}" = {
+  users.users."${nixos-username}" = {
     isNormalUser = true;
-    description = username;
+    description = nixos-username;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
