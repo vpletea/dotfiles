@@ -1,4 +1,3 @@
-### Goes to /etc/nixos/configuration.nix - requires sudo
 { config, pkgs, ... }:
 
 {
