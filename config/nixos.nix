@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+  let
+    username = "valentin";
+  in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -30,9 +32,9 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   # Define user account
-  users.users.valentin = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "Valentin";
+    description = ${username};
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
