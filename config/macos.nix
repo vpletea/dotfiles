@@ -4,7 +4,6 @@
     homeDirectory = "/Users/${username}";
   in
 {
-#  nixpkgs.hostPlatform = "x86_64-darwin";
   nix.settings.experimental-features = "nix-command flakes";
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
