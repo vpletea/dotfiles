@@ -1,9 +1,5 @@
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
-  let
-    username = "apearwin";
-    homeDirectory = "/Users/${username}";
-  in
-{ 
+{
   imports =
   [
     ../shared/git.nix
@@ -20,8 +16,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # User settings
-  home.username = "${username}";
-  home.homeDirectory = homeDirectory;
+  home.username = "${macos-username}";
+  home.homeDirectory = "/Users/${macos-username}";
 	home.sessionPath = [
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
