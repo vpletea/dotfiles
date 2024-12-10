@@ -1,4 +1,7 @@
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
+  let
+    macos-username = "valentin.pletea";
+  in
 {
   imports =
   [
