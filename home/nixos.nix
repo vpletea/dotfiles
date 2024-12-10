@@ -1,7 +1,6 @@
 { config, pkgs, lib, unstablePkgs, ... }:
   let
-    username = "valentin";
-    homeDirectory = "/home/valentin";
+    nixos-username = "valentin";
   in
 {
     imports =
@@ -23,8 +22,8 @@
 
   # User settings
   home = {
-    username = "${username}";
-    homeDirectory = homeDirectory;
+    username = "${nixos-username}";
+    homeDirectory = "/home/${nixos-username}";;
   };
 
   # AutoUpgrade settings
