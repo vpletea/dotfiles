@@ -11,8 +11,8 @@
 
   outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }@inputs:
   let
-    nixos-username = "valentin";
     macos-username = "valentin.pletea";
+    nixos-username = "valentin";
   in
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
