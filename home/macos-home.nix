@@ -1,7 +1,9 @@
 { config, inputs, pkgs, lib, unstablePkgs, ...  }:
+  let
+    username = "apearwin";
+    homeDirectory = "/Users/${username}";
+  in
 { 
-  username = "valentin.pletea";
-  homeDirectory = "/Users/${username}";
   imports =
   [
     ../shared/git.nix
