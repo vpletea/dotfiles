@@ -9,7 +9,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }:
+  outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }@inputs:
+  let
+    nixos-username = "valentin";
+    macos-username = "valentin.pletea";
+  in
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";
@@ -20,7 +24,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users."valentin.pletea" = import ./home/macos.nix;
+          home-manager.users."${macos-username}" = import ./home/macos.nix;
         }
       ];
     };
@@ -34,7 +38,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users."valentin" = import ./home/nixos.nix;
+          home-manager.users."${nixos-username}" = import ./home/nixos.nix;
         }
       ];
     };
