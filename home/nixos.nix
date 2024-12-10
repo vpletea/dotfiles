@@ -1,4 +1,3 @@
-### Goes to  ~/.config/home-manager/home.nix - no sudo required
 { config, pkgs, lib, unstablePkgs, ... }:
 {
     imports =
