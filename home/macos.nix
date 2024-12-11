@@ -1,17 +1,17 @@
-### Goes to  ~/.config/home-manager/home.nix - no sudo required
-{ config, pkgs, lib, unstablePkgs, ... }:
+{ config, inputs, pkgs, lib, unstablePkgs, ...  }:
+  let
+    macos-username = "valentin.pletea";
+  in
 {
-    imports =
+  imports =
   [
     ../shared/git.nix
-    ../shared/gnome.nix
     ../shared/kitty.nix
     ../shared/ssh.nix
     ../shared/starship.nix
     ../shared/vscode.nix
     ../shared/zsh.nix
   ];
-
   # No need to change the version
   home.stateVersion = "24.05";
 
@@ -19,21 +19,19 @@
   nixpkgs.config.allowUnfree = true;
 
   # User settings
-  home = {
-    username = "valentin";
-    homeDirectory = "/home/valentin";
-  };
-
-  # AutoUpgrade settings
-  services.home-manager.autoUpgrade = {
-    enable = true;
-    frequency = "weekly";
-  };
-
+  home.username = "${macos-username}";
+  home.homeDirectory = "/Users/${macos-username}";
+	home.sessionPath = [
+		"/run/current-system/sw/bin"
+		"$HOME/.nix-profile/bin"
+	];
   # Garbage control - removes older generations
   nix.gc = {
     automatic = true;
     frequency = "weekly";
     options = "--delete-older-than 10d";
   };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }

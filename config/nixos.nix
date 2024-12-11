@@ -1,6 +1,7 @@
-### Goes to /etc/nixos/configuration.nix - requires sudo
 { config, pkgs, ... }:
-
+  let
+    nixos-username = "valentin";
+  in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -31,9 +32,9 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   # Define user account
-  users.users.valentin = {
+  users.users."${nixos-username}" = {
     isNormalUser = true;
-    description = "Valentin";
+    description = nixos-username;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
