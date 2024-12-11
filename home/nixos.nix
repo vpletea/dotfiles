@@ -23,7 +23,7 @@
   # User settings
   home = {
     username = "${nixos-username}";
-    homeDirectory = "/home/${nixos-username}";;
+    homeDirectory = "/home/${nixos-username}";
   };
 
   # AutoUpgrade settings
