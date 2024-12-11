@@ -1,4 +1,5 @@
-# Howto install on MacOS
+# Flake installation
+### MacOS
 - Install Nix using Determinate Systems installer: https://determinate.systems/nix-installer/
 - Install Homebrew from:  https://brew.sh/
 - The flake can be installed directly:
@@ -10,7 +11,7 @@
   darwin-rebuild switch --flake github:vpletea/dotfiles#macos
   ```
   
-# Howto install on NixOS
+### NixOS
 - The flake can be installed directly:
   ```
   sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
@@ -24,7 +25,7 @@
   sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup
   ```
 
-# Updating flake
+### Updates
 - Every Sunday at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
   ```
   darwin-rebuild switch --flake github:vpletea/dotfiles/update_flake_lock_action#macos
@@ -39,10 +40,10 @@
   ```
   sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
   ```    
-  
-# Local flake on MacOS:
-- Install Nix and Homebrew
-- Clone the dotfiles repository
+
+# Local development  
+### MacOS:
+- Clone this repository
 - Install flake:
   ```
    nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
@@ -56,12 +57,8 @@
   nix flake update && darwin-rebuild switch --flake .#macos
   ```
   
-# Local flake on NixOS:
-- Temporary run git:
-  ```
-  nix-shell -p git
-  ```
-- Clone the dotfiles repository
+### NixOS:
+- Clone this repository
 - Install the flake:
   ```
   sudo nixos-rebuild switch --impure --flake .#nixos
@@ -70,7 +67,7 @@
   ```
   nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
 
-# To use another branch than main ( e. g. test ):
+### Test branch:
    ```
   darwin-rebuild switch --flake github:vpletea/dotfiles/test#macos
   ```
