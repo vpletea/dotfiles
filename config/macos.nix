@@ -74,6 +74,7 @@
     finder.ShowPathbar = true;
     finder.FXPreferredViewStyle = "clmv";
     finder._FXShowPosixPathInTitle = true;
+    screencapture.location = "~/Pictures";
   };
 
 
