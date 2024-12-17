@@ -26,7 +26,7 @@
   ```
 
 ### Updates
-- Every Sunday at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
+- On day 10, 20 and 30 of the month at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
   ```
   darwin-rebuild switch --flake github:vpletea/dotfiles/update_flake_lock_action#macos
   ```
