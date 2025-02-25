@@ -1,6 +1,6 @@
 # Flake installation
 ### MacOS
-- Install Nix using Determinate Systems installer: https://determinate.systems/nix-installer/
+- Install Nix using Lix installer: https://lix.systems/install/
 - Install Homebrew from:  https://brew.sh/
 - The flake can be installed directly:
   ```
@@ -10,7 +10,7 @@
   ```
   darwin-rebuild switch --flake github:vpletea/dotfiles#macos
   ```
-  
+
 ### NixOS
 - The flake can be installed directly:
   ```
@@ -26,7 +26,7 @@
   ```
 
 ### Updates
-- On day 10, 20 and 30 of the month at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
+- On day 15 and 30 of the month at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
   ```
   darwin-rebuild switch --flake github:vpletea/dotfiles/update_flake_lock_action#macos
   ```
@@ -39,9 +39,9 @@
   ```
   ```
   sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
-  ```    
+  ```
 
-# Local development  
+# Local development
 ### MacOS:
 - Clone this repository
 - Install flake:
@@ -56,7 +56,7 @@
   ```
   nix flake update && darwin-rebuild switch --flake .#macos
   ```
-  
+
 ### NixOS:
 - Clone this repository
 - Install the flake:
