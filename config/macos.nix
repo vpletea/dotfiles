@@ -50,6 +50,7 @@
       "rancher"
       "rectangle"
       "skype"
+      "winbox"
     ];
   };
 
