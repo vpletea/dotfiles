@@ -80,6 +80,7 @@
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
+    android-tools
     ansible
     gnomeExtensions.dash-to-dock
     k3d
@@ -99,6 +100,7 @@
     loupe # Image viewer
     plymouth
     vim
+    winbox4
   ];
 
   # Packages uninstalled system wide

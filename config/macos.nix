@@ -43,6 +43,7 @@
     casks = [
       "adobe-acrobat-reader"
       "amazon-workspaces"
+      "android-platform-tools"
       "caffeine"
       "firefox"
       "google-chrome"
@@ -50,6 +51,7 @@
       "rancher"
       "rectangle"
       "skype"
+      "winbox"
     ];
   };
 
