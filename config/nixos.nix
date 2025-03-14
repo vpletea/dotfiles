@@ -82,6 +82,7 @@
   environment.systemPackages = with pkgs; [
     android-tools
     ansible
+    authenticator
     gnomeExtensions.dash-to-dock
     k3d
     kubectl
@@ -89,7 +90,6 @@
     terraform
     ventoy-full # Use "sudo ventoy-web" for the Web GUI
     vlc
-    yubioath-flutter
     firefox
     file-roller # File archiver
     gnome-console
