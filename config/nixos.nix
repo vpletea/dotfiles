@@ -101,6 +101,7 @@
     plymouth
     vim
     winbox4
+    onlyoffice-desktopeditors
   ];
 
   # Packages uninstalled system wide
