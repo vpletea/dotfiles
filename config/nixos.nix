@@ -101,6 +101,7 @@
     plymouth
     vim
     winbox4
+    onlyoffice-desktopeditors
   ];
 
   # Packages uninstalled system wide
@@ -131,11 +132,11 @@
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-  # Configure printing - for hp printers
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
-  };
+# # Configure printing - for hp printers
+#  services.printing = {
+#    enable = true;
+#    drivers = [ pkgs.hplipWithPlugin ];
+#  };
 
   # Enable pcscd service - required for yubikey
   services.pcscd.enable = true;
