@@ -17,6 +17,9 @@
       bbenoist.nix
       hashicorp.terraform
       tim-koehler.helm-intellisense
+      # Github Copilot
+      github.copilot
+      github.copilot-chat
 
     ];
     userSettings = {
