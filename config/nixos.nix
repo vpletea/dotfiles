@@ -132,7 +132,7 @@
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
-# # Configure printing - for hp printers
+# Configure printing - for hp printers
 #  services.printing = {
 #    enable = true;
 #    drivers = [ pkgs.hplipWithPlugin ];
