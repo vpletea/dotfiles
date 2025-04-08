@@ -2,12 +2,12 @@
 
 {
   # Vscode Setup
-  programs.vscode.profiles.default = {
+  programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       # Theme
       catppuccin.catppuccin-vsc
       # Tools
