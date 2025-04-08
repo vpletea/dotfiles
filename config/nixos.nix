@@ -66,7 +66,7 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -128,9 +128,8 @@
   virtualisation.docker.enableOnBoot = false;
 
   # Install nerdfonts
-  fonts.packages =  with pkgs; [
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.fira-code
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
 # Configure printing - for hp printers
