@@ -4,10 +4,10 @@
   # Vscode Setup
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      mutableExtensionsDir = false;
       extensions = with pkgs.vscode-extensions; [
         # Theme
         catppuccin.catppuccin-vsc
