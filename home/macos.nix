@@ -15,8 +15,8 @@
   # No need to change the version
   home.stateVersion = "24.05";
 
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
+  # # Allow unfree software
+  # nixpkgs.config.allowUnfree = true;
 
   # User settings
   home.username = "${macos-username}";

@@ -13,10 +13,8 @@
     home = "/Users/${macos-username}";
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
   # Used for backwards compatibility, please read the changelog before changing.
@@ -56,9 +54,11 @@
   };
 
   # Install nerdfonts
-  fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  fonts.packages =  with pkgs; [
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
   ];
+
 
   system.startup.chime = false;
   system.defaults = {
