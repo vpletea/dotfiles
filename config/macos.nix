@@ -18,7 +18,7 @@
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
   # Used for backwards compatibility, please read the changelog before changing.
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
