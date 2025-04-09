@@ -5,8 +5,8 @@
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
+    enableExtensionUpdateCheck = true;
     extensions = with pkgs.vscode-extensions; [
       # Theme
       catppuccin.catppuccin-vsc
@@ -20,7 +20,6 @@
       # Github Copilot
       github.copilot
       github.copilot-chat
-
     ];
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
@@ -34,7 +33,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.minimap.enabled" = false;
       "editor.tabSize" = 2;
-      "extensions.autoCheckUpdates" = false;
+      "extensions.autoCheckUpdates" = true;
       "extensions.ignoreRecommendations" = true;
       "files.insertFinalNewline" = false;
       "files.trimFinalNewlines" = true;

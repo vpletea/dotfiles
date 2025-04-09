@@ -14,6 +14,7 @@
     macos-username = "valentin.pletea";
     nixos-username = "valentin";
   in
+
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";

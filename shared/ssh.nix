@@ -12,7 +12,7 @@
       HostName github.com
       User vpletea
       IdentityFile ~/.ssh/github.key
-    Host *
+    Host *.h-net.xyz
       User devops
       IdentityFile ~/.ssh/homelab.key
     '';
