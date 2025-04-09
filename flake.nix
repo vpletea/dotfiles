@@ -7,13 +7,17 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions?ref=master";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+    # nix-vscode-extensions.inputs.vscode-marketplace.follows = "nixpkgs";
   };
 
-  outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }@inputs:
+  outputs = {  self, nixpkgs, nix-darwin, home-manager, nix-vscode-extensions, ...  }@inputs:
   let
     macos-username = "valentin.pletea";
     nixos-username = "valentin";
   in
+
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";
