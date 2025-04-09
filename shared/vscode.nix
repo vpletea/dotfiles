@@ -29,6 +29,8 @@
       "editor.fontSize" = 15;
       "editor.formatOnSave" = false;
       "editor.formatOnType" = true;
+      "editor.guides.bracketPairs" = true;
+      "editor.guides.highlightActiveIndentation" = true;
       "editor.inlineSuggest.enabled" = true;
       "editor.minimap.enabled" = false;
       "editor.tabSize" = 2;
