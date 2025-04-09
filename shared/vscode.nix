@@ -5,9 +5,9 @@
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
+    enableExtensionUpdateCheck = true;
+    extensions = (with pkgs.vscode-marketplace; [
       # Theme
       catppuccin.catppuccin-vsc
       # Tools
@@ -20,8 +20,7 @@
       # Github Copilot
       github.copilot
       github.copilot-chat
-
-    ];
+    ]);
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.bracketPairColorization.enabled" = true;
