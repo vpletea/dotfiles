@@ -40,8 +40,7 @@ Software:
 | wget | present | fedora/macos | brew |  |
 | fira code nerdfont | present | fedora/macos | brew |  |
 | droid sans mono | present | fedora/macos | brew |  |
-| android-tools | present | fedora | dnf |  |
-| onlyoffice | present | fedora | brew | third party repo |
+| onlyoffice | present | fedora | brew | third party repo | |
 | vlc | present | fedora | dnf |  |
 | kitty | present | macos | brew |  |
 | kitty | present | fedora | dnf |  |
@@ -55,7 +54,7 @@ Software:
 | firefox | present | fedora | dnf |  |
 |  adobe-acrobat-reader | present | macos | brew | cask |
 | amazon-workspaces | present | macos | brew | cask |
-| android-platform-tools | present | macos | brew | cask |
+| android-platform-tools | present | macos/fedora | brew | cask |
 | caffeine | present | macos | brew | cask |
 | google-chrome | present | macos | brew | cask |
 | microsoft-edge | present | macos | brew | cask |
@@ -269,10 +268,15 @@ Symlinks:
       if [[ $(uname -m) == 'arm64' ]]; then
            eval "$(/opt/homebrew/bin/brew shellenv)"
        fi
+      #Brew path for Linux
+      if [[ $(uname -m) == 'x86_64' ]]; then
+           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+       fi
     '';
 
   };
 }
+
 
 ```
 
