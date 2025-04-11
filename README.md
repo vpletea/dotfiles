@@ -4,7 +4,7 @@ Annoyed by some Nix behaviours and Inspired by: [https://phelipetls.github.io/po
 
 Github sample: [https://github.com/phelipetls/dotfiles](https://github.com/phelipetls/dotfiles)
 
-Old dotfiles repo: [https://dev.azure.com/vpletea/_git/Unsorted?path=/workstation-main](https://dev.azure.com/vpletea/_git/Unsorted?path=/workstation-main)
+Enable Touch ID Sudo: https://derflounder.wordpress.com/2017/11/17/enabling-touch-id-authorization-for-sudo-on-macos-high-sierra/
 
 Steps:
 
