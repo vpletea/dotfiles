@@ -1,6 +1,6 @@
 # Dotfiles
 
-Inspired by: [https://phelipetls.github.io/posts/introduction-to-ansible/](https://phelipetls.github.io/posts/introduction-to-ansible/)
+Annoyed by some Nix behaviours and Inspired by: [https://phelipetls.github.io/posts/introduction-to-ansible/](https://phelipetls.github.io/posts/introduction-to-ansible/)
 
 Github sample: [https://github.com/phelipetls/dotfiles](https://github.com/phelipetls/dotfiles)
 
@@ -230,6 +230,7 @@ Symlinks:
       "terminal.integrated.fontSize" = 15;
       "update.mode" = "none";
       "update.showReleaseNotes" = false;
+      "window.restoreWindows" = "folders";
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.startupEditor" = "none";
       "workbench.editor.historyBasedLanguageDetection" = true;
@@ -237,6 +238,7 @@ Symlinks:
     };
   };
 }
+
 
 ```
 - zsh

@@ -47,6 +47,7 @@
       "terminal.integrated.fontSize" = 15;
       "update.mode" = "none";
       "update.showReleaseNotes" = false;
+      "window.restoreWindows" = "folders";
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.startupEditor" = "none";
       "workbench.editor.historyBasedLanguageDetection" = true;
