@@ -71,51 +71,160 @@ Software:
 
 Symlinks:
 
-- vscode
-- starship
+- aliases
 - git
 - kitty
 - ssh
+- starship
+- vscode
 - zsh
-- aliases
 
 Customizations:
-
-Bonus: .zshrc warning for uncommitted dotfiles - notify-send can send a desktop notification :
-
-```bash
-#!/bin/bash
-cd "$(dirname "$0")"
-dotfiles_check () {
-    # Update the index
-    git update-index -q --ignore-submodules --refresh
-    err=0
-
-    # Disallow unstaged changes in the working tree
-    if ! git diff-files --quiet --ignore-submodules --
-    then
-        echo >&2 "cannot $1: you have unstaged changes."
-        git diff-files --name-status -r --ignore-submodules -- >&2
-        err=1
-    fi
-
-    # Disallow uncommitted changes in the index
-    if ! git diff-index --cached --quiet HEAD --ignore-submodules --
-    then
-        echo >&2 "cannot $1: your index contains uncommitted changes."
-        git diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
-        err=1
-    fi
-
-    if [ $err = 1 ]
-    then
-        echo >&2 "Please commit or stash them."
-        exit 1
-    fi
-}
-dotfiles_check
+- Gnome:
 
 ```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+
+  # Customize Gnome settings
+  dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "firefox.desktop"
+        "code.desktop"
+        "kitty.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+      disable-user-extensions = false;
+      disabled-extensions = [
+        "@as"
+      ];
+      enabled-extensions = [
+        "dash-to-dock@micxgx.gmail.com"
+      ];
+    };
+    "org/gnome/shell/extensions/dash-to-dock" = {
+        disable-overview-on-startup = true;
+        custom-theme-shrink = true;
+        };
+    "org/gnome/desktop/interface" = {
+      enable-hot-corners = false;
+      show-battery-percentage = true;
+    };
+    "org/gnome/mutter" = {
+      dynamic-workspaces = true;
+    };
+    "org/gnome/desktop/session" = {
+      "idle-delay" = mkUint32 900;
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      "sleep-inactive-ac-type" = "nothing";
+      "sleep-inactive-battery-type" = "suspend";
+      "sleep-inactive-battery-timeout" = 900;
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "binding" = "<Super>t";
+      "command" = "kitty";
+      "name" = "Terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      "binding" = "<Super>f";
+      "command" = "firefox";
+      "name" = "Firefox";
+    };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden = true;
+    };
+  };
+
+  # XDG Settings
+  xdg = {
+    # Set default apps
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "firefox.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "image/png" = [ "org.gnome.Loupe.desktop" ];
+        "image/gif" = [ "org.gnome.Loupe.desktop" ];
+        "image/webp" = [ "org.gnome.Loupe.desktop" ];
+        "image/tiff" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-tga" = [ "org.gnome.Loupe.desktop" ];
+        "image/vnd-ms.dds" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-dds" = [ "org.gnome.Loupe.desktop" ];
+        "image/bmp" = [ "org.gnome.Loupe.desktop" ];
+        "image/vnd.microsoft.icon" = [ "org.gnome.Loupe.desktop" ];
+        "image/vnd.radiance" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-exr" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-portable-bitmap" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-portable-graymap" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-portable-pixmap" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-portable-anymap" = [ "org.gnome.Loupe.desktop" ];
+        "image/x-qoi" = [ "org.gnome.Loupe.desktop" ];
+        "image/svg+xml" = [ "org.gnome.Loupe.desktop" ];
+        "image/svg+xml-compressed" = [ "org.gnome.Loupe.desktop" ];
+        "image/avif" = [ "org.gnome.Loupe.desktop" ];
+        "image/heic" = [ "org.gnome.Loupe.desktop" ];
+        "image/jxl" = [ "org.gnome.Loupe.desktop" ];
+        };
+    };
+    # Hiding unawnted shortcuts from launcher
+    desktopEntries = {
+      htop = {
+        name = "htop";
+        exec = "";
+        noDisplay = true;
+      };
+      auto-cpufreq-gtk = {
+        name = "auto-cpufreq-gtk";
+        exec = "";
+        noDisplay = true;
+      };
+      cups = {
+        name = "cups";
+        exec = "";
+        noDisplay = true;
+      };
+      vim = {
+        name = "Vim";
+        exec = "";
+        noDisplay = true;
+      };
+    };
+  };
+}
+```
+- Macos:
+```
+
+  system.startup.chime = false;
+  system.defaults = {
+    dock.mru-spaces = false;
+    dock.minimize-to-application = true;
+    dock.show-recents = false;
+    dock.magnification = false;
+    dock.tilesize = 40;
+    dock.wvous-bl-corner = 1;
+    dock.wvous-br-corner = 1;
+    dock.wvous-tl-corner = 1;
+    dock.wvous-tr-corner = 1;
+    NSGlobalDomain.AppleShowAllFiles = true;
+    NSGlobalDomain.AppleShowAllExtensions = true;
+    finder.ShowPathbar = true;
+    finder.FXPreferredViewStyle = "clmv";
+    finder._FXShowPosixPathInTitle = true;
+    screencapture.location = "~/Pictures";
+  };
+```
+
 Aliases:
 ```
     ll = "ls -alh";
@@ -184,4 +293,55 @@ Vscode:
         };
     };
     }
+```
+Git:
+```
+  # Git setup
+  programs.git = {
+    enable = true;
+    userEmail = "84437690+vpletea@users.noreply.github.com";
+    userName = "vpletea";
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
+  };
+}
+```
+
+Bonus: .zshrc warning for uncommitted dotfiles - notify-send can send a desktop notification :
+
+```bash
+#!/bin/bash
+cd "$(dirname "$0")"
+dotfiles_check () {
+    # Update the index
+    git update-index -q --ignore-submodules --refresh
+    err=0
+
+    # Disallow unstaged changes in the working tree
+    if ! git diff-files --quiet --ignore-submodules --
+    then
+        echo >&2 "cannot $1: you have unstaged changes."
+        git diff-files --name-status -r --ignore-submodules -- >&2
+        err=1
+    fi
+
+    # Disallow uncommitted changes in the index
+    if ! git diff-index --cached --quiet HEAD --ignore-submodules --
+    then
+        echo >&2 "cannot $1: your index contains uncommitted changes."
+        git diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
+        err=1
+    fi
+
+    if [ $err = 1 ]
+    then
+        echo >&2 "Please commit or stash them."
+        exit 1
+    fi
+}
+dotfiles_check
+
 ```
