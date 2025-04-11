@@ -66,7 +66,7 @@ Software:
 | gnome-extensions-app  | present | fedora | dnf |  |
 | gnome-shell-extension-dash-to-dock  | present | fedora | dnf |  |
 | google-chrome-stable | present | fedora | dnf | third party repo |
-| winbox | present | fedora | [s](https://github.com/thiagoojack/winbox-fedora)cript | [https://github.com/thiagoojack/winbox-fedora](https://github.com/thiagoojack/winbox-fedora) |
+| winbox | present | fedora | script | [https://github.com/thiagoojack/winbox-fedora](https://github.com/thiagoojack/winbox-fedora) |
 | file-roller | present | fedora | dnf | archive tool |
 
 Symlinks:
