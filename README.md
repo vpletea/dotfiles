@@ -72,12 +72,208 @@ Software:
 Symlinks:
 
 - aliases
+```
+{
+  environment.shellAliases = {
+    ll = "ls -alh";
+    ls = "ls --color=auto";
+    grep = "grep -n --color";
+    kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
+    kd = "k3d cluster delete";
+    amt = "docker run --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64";
+  };
+}
+```
 - git
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # Git setup
+  programs.git = {
+    enable = true;
+    userEmail = "84437690+vpletea@users.noreply.github.com";
+    userName = "vpletea";
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+    };
+  };
+}
+
+```
 - kitty
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # Kitty settings
+  programs.kitty = {
+    enable = true;
+    settings = {
+      copy_on_select = "yes";
+      scrollback_lines = "10000";
+      detect_urls = "yes";
+      remember_window_size = "yes";
+      linux_display_server = "X11";
+      tab_bar_edge = "bottom";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_bar_min_tabs = "2";
+      enabled_layouts = "Tall, *";
+    };
+    themeFile = "Catppuccin-Mocha";
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 15;
+    };
+    keybindings = {
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+v" = "paste_from_clipboard";
+    };
+    shellIntegration.enableZshIntegration = true;
+  };
+}
+
+```
 - ssh
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # SSH setup
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+    StrictHostKeyChecking no
+    CanonicalizeHostname yes
+    CanonicalDomains h-net.xyz
+    Host github
+      HostName github.com
+      User vpletea
+      IdentityFile ~/.ssh/github.key
+    Host *.h-net.xyz
+      User devops
+      IdentityFile ~/.ssh/homelab.key
+    '';
+  };
+}
+
+```
 - starship
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # User shell and prompt setup
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      kubernetes = {
+      disabled = false;
+      };
+    };
+  };
+}
+
+```
 - vscode
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # Vscode Setup
+  programs.vscode = {
+    enable = true;
+    enableUpdateCheck = false;
+    mutableExtensionsDir = true;
+    enableExtensionUpdateCheck = true;
+    extensions = with pkgs.vscode-extensions; [
+      # Theme
+      catppuccin.catppuccin-vsc
+      # Tools
+      waderyan.gitblame
+      oderwat.indent-rainbow
+      # Languages
+      bbenoist.nix
+      hashicorp.terraform
+      tim-koehler.helm-intellisense
+      # Github Copilot
+      github.copilot
+      github.copilot-chat
+    ];
+    userSettings = {
+      "diffEditor.ignoreTrimWhitespace" = false;
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
+      "editor.fontSize" = 15;
+      "editor.formatOnSave" = false;
+      "editor.formatOnType" = true;
+      "editor.guides.bracketPairs" = true;
+      "editor.guides.highlightActiveIndentation" = true;
+      "editor.inlineSuggest.enabled" = true;
+      "editor.minimap.enabled" = false;
+      "editor.tabSize" = 2;
+      "extensions.autoCheckUpdates" = true;
+      "extensions.ignoreRecommendations" = true;
+      "files.insertFinalNewline" = false;
+      "files.trimFinalNewlines" = true;
+      "files.trimTrailingWhitespace" = true;
+      "git.confirmSync" = false;
+      "git.enableSmartCommit" = true;
+      "git.mergeEditor" = true;
+      "gitblame.inlineMessageEnabled" = true;
+      "telemetry.telemetryLevel" = "off";
+      "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
+      "terminal.integrated.fontSize" = 15;
+      "update.mode" = "none";
+      "update.showReleaseNotes" = false;
+      "workbench.colorTheme" = "Catppuccin Mocha";
+      "workbench.startupEditor" = "none";
+      "workbench.editor.historyBasedLanguageDetection" = true;
+      "workbench.editor.languageDetection" = true;
+    };
+  };
+}
+
+```
 - zsh
+```
+{ pkgs, lib, inputs, customArgs, ... }:
+
+{
+  # User shell and prompt setup
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    history.extended = true;
+    syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
+    historySubstringSearch.searchUpKey = [
+      "$terminfo[kcuu1]"
+      "^[[A"
+    ];
+    historySubstringSearch.searchDownKey = [
+      "$terminfo[kcud1]"
+      "^[[B"
+    ];
+    initExtra = ''
+      ssh-add -q ~/.ssh/github.key
+      #Brew path for M1mac
+      if [[ $(uname -m) == 'arm64' ]]; then
+           eval "$(/opt/homebrew/bin/brew shellenv)"
+       fi
+    '';
+
+  };
+}
+
+```
+
 
 Customizations:
 - Gnome:
@@ -223,91 +419,6 @@ Customizations:
     finder._FXShowPosixPathInTitle = true;
     screencapture.location = "~/Pictures";
   };
-```
-
-Aliases:
-```
-    ll = "ls -alh";
-    ls = "ls --color=auto";
-    grep = "grep -n --color";
-    kc = "k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer";
-    kd = "k3d cluster delete";
-    amt = "docker run --name mesh-mini -p 3000:3000 brytonsalisbury/mesh-mini:amd64";
-```
-
-Vscode:
-```
-    { pkgs, lib, inputs, customArgs, ... }:
-
-    {
-    # Vscode Setup
-    programs.vscode = {
-        enable = true;
-        enableUpdateCheck = false;
-        mutableExtensionsDir = true;
-        enableExtensionUpdateCheck = true;
-        extensions = with pkgs.vscode-extensions; [
-        # Theme
-        catppuccin.catppuccin-vsc
-        # Tools
-        waderyan.gitblame
-        oderwat.indent-rainbow
-        # Languages
-        bbenoist.nix
-        hashicorp.terraform
-        tim-koehler.helm-intellisense
-        # Github Copilot
-        github.copilot
-        github.copilot-chat
-        ];
-        userSettings = {
-        "diffEditor.ignoreTrimWhitespace" = false;
-        "editor.bracketPairColorization.enabled" = true;
-        "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-        "editor.fontSize" = 15;
-        "editor.formatOnSave" = false;
-        "editor.formatOnType" = true;
-        "editor.guides.bracketPairs" = true;
-        "editor.guides.highlightActiveIndentation" = true;
-        "editor.inlineSuggest.enabled" = true;
-        "editor.minimap.enabled" = false;
-        "editor.tabSize" = 2;
-        "extensions.autoCheckUpdates" = true;
-        "extensions.ignoreRecommendations" = true;
-        "files.insertFinalNewline" = false;
-        "files.trimFinalNewlines" = true;
-        "files.trimTrailingWhitespace" = true;
-        "git.confirmSync" = false;
-        "git.enableSmartCommit" = true;
-        "git.mergeEditor" = true;
-        "gitblame.inlineMessageEnabled" = true;
-        "telemetry.telemetryLevel" = "off";
-        "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-        "terminal.integrated.fontSize" = 15;
-        "update.mode" = "none";
-        "update.showReleaseNotes" = false;
-        "workbench.colorTheme" = "Catppuccin Mocha";
-        "workbench.startupEditor" = "none";
-        "workbench.editor.historyBasedLanguageDetection" = true;
-        "workbench.editor.languageDetection" = true;
-        };
-    };
-    }
-```
-Git:
-```
-  # Git setup
-  programs.git = {
-    enable = true;
-    userEmail = "84437690+vpletea@users.noreply.github.com";
-    userName = "vpletea";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-    };
-  };
-}
 ```
 
 Bonus: .zshrc warning for uncommitted dotfiles - notify-send can send a desktop notification :
