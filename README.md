@@ -1,76 +1,118 @@
-# Flake installation
-### MacOS
-- Install Nix using Lix installer: https://lix.systems/install/
-- Install Homebrew from:  https://brew.sh/
-- The flake can be installed directly:
-  ```
-  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake github:vpletea/dotfiles#macos
-  ```
-- After the first run we can use:
-  ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
-  ```
+# Dotfiles
 
-### NixOS
-- The flake can be installed directly:
-  ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
-  ```
-- Remove the nixos channel:
-  ```
-  sudo nix-channel --remove nixos
-  ```
-- Backup configuration.nix:
-  ```
-  sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup
-  ```
+Inspired by: [https://phelipetls.github.io/posts/introduction-to-ansible/](https://phelipetls.github.io/posts/introduction-to-ansible/)
 
-### Updates
-- On day 15 and 30 of the month at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
-  ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles/update_flake_lock_action#macos
-  ```
-  ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles/update_flake_lock_action#nixos
-  ```
-- To switch back to the lockfile on the main branch you can run:
-  ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
-  ```
-  ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
-  ```
+Github sample: [https://github.com/phelipetls/dotfiles](https://github.com/phelipetls/dotfiles)
 
-# Local development
-### MacOS:
-- Clone this repository
-- Install flake:
-  ```
-   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
-  ```
-- After install we can use:
-  ```
-  darwin-rebuild switch --flake .#macos
-  ```
-- To update your configuration, you can run:
-  ```
-  nix flake update && darwin-rebuild switch --flake .#macos
-  ```
+Old dotfiles repo: [https://dev.azure.com/vpletea/_git/Unsorted?path=/workstation-main](https://dev.azure.com/vpletea/_git/Unsorted?path=/workstation-main)
 
-### NixOS:
-- Clone this repository
-- Install the flake:
-  ```
-  sudo nixos-rebuild switch --impure --flake .#nixos
-  ```
-- To update your configuration, you can run:
-  ```
-  nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
+Steps:
 
-### Test branch:
-   ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles/test#macos
-  ```
-  ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles/test#nixos
-  ```
+- add/remove software
+- symlink config files
+- desktop customization
+
+Software:
+
+| **App Name** | **State** | **OS** | **Source** | **Mentions** |
+| --- | --- | --- | --- | --- |
+| *gnome-maps* | *remove* | *fedora* | *dnf* | *gnome maps* |
+| *gnome-boxes* | *remove* | *fedora* | *dnf* | *Gnome boxes* |
+| *yelp* | *remove* | *fedora* | *dnf* | *Gnome help* |
+| *gnome-contacts* | *remove* | *fedora* | *dnf* | *Gnome contacts* |
+| *gnome-abrt* | *remove* | *fedora* | *dnf* | *gnome bug report* |
+| *gnome-characters* | *remove* | *fedora* | *dnf* | *gnome characters* |
+| *snapshot* | *remove* | *fedora* | *dnf* | *gnome camera app* |
+| *gnome-tour* | *remove* | *fedora* | *dnf* | *gnome tour app* |
+| *totem* | *remove* | *fedora* | *dnf* | *gnome videos app* |
+| *libreoffice-core* | *remove* | *fedora* | *dnf* | *libre office* |
+| *rhythmbox* | *remove* | *fedora* | *dnf* | *music player* |
+| *gnome-clocks* | *remove* | *fedora* | *dnf* | *clocks app* |
+| *gnome-software* | *remove* | *fedora* | *dnf* | *software center install apps via cli* |
+| podman | remove | fedora | dnf | replaced with docker |
+| ansible | present | fedora/macos | brew |  |
+| htop | present | fedora/macos | brew |  |
+| k3d | present | fedora/macos | brew |  |
+| kubectl | present | fedora/macos | brew |  |
+| helm | present | fedora/macos | brew |  |
+| terraform | present | fedora/macos | brew |  |
+| watch | present | fedora/macos | brew |  |
+| wget | present | fedora/macos | brew |  |
+| fira code nerdfont | present | fedora/macos | brew |  |
+| droid sans mono | present | fedora/macos | brew |  |
+| android-tools | present | fedora | dnf |  |
+| onlyoffice | present | fedora | brew | third party repo |
+| vlc | present | fedora | dnf |  |
+| kitty | present | macos | brew |  |
+| kitty | present | fedora | dnf |  |
+| zsh | present | fedora | dnf |  |
+| starship | present | fedora | brew |  |
+| starship | present | macos | brew |  |
+| docker | present | fedora | dnf |  |
+| vscode | present | fedora | dnf | third party repo |
+| vscode | present | macos | brew |  |
+| firefox | present | macos | brew |  |
+| firefox | present | fedora | dnf |  |
+|  adobe-acrobat-reader | present | macos | brew | cask |
+| amazon-workspaces | present | macos | brew | cask |
+| android-platform-tools | present | macos | brew | cask |
+| caffeine | present | macos | brew | cask |
+| google-chrome | present | macos | brew | cask |
+| microsoft-edge | present | macos | brew | cask |
+| rancher | present | macos | brew | cask |
+| rectangle | present | macos | brew | cask |
+| skype | present | macos | brew | cask |
+| winbox | present | macos | brew | cask |
+| gnome-extensions-app  | present | fedora | dnf |  |
+| gnome-shell-extension-dash-to-dock  | present | fedora | dnf |  |
+| google-chrome-stable | present | fedora | dnf | third party repo |
+| winbox | present | fedora | [s](https://github.com/thiagoojack/winbox-fedora)cript | [https://github.com/thiagoojack/winbox-fedora](https://github.com/thiagoojack/winbox-fedora) |
+| file-roller | present | fedora | dnf | archive tool |
+
+Symlinks:
+
+- vscode
+- starship
+- git
+- kitty
+- ssh
+- zsh
+- aliases
+
+Customizations:
+
+Bonus: .zshrc warning for uncommitted dotfiles - notify-send can send a desktop notification :
+
+```bash
+#!/bin/bash
+cd "$(dirname "$0")"
+dotfiles_check () {
+    # Update the index
+    git update-index -q --ignore-submodules --refresh
+    err=0
+
+    # Disallow unstaged changes in the working tree
+    if ! git diff-files --quiet --ignore-submodules --
+    then
+        echo >&2 "cannot $1: you have unstaged changes."
+        git diff-files --name-status -r --ignore-submodules -- >&2
+        err=1
+    fi
+
+    # Disallow uncommitted changes in the index
+    if ! git diff-index --cached --quiet HEAD --ignore-submodules --
+    then
+        echo >&2 "cannot $1: your index contains uncommitted changes."
+        git diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
+        err=1
+    fi
+
+    if [ $err = 1 ]
+    then
+        echo >&2 "Please commit or stash them."
+        exit 1
+    fi
+}
+dotfiles_check
+
+```
