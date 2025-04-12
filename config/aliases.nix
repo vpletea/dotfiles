@@ -1,7 +1,7 @@
 { pkgs, lib, inputs, customArgs, ... }:
 
 {
-  environment.shellAliases = {
+  home.shellAliases = {
     ll = "ls -alh";
     ls = "ls --color=auto";
     grep = "grep -n --color";

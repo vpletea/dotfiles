@@ -5,6 +5,7 @@
 {
     imports =
   [
+    ../config/aliases.nix
     ../config/git.nix
     ../config/gnome.nix
     ../config/kitty.nix
