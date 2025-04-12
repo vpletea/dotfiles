@@ -5,12 +5,12 @@
 {
   imports =
   [
-    ../shared/git.nix
-    ../shared/kitty.nix
-    ../shared/ssh.nix
-    ../shared/starship.nix
-    ../shared/vscode.nix
-    ../shared/zsh.nix
+    ../config/git.nix
+    ../config/kitty.nix
+    ../config/ssh.nix
+    ../config/starship.nix
+    ../config/vscode.nix
+    ../config/zsh.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
