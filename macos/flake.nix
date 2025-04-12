@@ -19,13 +19,13 @@
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";
     modules = [
-        host.nix
+        ./host.nix
         ../config/aliases.nix
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users."${macos-username}" = import user.nix;
+          home-manager.users."${macos-username}" = import ./user.nix;
         }
       ];
     };
