@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-vscode-extensions, ... }:
   let
     nixos-username = "valentin";
   in
@@ -77,6 +77,9 @@
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    nix-vscode-extensions.overlays.default
+  ];
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [

@@ -1,5 +1,4 @@
-{ pkgs, lib, inputs, customArgs, ... }:
-
+{ pkgs, lib, inputs, customArgs, nix-vscode-extensions, ... }:
 {
   # Vscode Setup
   programs.vscode = {
