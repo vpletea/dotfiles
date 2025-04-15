@@ -11,12 +11,35 @@
 
   let
     nixos-username = "valentin";
-    nixos-system = import ./nixos.nix { inherit inputs nixos-username; };
+    host = import ./module/host.nix;
+    hardware = import /etc/nixos/hardware-configuration.nix; # copy this locally to no longer run --impure
+    user = import ./module/user.nix { inherit inputs  pkgs nixos-username; };
+    system = "x86_64-linux";
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
   in
 
   {
-    nixosConfigurations = {
-      nixos = nixos-system "x86_64-linux";
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+    modules = [
+      hardware
+      host
+
+      {
+        # Define user account
+        users.users."${nixos-username}" = {
+          isNormalUser = true;
+          description = nixos-username;
+          extraGroups = [ "networkmanager" "wheel" "docker" ];
+      };
+      }
+
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users."${nixos-username}" = user;
+      }
+    ];
     };
   };
 }

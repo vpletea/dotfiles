@@ -1,6 +1,6 @@
 { pkgs, inputs, nixos-username, ...}:
-
 {
+
     imports =
   [
     ../../config/aliases.nix
