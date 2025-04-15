@@ -1,9 +1,9 @@
 { inputs, nixos-username, ...}:
 
 system: let
-  configuration = import ../module/configuration.nix;
+  configuration = import ./module/configuration.nix;
   hardware-configuration = import /etc/nixos/hardware-configuration.nix; # copy this locally to no longer run --impure
-  home-manager = import ../module/home-manager.nix { inherit inputs pkgs nixos-username; };
+  home-manager = import ./module/home-manager.nix { inherit inputs pkgs nixos-username; };
   pkgs = inputs.nixpkgs.legacyPackages.${system};
 
 in

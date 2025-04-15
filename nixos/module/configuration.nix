@@ -65,11 +65,6 @@
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  #Vscode Overlay
-  nixpkgs.overlays = [
-    nix-vscode-extensions.overlays.default
-  ];
-
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
     android-tools
