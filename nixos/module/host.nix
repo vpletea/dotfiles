@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, nixos-hostname, ...}:
+{ pkgs, inputs, nixos-hostname, ...}:
 
 {
   # Bootloader setup
