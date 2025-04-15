@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, ...}:
+{ pkgs, inputs, nixos-username, nix-vscode-extensions, ...}:
 {
 
     imports =

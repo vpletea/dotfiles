@@ -7,9 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
+outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-vscode-extensions,  ...}:
 
  let
     macos-username = "valentin.pletea";
@@ -30,12 +31,15 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
           name = "${macos-username}";
           home = "/Users/${macos-username}";
         };
+        nixpkgs.overlays = [
+          nix-vscode-extensions.overlays.default
+        ];
       }
       inputs.home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username; };
+        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username nix-vscode-extensions; };
       }
         ];
         };

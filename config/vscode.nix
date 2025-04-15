@@ -1,12 +1,12 @@
-{ pkgs, lib, inputs, customArgs, ... }:
+{ pkgs, inputs, nix-vscode-extensions, ... }:
 {
   # Vscode Setup
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    mutableExtensionsDir = true;
+    mutableExtensionsDir = false;
     enableExtensionUpdateCheck = true;
-    extensions = with pkgs.vscode-extensions; [
+    extensions = with pkgs.vscode-marketplace; [
       # Theme
       catppuccin.catppuccin-vsc
       # Tools

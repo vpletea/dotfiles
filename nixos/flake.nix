@@ -5,9 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ...}:
+  outputs = inputs @ { self, nixpkgs, home-manager, nix-vscode-extensions, ...}:
 
   let
     nixos-username = "valentin";
@@ -30,12 +31,15 @@
           description = nixos-username;
           extraGroups = [ "networkmanager" "wheel" "docker" ];
       };
+        nixpkgs.overlays = [
+          nix-vscode-extensions.overlays.default
+        ];
       }
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${nixos-username}" = import ./module/user.nix { inherit inputs pkgs nixos-username; };
+        home-manager.users."${nixos-username}" = import ./module/user.nix { inherit inputs pkgs nixos-username nix-vscode-extensions; };
       }
       ];
     };
