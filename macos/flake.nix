@@ -13,6 +13,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
  let
     macos-username = "valentin.pletea";
+    macos-hostname = "macbook";
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
@@ -22,6 +23,9 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
     modules = [
       ./module/host.nix
       {
+        # Define your hostname.
+        networking.hostName = "${macos-hostname}";
+        # Define user account
         users.users."${macos-username}" = {
           name = "${macos-username}";
           home = "/Users/${macos-username}";

@@ -1,4 +1,4 @@
-{ pkgs, inputs, macos-username, ...}:
+{ pkgs, inputs, ...}:
 
 {
   nix.settings.experimental-features = "nix-command flakes";
