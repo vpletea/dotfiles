@@ -15,8 +15,8 @@
   in
 
   {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem  {
-      nixos-system "x86_64-linux";
+    nixosConfigurations = {
+      nixos = nixos-system "x86_64-linux";
     };
   };
 }
