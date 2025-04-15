@@ -11,11 +11,12 @@
 
   let
     nixos-username = "valentin";
+    nixos-hostname = "nixos";
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
   {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."${nixos-hostname}" = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       /etc/nixos/hardware-configuration.nix

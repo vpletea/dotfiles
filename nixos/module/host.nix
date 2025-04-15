@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, ...}:
+{ pkgs, inputs, nixos-username, nixos-hostname, ...}:
 
 {
   # Bootloader setup
@@ -16,7 +16,7 @@
   # networking.hostId = "4e98920d";
 
   # Define your hostname.
-  networking.hostName = "nixos";
+  networking.hostName = "${nixos-hostname}";
 
   # Enable networking
   networking.networkmanager.enable = true;
