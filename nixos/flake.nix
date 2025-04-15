@@ -21,8 +21,7 @@
     system = "x86_64-linux";
     modules = [
       hardware
-      ./module/host.nix;
-
+      ./module/host.nix
       {
         # Define user account
         users.users."${nixos-username}" = {
