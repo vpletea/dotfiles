@@ -11,8 +11,6 @@
 
   let
     nixos-username = "valentin";
-    hardware = import /etc/nixos/hardware-configuration.nix;
-    user = import ./module/user.nix { inherit inputs pkgs nixos-username; };
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
@@ -20,7 +18,7 @@
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      hardware
+      /etc/nixos/hardware-configuration.nix;
       ./module/host.nix
       {
         # Define user account
@@ -34,9 +32,8 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${nixos-username}" = user;
-      }
-    ];
+        home-manager.users."${nixos-username}" = import ./module/user.nix { inherit inputs pkgs nixos-username; };
+      ];
     };
   };
 }

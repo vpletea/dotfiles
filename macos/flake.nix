@@ -13,7 +13,6 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
  let
     macos-username = "valentin.pletea";
-    user = import ./module/user.nix { inherit inputs pkgs macos-username; };
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
@@ -32,7 +31,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = user;
+        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username; };
       }
         ];
         };
