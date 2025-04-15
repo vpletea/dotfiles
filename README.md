@@ -13,11 +13,11 @@
   ```
 - Install the flake:
   ```
-  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ".#macos"
+  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
   ```
 - After the first run we can use:
   ```
-  darwin-rebuild switch --flake ".#macos"
+  darwin-rebuild switch --flake .#macos
   ```
 
 ### NixOS
@@ -33,7 +33,7 @@
   ```
 - Install the flake:
   ```
-  sudo nixos-rebuild switch --impure --flake ".#nixos"
+  sudo nixos-rebuild switch --impure --flake .#nixos
 - Remove the nixos channel:
   ```
   sudo nix-channel --remove nixos
@@ -50,8 +50,8 @@
   ```
 - Run the install flake command depending on your OS:
   ```
-  darwin-rebuild switch --flake ".#macos"
+  darwin-rebuild switch --flake .#macos
   ```
   ```
-  sudo nixos-rebuild switch --impure --flake ".#nixos"
+  sudo nixos-rebuild switch --impure --flake .#nixos
   ```
