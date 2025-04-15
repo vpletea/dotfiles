@@ -2,9 +2,11 @@
 ### MacOS
 - Install Nix using Lix installer: https://lix.systems/install/
 - Install Homebrew from:  https://brew.sh/
-- Clone the repository:
+- Run git:
   ```
     nix-shell -p git
+  ```
+-
     git clone https://github.com/vpletea/dotfiles.git
     cd dotfiles/macos
   ```
@@ -26,10 +28,6 @@
   ```
 - Install the flake:
   ```
-  sudo nixos-rebuild --extra-experimental-features "nix-command flakes" switch --impure --flake ".#x86_64"
-  ```
-- After the first run we can use:
-  ```
   sudo nixos-rebuild switch --impure --flake ".#x86_64"
 - Remove the nixos channel:
   ```
@@ -41,11 +39,11 @@
   ```
 
 ### Updates
-- To update the flake go to your OS directpory and run the following command:
+- To update the flake go to your OS directory and run the following command:
   ```
   nix flake update
   ```
-- Run the install flake command again for your OS:
+- Run the install flake command depending on your OS:
   ```
   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ".#aarch64"
   ```
