@@ -12,9 +12,11 @@
 outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
  let
-    darwin-system = import ./darwin.nix {inherit inputs macos-username;};
     macos-username = "valentin.pletea";
-  in {
+    darwin-system = import ./darwin.nix {inherit inputs macos-username;};
+  in
+
+  {
     darwinConfigurations = {
       aarch64 = darwin-system "aarch64-darwin";
     };

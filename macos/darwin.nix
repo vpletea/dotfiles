@@ -2,7 +2,8 @@
 
 system: let
   configuration = import ./module/configuration.nix;
-  home-manager = import ./module/home-manager.nix { inherit inputs macos-username; };
+  home-manager = import ./module/home-manager.nix { inherit inputs pkgs macos-username; };
+  pkgs = inputs.nixpkgs.legacyPackages.${system};
 in
   inputs.nix-darwin.lib.darwinSystem {
     inherit system;
@@ -10,7 +11,12 @@ in
     # modules: allows for reusable code
     modules = [
       configuration
-      {users.users.${macos-username}.home = "/Users/${macos-username}";}
+      {
+        users.users."${macos-username}" = {
+          name = "${macos-username}";
+          home = "/Users/${macos-username}";
+        };
+      }
 
       inputs.home-manager.darwinModules.home-manager
       {
