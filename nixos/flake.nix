@@ -13,7 +13,7 @@
     nixos-username = "valentin";
     host = import ./module/host.nix;
     hardware = import /etc/nixos/hardware-configuration.nix; # copy this locally to no longer run --impure
-    user = import ./module/user.nix { inherit inputs  pkgs nixos-username; };
+    user = import ./module/user.nix { inherit inputs pkgs nixos-username; };
     system = "x86_64-linux";
     pkgs = inputs.nixpkgs.legacyPackages.${system};
   in
