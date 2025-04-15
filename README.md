@@ -2,20 +2,35 @@
 ### MacOS
 - Install Nix using Lix installer: https://lix.systems/install/
 - Install Homebrew from:  https://brew.sh/
-- The flake can be installed directly:
+- Clone the repository:
   ```
-  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake github:vpletea/dotfiles#macos
+    nix-shell -p git
+    git clone https://github.com/vpletea/dotfiles.git
+    cd dotfiles/macos
+  ```
+- Install the flake:
+  ```
+  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ".#aarch64"
   ```
 - After the first run we can use:
   ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
+  darwin-rebuild switch --flake ".#aarch64"
   ```
 
 ### NixOS
-- The flake can be installed directly:
+- Clone the repository:
   ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
+    nix-shell -p git
+    git clone https://github.com/vpletea/dotfiles.git
+    cd dotfiles/nixos
   ```
+- Install the flake:
+  ```
+  sudo nixos-rebuild --extra-experimental-features "nix-command flakes" switch --impure --flake ".#x86_64"
+  ```
+- After the first run we can use:
+  ```
+  sudo nixos-rebuild switch --impure --flake ".#x86_64"
 - Remove the nixos channel:
   ```
   sudo nix-channel --remove nixos
@@ -26,51 +41,14 @@
   ```
 
 ### Updates
-- On day 15 and 30 of the month at 00:00 Github Actions updates the flake and creates a PR. To test the update before merging the PR run this:
+- To update the flake go to your OS directpory and run the following command:
   ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles/update_flake_lock_action#macos
+  nix flake update
   ```
+- Run the install flake command again for your OS:
   ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles/update_flake_lock_action#nixos
-  ```
-- To switch back to the lockfile on the main branch you can run:
-  ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles#macos
+  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ".#aarch64"
   ```
   ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles#nixos
-  ```
-
-# Local development
-### MacOS:
-- Clone this repository
-- Install flake:
-  ```
-   nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
-  ```
-- After install we can use:
-  ```
-  darwin-rebuild switch --flake .#macos
-  ```
-- To update your configuration, you can run:
-  ```
-  nix flake update && darwin-rebuild switch --flake .#macos
-  ```
-
-### NixOS:
-- Clone this repository
-- Install the flake:
-  ```
-  sudo nixos-rebuild switch --impure --flake .#nixos
-  ```
-- To update your configuration, you can run:
-  ```
-  nix flake update && sudo nixos-rebuild switch --impure --flake .#nixos
-
-### Test branch:
-   ```
-  darwin-rebuild switch --flake github:vpletea/dotfiles/test#macos
-  ```
-  ```
-  sudo nixos-rebuild switch --impure --flake github:vpletea/dotfiles/test#nixos
+  sudo nixos-rebuild switch --impure --flake ".#x86_64"
   ```
