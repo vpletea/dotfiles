@@ -4,7 +4,7 @@
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
     enableExtensionUpdateCheck = true;
     extensions = with pkgs.vscode-marketplace; [
       # Theme

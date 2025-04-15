@@ -42,6 +42,6 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-vscode-extensi
         home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username nix-vscode-extensions; };
       }
         ];
-        };
+      };
     };
 }
