@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, nix-vscode-extensions, ...}:
+{ pkgs, inputs, nixos-username, ...}:
 
 {
   # Bootloader setup
