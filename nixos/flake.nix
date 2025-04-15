@@ -33,6 +33,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users."${nixos-username}" = import ./module/user.nix { inherit inputs pkgs nixos-username; };
+      }
       ];
     };
   };
