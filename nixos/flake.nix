@@ -20,7 +20,9 @@
     system = "x86_64-linux";
     modules = [
       /etc/nixos/hardware-configuration.nix
+      {
       host = import ./module/host.nix { inherit inputs pkgs nixos-hostname; };
+      }
       {
         # Define user account
         users.users."${nixos-username}" = {
