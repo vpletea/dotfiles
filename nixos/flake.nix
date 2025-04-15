@@ -16,7 +16,7 @@
   in
 
   {
-    nixosConfigurations.nixos = {
+    nixosConfigurations."nixos" = {
       nixos-system "x86_64-linux";
     };
   };
