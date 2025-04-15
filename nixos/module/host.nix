@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-hostname, ...}:
+{ pkgs, inputs, ...}:
 
 {
   # Bootloader setup
@@ -14,9 +14,6 @@
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
-
-  # Define your hostname.
-  networking.hostName = "${nixos-hostname}";
 
   # Enable networking
   networking.networkmanager.enable = true;

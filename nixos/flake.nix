@@ -20,10 +20,10 @@
     system = "x86_64-linux";
     modules = [
       /etc/nixos/hardware-configuration.nix
+      ./module/host.nix
       {
-      host = import ./module/host.nix { inherit inputs pkgs nixos-hostname; };
-      }
-      {
+        # Define your hostname.
+        networking.hostName = "${nixos-hostname}";
         # Define user account
         users.users."${nixos-username}" = {
           isNormalUser = true;
