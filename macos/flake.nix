@@ -18,7 +18,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
   {
     darwinConfigurations = {
-      aarch64 = darwin-system "aarch64-darwin";
+      macos = darwin-system "aarch64-darwin";
     };
   };
 }
