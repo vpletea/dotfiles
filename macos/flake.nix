@@ -13,17 +13,15 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
  let
     macos-username = "valentin.pletea";
-    host = import ./module/host.nix;
     user = import ./module/user.nix { inherit inputs pkgs macos-username; };
-    nixpkgs.hostPlatform = "aarch64-darwin";
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
   {
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
     modules = [
-      host
-
+      ./module/host.nix
       {
         users.users."${macos-username}" = {
           name = "${macos-username}";
@@ -34,7 +32,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = home-manager;
+        home-manager.users."${macos-username}" = user;
       }
         ];
         };
