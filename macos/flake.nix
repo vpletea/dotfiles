@@ -1,5 +1,5 @@
 {
-  description = "Multi OS Flake";
+  description = "MacOS Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -9,24 +9,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {  self, nixpkgs, nix-darwin, home-manager, ...  }@inputs:
-  let
-    macos-username = "valentin.pletea";
-    nixos-username = "valentin";
-  in
+outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
-  {
-    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-    system = "aarch64-darwin";
-    modules = [
-        ./host.nix
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users."${macos-username}" = import ./user.nix;
-        }
-      ];
+ let
+    darwin-system = import ./darwin.nix {inherit inputs macos-username;};
+    macos-username = "valentin.pletea";
+  in {
+    darwinConfigurations = {
+      aarch64 = darwin-system "aarch64-darwin";
     };
   };
 }
