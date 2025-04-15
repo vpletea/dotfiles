@@ -1,31 +1,23 @@
 {
-  description = "Multi OS Flake";
+  description = "Example kickstart NixOS desktop environment.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = {  self, nixpkgs, home-manager, ...  }@inputs:
+  outputs = inputs @ { self, nixpkgs, home-manager, ...}:
+
   let
     nixos-username = "valentin";
+    nixos-system = import ./nixos.nix { inherit inputs nixos-username; };
   in
 
   {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem  {
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    modules = [
-        ./host.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users."${nixos-username}" = import ./user.nix;
-        }
-      ];
+    nixosConfigurations = {
+      x86_64 = nixos-system "x86_64-linux";
     };
   };
 }
