@@ -6,6 +6,16 @@
     enable = true;
     autocd = true;
     enableCompletion = true;
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+      }
+      {
+        name = "zsh-fzf-history-search";
+        src = "${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search";
+      }
+    ];
     autosuggestion.enable = true;
     history.extended = true;
     syntaxHighlighting.enable = true;
@@ -27,12 +37,14 @@
 
       # Completion case unsesitive
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-      # Disable menu completion
-      zstyle ':completion:*' menu no
 
       # Shell integrations
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       source ${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh
+
+      # Shell integrations
+      eval "$(fzf --zsh)"
+      eval "$(zoxide init --cmd cd zsh)"
     '';
 
   };

@@ -5,6 +5,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
   nixpkgs.config.allowUnfree = true;
+  # nixpkgs.hostPlatform = "aarch64-darwin";
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Auto upgrade nix package and the daemon service.
@@ -24,10 +25,6 @@
     kubectl
     kubernetes-helm
     terraform
-    watch
-    zsh-fzf-history-search
-    zsh-fzf-tab
-
   ];
 
   homebrew = {

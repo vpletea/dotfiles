@@ -1,4 +1,4 @@
-{ inputs, pkgs, ...}:
+{ inputs, pkgs, macos-username, ...}:
 
 {
   imports =
@@ -32,9 +32,14 @@
   #   ".zshrc".source = ../config/zshrc;
   # };
 
-
+  home.packages = with pkgs; [
+    zsh-fzf-history-search
+    zsh-fzf-tab
+  ];
 
   # User settings
+  home.username = "${macos-username}";
+  home.homeDirectory = "/Users/${macos-username}";
 	home.sessionPath = [
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
