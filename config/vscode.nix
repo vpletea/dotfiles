@@ -1,4 +1,4 @@
-{ pkgs, inputs, nix-vscode-extensions, ... }:
+{ pkgs, inputs, ... }:
 {
   # Vscode Setup
   programs.vscode = {
@@ -6,7 +6,7 @@
     enableUpdateCheck = false;
     mutableExtensionsDir = true;
     enableExtensionUpdateCheck = true;
-    extensions = with pkgs.vscode-marketplace; [
+    extensions = with pkgs.vscode-extensions; [
       # Theme
       catppuccin.catppuccin-vsc
       # Tools

@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, nix-vscode-extensions, ...}:
+{ pkgs, inputs, nixos-username, ...}:
 {
 
     imports =
@@ -15,6 +15,10 @@
 
   # No need to change the version
   home.stateVersion = "24.05";
+
+  # home.packages = [
+  #   pkgs.home-manager
+  # ];
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
