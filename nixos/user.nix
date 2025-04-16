@@ -10,7 +10,7 @@
     ../config/ssh.nix
     ../config/starship.nix
     ../config/vscode.nix
-    # ../config/zsh.nix
+    ../config/zsh.nix
   ];
 
   # No need to change the version

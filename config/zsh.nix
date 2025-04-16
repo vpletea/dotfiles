@@ -17,7 +17,16 @@
       }
     ];
     autosuggestion.enable = true;
-    history.extended = true;
+    # history = {
+    #   append = true;
+    #   extended = true;
+    #   share = true;
+    #   ignoreAllDups = true;
+    #   ignoreDups = true;
+    #   ignoreSpace = true;
+    #   saveNoDups = true;
+    #   findNoDups = true;
+    # };
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
     historySubstringSearch.searchUpKey = [
