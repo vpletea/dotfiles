@@ -21,7 +21,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
     system = "aarch64-darwin";
     modules = [
-      ./module/host.nix
+      ./host.nix
       {
         # Define your hostname.
         networking.hostName = "${macos-hostname}";
@@ -35,7 +35,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username; };
+        home-manager.users."${macos-username}" = import ./user.nix { inherit inputs pkgs macos-username; };
       }
         ];
       };
