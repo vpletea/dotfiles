@@ -20,7 +20,7 @@
     system = "x86_64-linux";
     modules = [
       /etc/nixos/hardware-configuration.nix
-      ./module/host.nix
+      ./host.nix
       {
         # Define your hostname.
         networking.hostName = "${nixos-hostname}";
@@ -35,7 +35,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${nixos-username}" = import ./module/user.nix { inherit inputs pkgs nixos-username; };
+        home-manager.users."${nixos-username}" = import ./user.nix { inherit inputs pkgs nixos-username; };
       }
       ];
     };
