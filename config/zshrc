@@ -6,7 +6,7 @@ done
 
 # Enable Starship prompt. Should stay close to the top of ~/.zshrc.
 if [[ $TERM != "dumb" ]]; then
-  eval "$(/etc/profiles/per-user/valentin.pletea/bin/starship init zsh)"
+  eval "$(/etc/profiles/per-user/$USER/bin/starship init zsh)"
 fi
 
 #Homebrew path for ARM Mac
