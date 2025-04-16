@@ -12,7 +12,7 @@
   let
     nixos-username = "valentin";
     nixos-hostname = "nixos";
-    pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in
 
   {

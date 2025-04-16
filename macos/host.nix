@@ -5,7 +5,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
   nixpkgs.config.allowUnfree = true;
-  # nixpkgs.hostPlatform = "aarch64-darwin";
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Auto upgrade nix package and the daemon service.
