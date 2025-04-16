@@ -20,7 +20,10 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.fzf.enable = true;
-  programs.zoxide.enable = true;
+  programs.zoxide
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.file = {
     ".zshrc".source = ../config/zshrc;

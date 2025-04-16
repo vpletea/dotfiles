@@ -18,7 +18,7 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.fzf.enable = true;
-  programs.zoxide = {
+  programs.zoxide
     enable = true;
     enableZshIntegration = true;
   };
