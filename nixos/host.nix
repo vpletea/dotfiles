@@ -1,13 +1,6 @@
-{ config, pkgs, ... }:
-  let
-    nixos-username = "valentin";
-  in
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+{ pkgs, inputs, ...}:
 
+{
   # Bootloader setup
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -22,21 +15,12 @@
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
 
-  # Define your hostname.
-  networking.hostName = "nixos";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
   # Enable flakes support
   nix.settings.experimental-features = "nix-command flakes";
 
-  # Define user account
-  users.users."${nixos-username}" = {
-    isNormalUser = true;
-    description = nixos-username;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
 
   # Global shell and prompt setup
   programs.zsh.enable = true;

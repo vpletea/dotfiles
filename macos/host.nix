@@ -1,17 +1,11 @@
-{ config, inputs, pkgs, lib, unstablePkgs, ...  }:
-  let
-    macos-username = "valentin.pletea";
-  in
+{ pkgs, inputs, ...}:
+
 {
   nix.settings.experimental-features = "nix-command flakes";
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
   nixpkgs.config.allowUnfree = true;
   environment.pathsToLink = [ "/share/zsh" ];
-  users.users."${macos-username}" = {
-    name = "${macos-username}";
-    home = "/Users/${macos-username}";
-  };
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

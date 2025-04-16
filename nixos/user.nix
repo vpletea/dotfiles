@@ -1,8 +1,6 @@
-{ config, pkgs, lib, unstablePkgs, ... }:
-  let
-    nixos-username = "valentin";
-  in
+{ pkgs, inputs, nixos-username, ...}:
 {
+
     imports =
   [
     ../config/aliases.nix
@@ -17,6 +15,10 @@
 
   # No need to change the version
   home.stateVersion = "24.05";
+
+  # home.packages = [
+  #   pkgs.home-manager
+  # ];
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
