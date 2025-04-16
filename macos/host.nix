@@ -25,6 +25,9 @@
     kubernetes-helm
     terraform
     watch
+    zsh-fzf-history-search
+    zsh-fzf-tab
+
   ];
 
   homebrew = {

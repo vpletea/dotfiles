@@ -1,4 +1,4 @@
-{ pkgs, inputs, macos-username, ...}:
+{ inputs, pkgs, ...}:
 
 {
   imports =
@@ -9,7 +9,7 @@
     ../config/ssh.nix
     ../config/starship.nix
     ../config/vscode.nix
-    # ../config/zsh.nix
+    ../config/zsh.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
@@ -17,21 +17,24 @@
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  programs.fzf.enable = true;
-  programs.zoxide
+
+  programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
 
-  home.file = {
-    ".zshrc".source = ../config/zshrc;
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
+
+  # home.file = {
+  #   ".zshrc".source = ../config/zshrc;
+  # };
 
 
 
   # User settings
-  home.username = "${macos-username}";
-  home.homeDirectory = "/Users/${macos-username}";
 	home.sessionPath = [
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"

@@ -14,7 +14,6 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
   let
     macos-username = "valentin.pletea";
     macos-hostname = "macbook";
-    pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
   in
 
   {
@@ -30,16 +29,16 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
           name = "${macos-username}";
           home = "/Users/${macos-username}";
         };
+        home.username = "${macos-username}";
+        home.homeDirectory = "/Users/${macos-username}";
       }
       inputs.home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = import ./user.nix { inherit inputs pkgs macos-username; };
+        home-manager.users."${macos-username}" = import ./user.nix;
       }
         ];
       };
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."${macos-hostname}".pkgs;# Define the home-manager configuration for the user
     };
 }
