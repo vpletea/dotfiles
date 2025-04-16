@@ -10,18 +10,21 @@
     ../config/ssh.nix
     ../config/starship.nix
     ../config/vscode.nix
-    ../config/zsh.nix
+    # ../config/zsh.nix
   ];
 
   # No need to change the version
   home.stateVersion = "24.05";
 
-  # home.packages = [
-  #   pkgs.home-manager
-  # ];
-
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
+
+  home.file = {
+    ".zshrc".source = ../config/zshrc;
+  };
 
   # User settings
   home = {

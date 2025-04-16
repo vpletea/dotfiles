@@ -57,10 +57,10 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -e
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "^[[A" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "^[[B" history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-search-backward
+bindkey "^[[A" history-search-backward
+bindkey "$terminfo[kcud1]" history-search-forward
+bindkey "^[[B" history-search-forward
 
 # History
 HISTSIZE=5000
@@ -90,6 +90,9 @@ alias -- kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
 alias -- kd='k3d cluster delete'
 alias -- ll='ls -alh'
 alias -- ls='ls --color=auto'
+
+# Add ssh keys to agent
+ssh-add -q ~/.ssh/github.key
 
 # Shell integrations
 eval "$(fzf --zsh)"
