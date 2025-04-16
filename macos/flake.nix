@@ -7,12 +7,11 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-vscode-extensions,  ...}:
+outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
 
- let
+  let
     macos-username = "valentin.pletea";
     macos-hostname = "macbook";
     pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
@@ -31,26 +30,16 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-vscode-extensi
           name = "${macos-username}";
           home = "/Users/${macos-username}";
         };
-        nixpkgs.overlays = [
-          nix-vscode-extensions.overlays.default
-        ];
       }
       inputs.home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username nix-vscode-extensions; };
+        home-manager.users."${macos-username}" = import ./module/user.nix { inherit inputs pkgs macos-username; };
       }
         ];
       };
-
-      # homeConfigurations = {
-      # "valentin.plete@macbook" = home-manager.lib.homeManagerConfiguration {
-      #   pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-      #   extraSpecialArgs = {inherit inputs outputs;};
-      #   modules = [
-      #     ./module/user.nix
-      #   ];
-      # };
+    # Expose the package set, including overlays, for convenience.
+    darwinPackages = self.darwinConfigurations."${macos-hostname}".pkgs;# Define the home-manager configuration for the user
     };
 }
