@@ -14,7 +14,6 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
   let
     macos-username = "valentin.pletea";
     macos-hostname = "macbook";
-    pkgs = nixpkgs.legacyPackages."aarch64-darwin";
   in
 
   {
@@ -33,14 +32,15 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       }
       home-manager.darwinModules.home-manager
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${macos-username}" = import ./user.nix { inherit inputs pkgs macos-username; };
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = { inherit inputs macos-username; };
+          users."${macos-username}" = import ./user.nix;
+        };
       }
-        ];
-      };
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."macos".pkgs;
+      ];
     };
+  };
 
 }

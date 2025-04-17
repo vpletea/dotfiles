@@ -16,16 +16,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 
-  # Packages installed system wide
-  environment.systemPackages = with pkgs; [
-    ansible
-    htop
-    k3d
-    kubectl
-    kubernetes-helm
-    terraform
-  ];
-
   homebrew = {
     enable = true;
     onActivation = {
