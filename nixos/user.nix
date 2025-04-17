@@ -9,6 +9,7 @@
     ../config/kitty.nix
     ../config/ssh.nix
     ../config/starship.nix
+    ../config/tools.nix
     ../config/vscode.nix
     ../config/zsh.nix
   ];
@@ -18,16 +19,6 @@
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 
   home.packages = with pkgs; [
     android-tools
