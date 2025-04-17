@@ -62,6 +62,18 @@
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
+  # Packages installed system wide
+  environment.systemPackages = with pkgs; [ # Use "sudo ventoy-web" for the Web GUI
+    file-roller # File archiver
+    gnome-console
+    gnome-disk-utility
+    nautilus # File manager
+    htop
+    loupe # Image viewer
+    plymouth
+    vim
+  ];
+
   # Packages uninstalled system wide
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour

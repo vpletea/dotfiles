@@ -42,16 +42,7 @@
     ventoy-full # Use "sudo ventoy-web" for the Web GUI
     vlc
     firefox
-    file-roller # File archiver
-    gnome-console
-    gnome-disk-utility
-    nautilus # File manager
     google-chrome
-    htop
-    loupe # Image viewer
-    plymouth
-    vim
-    winbox4
     zsh-fzf-history-search
     zsh-fzf-tab
   ];
