@@ -15,6 +15,10 @@
         name = "zsh-fzf-history-search";
         src = "${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search";
       }
+      {
+        name = "zsh-nix-shell";
+        src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
+      }
     ];
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -49,6 +53,7 @@
       # Shell integrations
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       source ${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh
+      source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
     '';
