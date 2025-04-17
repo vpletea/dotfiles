@@ -45,6 +45,7 @@
     google-chrome
     zsh-fzf-history-search
     zsh-fzf-tab
+    zsh-nix-shell
   ];
 
   # User settings
