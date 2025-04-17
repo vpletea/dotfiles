@@ -35,6 +35,7 @@
   home.packages = with pkgs; [
     zsh-fzf-history-search
     zsh-fzf-tab
+    terraform
   ];
 
   # User settings

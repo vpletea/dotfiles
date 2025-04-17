@@ -23,7 +23,7 @@
     k3d
     kubectl
     kubernetes-helm
-    terraform
+    # terraform
   ];
 
   homebrew = {
