@@ -39,8 +39,8 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
           users."${macos-username}" = import ./user.nix;
         };
       }
-        ];
-      };
+      ];
     };
+  };
 
 }

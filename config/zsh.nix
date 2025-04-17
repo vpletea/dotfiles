@@ -17,16 +17,6 @@
       }
     ];
     autosuggestion.enable = true;
-    # history = {
-    #   append = true;
-    #   extended = true;
-    #   share = true;
-    #   ignoreAllDups = true;
-    #   ignoreDups = true;
-    #   ignoreSpace = true;
-    #   saveNoDups = true;
-    #   findNoDups = true;
-    # };
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
     historySubstringSearch.searchUpKey = [
@@ -47,11 +37,18 @@
       # Completion case unsesitive
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+      # Some history settings
+      setopt appendhistory
+      setopt sharehistory
+      setopt hist_ignore_space
+      setopt hist_ignore_all_dups
+      setopt hist_save_no_dups
+      setopt hist_ignore_dups
+      setopt hist_find_no_dups
+
       # Shell integrations
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       source ${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh
-
-      # Shell integrations
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
     '';
