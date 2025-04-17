@@ -24,7 +24,6 @@
     kubectl
     kubernetes-helm
     terraform
-    watch
   ];
 
   homebrew = {

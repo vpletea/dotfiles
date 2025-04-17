@@ -14,7 +14,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
   let
     macos-username = "valentin.pletea";
     macos-hostname = "macbook";
-    pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
+    pkgs = nixpkgs.legacyPackages."aarch64-darwin";
   in
 
   {
@@ -31,7 +31,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
           home = "/Users/${macos-username}";
         };
       }
-      inputs.home-manager.darwinModules.home-manager
+      home-manager.darwinModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -40,6 +40,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
         ];
       };
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."${macos-hostname}".pkgs;# Define the home-manager configuration for the user
+    darwinPackages = self.darwinConfigurations."macos".pkgs;
     };
+
 }

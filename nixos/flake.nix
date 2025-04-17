@@ -12,7 +12,7 @@
   let
     nixos-username = "valentin";
     nixos-hostname = "nixos";
-    pkgs = inputs.nixpkgs.legacyPackages.${nixpkgs.hostPlatform};
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in
 
   {
@@ -31,7 +31,7 @@
           extraGroups = [ "networkmanager" "wheel" "docker" ];
       };
       }
-      inputs.home-manager.nixosModules.home-manager
+      home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;

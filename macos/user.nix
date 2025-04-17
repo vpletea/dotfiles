@@ -1,4 +1,4 @@
-{ pkgs, inputs, macos-username, ...}:
+{ inputs, pkgs, macos-username, ...}:
 
 {
   imports =
@@ -16,6 +16,26 @@
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
+
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # home.file = {
+  #   ".zshrc".source = ../config/zshrc;
+  # };
+
+  home.packages = with pkgs; [
+    zsh-fzf-history-search
+    zsh-fzf-tab
+  ];
 
   # User settings
   home.username = "${macos-username}";
