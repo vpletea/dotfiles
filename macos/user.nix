@@ -28,14 +28,15 @@
     enableZshIntegration = true;
   };
 
-  # home.file = {
-  #   ".zshrc".source = ../config/zshrc;
-  # };
-
   home.packages = with pkgs; [
+    ansible
+    htop
+    k3d
+    kubectl
+    kubernetes-helm
+    terraform
     zsh-fzf-history-search
     zsh-fzf-tab
-    terraform
   ];
 
   # User settings

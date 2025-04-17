@@ -62,32 +62,6 @@
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
-  # Packages installed system wide
-  environment.systemPackages = with pkgs; [
-    android-tools
-    ansible
-    authenticator
-    gnomeExtensions.dash-to-dock
-    k3d
-    kubectl
-    kubernetes-helm
-    terraform
-    ventoy-full # Use "sudo ventoy-web" for the Web GUI
-    vlc
-    firefox
-    file-roller # File archiver
-    gnome-console
-    gnome-disk-utility
-    nautilus # File manager
-    google-chrome
-    htop
-    loupe # Image viewer
-    plymouth
-    vim
-    winbox4
-    onlyoffice-desktopeditors
-  ];
-
   # Packages uninstalled system wide
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour

@@ -12,7 +12,6 @@
   let
     nixos-username = "valentin";
     nixos-hostname = "nixos";
-    pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in
 
   {
@@ -33,13 +32,14 @@
       }
       home-manager.nixosModules.home-manager
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users."${nixos-username}" = import ./user.nix { inherit inputs pkgs nixos-username; };
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = { inherit inputs nixos-username; };
+          users."${nixos-username}" = import ./user.nix;
+        };
       }
       ];
     };
-    # Expose the package set, including overlays, for convenience.
-    nixosPackages = self.nixosConfigurations."${nixos-hostname}".pkgs;
   };
 }
