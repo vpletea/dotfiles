@@ -12,9 +12,16 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
+    icons = "auto";
+    git = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--header"
+      "--color=auto"
+    ];
   };
   programs.bat = {
     enable = true;
-    enableZshIntegration = true;
+    config.theme = "Nord";
   };
 }
