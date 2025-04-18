@@ -23,6 +23,10 @@
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
 
+  # Nixos specific zsh settings
+  users.defaultUserShell = pkgs.zsh;
+  programs.starship.enable = true;
+
   # Newtorking settings
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;

@@ -13,9 +13,7 @@
 
   # Global shell and prompt setup
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
-  programs.starship.enable = true;
 
   # Install nerdfonts
   fonts.packages = with pkgs; [
