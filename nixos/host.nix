@@ -17,7 +17,7 @@
   boot.kernelParams = ["quiet"];
   systemd.tpm2.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
-  #
+
   # Enable ZFS support - enable for mounting truenas drives
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
