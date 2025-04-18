@@ -47,6 +47,10 @@
     gnome-tour
   ];
 
+  # Docker setup
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -56,10 +60,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Docker setup
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
 
   # Configure printing - with drivers for hp printers
   services.printing = {
