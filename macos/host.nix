@@ -15,6 +15,7 @@
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 
+  # Hobrew packages - GUI apps not availbale in nix repo
   homebrew = {
     enable = true;
     onActivation = {
@@ -37,6 +38,7 @@
     ];
   };
 
+  # Macos quality of life settings
   system.startup.chime = false;
   system.defaults = {
     dock.mru-spaces = false;
@@ -55,6 +57,5 @@
     finder._FXShowPosixPathInTitle = true;
     screencapture.location = "~/Pictures";
   };
-
 
 }

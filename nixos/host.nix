@@ -17,18 +17,18 @@
   boot.kernelParams = ["quiet"];
   systemd.tpm2.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
+  #
   # Enable ZFS support - enable for mounting truenas drives
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
 
-  # Enable networking
+  # Newtorking settings
   networking.networkmanager.enable = true;
-
+  networking.firewall.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [ # Use "sudo ventoy-web" for the Web GUI
@@ -57,25 +57,18 @@
     pulse.enable = true;
   };
 
-
   # Docker setup
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
 
-# Configure printing - for hp printers
+  # Configure printing - with drivers for hp printers
   services.printing = {
     enable = true;
     drivers = [ pkgs.hplipWithPlugin ];
   };
 
-  # Enable pcscd service - required for yubikey
-  services.pcscd.enable = true;
-
   # SSH agent setup
   programs.ssh.startAgent = true;
-
-  # Enable firewall
-  networking.firewall.enable = true;
 
   # NixOS garbage control - removes older generations
   nix.gc = {

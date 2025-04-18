@@ -40,10 +40,11 @@
 
       # Completion case unsesitive
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-      # Combines ls and fzf for cd
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
 
-      # History - to be improved
+      # Combines ls and fzf for cd
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+      # History - eventually to be defined directly in nix
       HISTSIZE=5000
       HISTFILE=~/.zsh_history
       SAVEHIST=$HISTSIZE
