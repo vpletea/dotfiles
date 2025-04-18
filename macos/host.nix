@@ -1,18 +1,17 @@
 { pkgs, inputs, ...}:
 
 {
-  nix.settings.experimental-features = "nix-command flakes";
-  # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
-  nixpkgs.config.allowUnfree = true;
-  environment.pathsToLink = [ "/share/zsh" ];
+  imports =
+  [
+    ../config/global.nix
+  ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
   # nix.package = pkgs.nix;
   security.pam.enableSudoTouchIdAuth = true;
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;
+
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 
@@ -37,11 +36,6 @@
       "winbox"
     ];
   };
-
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
 
   system.startup.chime = false;
   system.defaults = {
