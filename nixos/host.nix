@@ -1,6 +1,13 @@
 { pkgs, inputs, ...}:
 
 {
+  imports =
+  [
+    ../config/global.nix
+    ../config/graphics.nix
+    ../config/power.nix
+  ];
+
   # Bootloader setup
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -10,57 +17,22 @@
   boot.kernelParams = ["quiet"];
   systemd.tpm2.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
+
   # Enable ZFS support - enable for mounting truenas drives
   # boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs.forceImportRoot = false;
   # networking.hostId = "4e98920d";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Enable flakes support
-  nix.settings.experimental-features = "nix-command flakes";
-
-
-  # Global shell and prompt setup
-  programs.zsh.enable = true;
+  # Nixos specific zsh settings
   users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
   programs.starship.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
+  # Newtorking settings
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.excludePackages = [pkgs.xterm];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-utilities.enable = false;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [ # Use "sudo ventoy-web" for the Web GUI
@@ -79,62 +51,28 @@
     gnome-tour
   ];
 
-  # Accelerated Video Playback
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-      libvdpau-va-gl
-    ];
-  };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-
   # Docker setup
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
 
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-# Configure printing - for hp printers
+  # Configure printing - with drivers for hp printers
   services.printing = {
     enable = true;
     drivers = [ pkgs.hplipWithPlugin ];
   };
 
-  # Enable pcscd service - required for yubikey
-  services.pcscd.enable = true;
-
   # SSH agent setup
   programs.ssh.startAgent = true;
-
-  # Power settings
-  services.power-profiles-daemon.enable = false;
-  services.thermald.enable = true;
-  powerManagement.enable = true;
-
-  # Auto-cpufreq settings
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-      energy_performance_preference = "balance_power";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
-
-  # Enable firewall
-  networking.firewall.enable = true;
 
   # NixOS garbage control - removes older generations
   nix.gc = {

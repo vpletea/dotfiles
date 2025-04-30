@@ -1,21 +1,21 @@
 { pkgs, inputs, ...}:
 
 {
-  nix.settings.experimental-features = "nix-command flakes";
-  # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
-  nixpkgs.config.allowUnfree = true;
-  environment.pathsToLink = [ "/share/zsh" ];
+  imports =
+  [
+    ../config/global.nix
+  ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
   # nix.package = pkgs.nix;
   security.pam.enableSudoTouchIdAuth = true;
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;
+
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 4;
 
+  # Hobrew packages - GUI apps not availbale in nix repo
   homebrew = {
     enable = true;
     onActivation = {
@@ -38,11 +38,7 @@
     ];
   };
 
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
-
+  # Macos quality of life settings
   system.startup.chime = false;
   system.defaults = {
     dock.mru-spaces = false;
@@ -61,6 +57,5 @@
     finder._FXShowPosixPathInTitle = true;
     screencapture.location = "~/Pictures";
   };
-
 
 }
