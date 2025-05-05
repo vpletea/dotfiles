@@ -33,7 +33,6 @@
       "microsoft-edge"
       "rancher"
       "rectangle"
-      "skype"
       "winbox"
     ];
   };
