@@ -10,6 +10,7 @@
     ../config/ssh.nix
     ../config/starship.nix
     ../config/tools.nix
+    ../config/variables.nix
     ../config/vscode.nix
     ../config/zsh.nix
   ];
