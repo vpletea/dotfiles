@@ -23,7 +23,7 @@
   home.packages = with pkgs; [
     android-tools
     ansible
-    authenticator
+    bitwarden
     gnomeExtensions.dash-to-dock
     k3d
     kubectl
