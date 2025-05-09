@@ -27,6 +27,7 @@
       "adobe-acrobat-reader"
       "amazon-workspaces"
       "android-platform-tools"
+      "bitwarden"
       "caffeine"
       "firefox"
       "google-chrome"
