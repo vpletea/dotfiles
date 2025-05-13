@@ -35,7 +35,7 @@
       ssh-add -q ~/.ssh/github.key
       export TERM=xterm
 
-      #Paths for M1mac
+      #Paths for macOS
       if [[ $(uname -m) == 'arm64' ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
         export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
