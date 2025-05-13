@@ -22,8 +22,6 @@
     ansible
     htop
     k3d
-    kubectl
-    kubernetes-helm
     terraform
     zsh-fzf-history-search
     zsh-fzf-tab
