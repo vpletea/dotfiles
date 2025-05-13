@@ -40,7 +40,7 @@ Software:
 | wget | present | fedora/macos | brew |  |
 | fira code nerdfont | present | fedora/macos | brew |  |
 | droid sans mono | present | fedora/macos | brew |  |
-| onlyoffice | present | fedora | brew | third party repo | |
+| onlyoffice | present | fedora | dnf | third party repo | |
 | vlc | present | fedora | dnf |  |
 | kitty | present | macos | brew |  |
 | kitty | present | fedora | dnf |  |
