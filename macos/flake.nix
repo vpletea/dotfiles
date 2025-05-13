@@ -22,9 +22,7 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
     modules = [
       ./host.nix
       {
-        # Define your hostname.
         networking.hostName = "${macos-hostname}";
-        # Define user account
         users.users."${macos-username}" = {
           name = "${macos-username}";
           home = "/Users/${macos-username}";
