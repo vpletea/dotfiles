@@ -15,9 +15,4 @@
   programs.zsh.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];
 
-  # Install nerdfonts
-  fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
-
 }

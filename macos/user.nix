@@ -26,6 +26,8 @@
     zsh-fzf-history-search
     zsh-fzf-tab
     zsh-nix-shell
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   # User settings

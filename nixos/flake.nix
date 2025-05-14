@@ -21,9 +21,7 @@
       /etc/nixos/hardware-configuration.nix
       ./host.nix
       {
-        # Define your hostname.
         networking.hostName = "${nixos-hostname}";
-        # Define user account
         users.users."${nixos-username}" = {
           isNormalUser = true;
           description = nixos-username;

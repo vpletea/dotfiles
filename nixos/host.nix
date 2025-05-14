@@ -65,6 +65,11 @@
     pulse.enable = true;
   };
 
+  # Install nerdfonts
+  fonts.packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
+
   # Configure printing - with drivers for hp printers
   services.printing = {
     enable = true;
