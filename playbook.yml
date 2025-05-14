@@ -6,11 +6,11 @@
   tasks:
     # only if Gnome Workstation...
     - include_role:
-        name: role-gnome-settings
+        name: gnome
       when: lookup('env', 'XDG_CURRENT_DESKTOP') != ''
 
     - include_role:
-        name: role-install-tools
+        name: tools
 
     - include_role:
-        name: role-setup-terminal
+        name: terminal
