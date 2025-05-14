@@ -1,0 +1,45 @@
+---
+- name: install packages
+  become: yes
+  ansible.builtin.package:
+    state: latest
+    name:
+      - awscli2
+      - bat
+      - cargo
+      - flameshot
+      - gimp
+      - git
+      - golang
+      - htop
+      - inkscape
+      - kubernetes-client
+      - make
+      - micro
+      - openssl
+      - rust
+      - snapd
+      - telnet
+      - tilix
+      - transmission
+      - tree
+      - vim
+      - vlc
+      - youtube-dl
+      - zsh
+
+- name: enable classic snap support, enter the following to create a symbolic link between /var/lib/snapd/snap and /snap
+  become: yes
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+
+- name: install packages from snapd
+  become: yes
+  community.general.snap:
+    classic: true
+    name:
+      - pycharm-community
+      - code
+      - telegram-desktop

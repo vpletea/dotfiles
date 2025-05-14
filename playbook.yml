@@ -1,0 +1,16 @@
+---
+- name: Configure My Fedora :)
+  gather_facts: true
+  hosts: localhost
+  connection: local
+  tasks:
+    # only if Gnome Workstation...
+    - include_role:
+        name: role-gnome-settings
+      when: lookup('env', 'XDG_CURRENT_DESKTOP') != ''
+
+    - include_role:
+        name: role-install-tools
+
+    - include_role:
+        name: role-setup-terminal

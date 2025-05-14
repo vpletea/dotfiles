@@ -1,0 +1,19 @@
+---
+- name: install tools (brew install --cask)
+  community.general.homebrew_cask:
+    state: latest
+    name: "{{ item }}"
+  loop:
+    - iterm2
+
+- name: install tools (brew install)
+  community.general.homebrew:
+    state: latest
+    name: "{{ item }}"
+  loop:
+    - colordiff
+    - fd
+    - git
+    - fzf
+    - zsh
+    - starship

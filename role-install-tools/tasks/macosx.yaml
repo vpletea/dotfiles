@@ -1,0 +1,36 @@
+---
+- community.general.homebrew:
+    update_homebrew: true
+
+- community.general.homebrew:
+    state: latest
+    name: "{{ item }}"
+  loop:
+    - awscli
+    - bash
+    - bat
+    - git
+    - golang
+    - htop
+    - kubectl
+    - kubectx
+    - make
+    - micro
+    - openssl
+    - python
+    - rust
+    - telnet
+    - tree
+    - vim
+
+- community.general.homebrew_cask:
+    state: latest
+    name: "{{ item }}"
+  loop:
+    - visual-studio-code
+    - flameshot
+    - inkscape
+    - pycharm-ce
+    - telegram
+    - rancher
+    - gimp
