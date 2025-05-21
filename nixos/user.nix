@@ -30,7 +30,6 @@
     kubernetes-helm
     onlyoffice-desktopeditors
     terraform
-    ventoy-full # Use "sudo ventoy-web" for the Web GUI
     vlc
     firefox
     google-chrome
