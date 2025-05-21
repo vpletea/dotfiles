@@ -33,6 +33,8 @@
     vlc
     firefox
     google-chrome
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
     zsh-fzf-history-search
     zsh-fzf-tab
     zsh-nix-shell
