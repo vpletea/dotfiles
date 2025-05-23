@@ -25,6 +25,7 @@
     firefox
     google-chrome
     onlyoffice-desktopeditors
+    nerd-fonts.jetbrains-mono
   ];
 
   # User settings
