@@ -73,5 +73,5 @@ alias lt='eza --tree'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 if [[ $TERM != "dumb" ]]; then
-  eval "$(/usr/bin/starship init zsh)"
+  eval "$(starship init zsh)"
 fi
