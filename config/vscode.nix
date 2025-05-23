@@ -51,6 +51,7 @@
       "workbench.startupEditor" = "none";
       "workbench.editor.historyBasedLanguageDetection" = true;
       "workbench.editor.languageDetection" = true;
+      "terminal.integrated.defaultProfile.osx" = "zsh";
     };
   };
 }
