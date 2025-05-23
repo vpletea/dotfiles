@@ -57,4 +57,8 @@
   };
   # Enable touch id for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
+  # Zsh settings
+  users.defaultUserShell = pkgs.zsh;
+  programs.starship.enable = true;
+  programs.zsh.enable = true;
 }
