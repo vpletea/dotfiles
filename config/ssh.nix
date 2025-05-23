@@ -8,6 +8,7 @@
     StrictHostKeyChecking no
     CanonicalizeHostname yes
     CanonicalDomains h-net.xyz
+    AddKeysToAgent yes
     Host github.com
         User vpletea
         HostName github.com
