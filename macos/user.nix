@@ -29,6 +29,8 @@
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
 	];
+  # Enable zsh
+  programs.zsh.enable = true;
 
   home.file = {
     ".zshrc".source = ../config/zshrc;

@@ -6,8 +6,6 @@
     ../config/global.nix
   ];
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 5;
 
@@ -57,5 +55,6 @@
     finder._FXShowPosixPathInTitle = true;
     screencapture.location = "~/Pictures";
   };
-
+  # Enable touch id for sudo
+  security.pam.services.sudo_local.touchIdAuth = true;
 }
