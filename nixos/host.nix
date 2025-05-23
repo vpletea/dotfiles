@@ -74,6 +74,9 @@
   # SSH agent setup
   programs.ssh.startAgent = true;
 
+  # Yubikey required service
+  services.pcscd.enable = true;
+
   # NixOS garbage control - removes older generations
   nix.gc = {
     automatic = true;
