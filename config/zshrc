@@ -61,16 +61,16 @@ bindkey "^[[A" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "^[[B" history-substring-search-down
 
-#Aliases
-alias cat='bat --theme=zenburn'
-alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
-alias grep='grep -n --color'
-alias la='eza -a'
-alias ll='ls -alh'
-alias ls='eza'
-alias lt='eza --tree'
-alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
-alias kd='k3d cluster delete'
+# #Aliases
+# alias cat='bat --theme=zenburn'
+# alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
+# alias grep='grep -n --color'
+# alias la='eza -a'
+# alias ll='ls -alh'
+# alias ls='eza'
+# alias lt='eza --tree'
+# alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
+# alias kd='k3d cluster delete'
 
 # Shell integrations
 eval "$(fzf --zsh)"
