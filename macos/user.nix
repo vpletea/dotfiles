@@ -20,6 +20,7 @@
     htop
     k3d
     terraform
+    nerd-fonts.jetbrains-mono
   ];
 
   # User settings

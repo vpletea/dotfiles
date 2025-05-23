@@ -18,7 +18,7 @@
     };
     themeFile = "Catppuccin-Mocha";
     font = {
-      name = "FiraCode Nerd Font";
+      name = "JetBrainsMono Nerd Font Mono";
       size = 18;
     };
     keybindings = {

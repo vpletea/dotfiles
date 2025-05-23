@@ -23,7 +23,7 @@
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.bracketPairColorization.enabled" = true;
-      "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono', 'monospace', monospace";
       "editor.fontSize" = 18;
       "editor.formatOnSave" = false;
       "editor.formatOnType" = true;
@@ -42,7 +42,7 @@
       "git.mergeEditor" = true;
       "gitblame.inlineMessageEnabled" = true;
       "telemetry.telemetryLevel" = "off";
-      "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
+      "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font Mono', 'monospace', monospace";
       "terminal.integrated.fontSize" = 18;
       "update.mode" = "none";
       "update.showReleaseNotes" = false;
