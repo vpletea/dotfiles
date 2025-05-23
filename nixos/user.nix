@@ -8,7 +8,7 @@
     ../config/gnome.nix
     ../config/kitty.nix
     ../config/ssh.nix
-    ../config/starship.nix
+    # ../config/starship.nix
     ../config/tools.nix
     ../config/vscode.nix
     # ../config/zsh.nix
@@ -34,9 +34,13 @@
     homeDirectory = "/home/${nixos-username}";
   };
 
+  # Enable zsh and starship
+  programs.zsh.enable = true;
+  programs.starship.enable = true;
 
   home.file = {
     ".zshrc".source = ../config/zshrc;
+    ".config/starship.toml".source = ../config/starship.toml;
   };
 
   # AutoUpgrade settings
