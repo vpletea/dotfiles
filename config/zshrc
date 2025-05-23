@@ -75,6 +75,4 @@ alias kd='k3d cluster delete'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-if [[ $TERM != "dumb" ]]; then
-  eval "$(starship init zsh)"
-fi
+eval "$(starship init zsh)"
