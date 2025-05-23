@@ -18,8 +18,8 @@
     };
     themeFile = "Catppuccin-Mocha";
     font = {
-      name = "FiraCode Nerd Font";
-      size = 15;
+      name = "JetBrainsMono Nerd Font Mono";
+      size = 18;
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";

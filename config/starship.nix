@@ -1,5 +1,4 @@
 { pkgs, lib, inputs, customArgs, ... }:
-
 {
   # User shell and prompt setup
   programs.starship = {
@@ -11,4 +10,5 @@
       };
     };
   };
+
 }

@@ -2,10 +2,10 @@
   description = "MacOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-darwin.url = "github:lnl7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -24,6 +24,9 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       {
         # Define your hostname.
         networking.hostName = "${macos-hostname}";
+        system.primaryUser = "${macos-username}";
+        # Allow unfree software
+        nixpkgs.config.allowUnfree = true;
         # Define user account
         users.users."${macos-username}" = {
           name = "${macos-username}";

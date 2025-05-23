@@ -26,6 +26,7 @@
   # Nixos specific zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.starship.enable = true;
+  programs.zsh.enable = true;
 
   # Newtorking settings
   networking.networkmanager.enable = true;
@@ -56,7 +57,7 @@
   virtualisation.docker.enableOnBoot = false;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -73,6 +74,9 @@
 
   # SSH agent setup
   programs.ssh.startAgent = true;
+
+  # Yubikey required service
+  services.pcscd.enable = true;
 
   # NixOS garbage control - removes older generations
   nix.gc = {

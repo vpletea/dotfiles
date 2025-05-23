@@ -1,5 +1,6 @@
 { pkgs, lib, inputs, customArgs, ... }:
 
+
 {
   # SSH setup
   programs.ssh = {
@@ -8,13 +9,11 @@
     StrictHostKeyChecking no
     CanonicalizeHostname yes
     CanonicalDomains h-net.xyz
-    Host github
-      HostName github.com
-      User vpletea
-      IdentityFile ~/.ssh/github.key
+    Host github.com
+        User vpletea
+        HostName github.com
     Host *.h-net.xyz
-      User devops
-      IdentityFile ~/.ssh/homelab.key
+        User devops
     '';
   };
 }
