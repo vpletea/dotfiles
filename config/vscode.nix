@@ -24,7 +24,7 @@
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-      "editor.fontSize" = 15;
+      "editor.fontSize" = 18;
       "editor.formatOnSave" = false;
       "editor.formatOnType" = true;
       "editor.guides.bracketPairs" = true;
@@ -43,7 +43,7 @@
       "gitblame.inlineMessageEnabled" = true;
       "telemetry.telemetryLevel" = "off";
       "terminal.integrated.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
-      "terminal.integrated.fontSize" = 15;
+      "terminal.integrated.fontSize" = 18;
       "update.mode" = "none";
       "update.showReleaseNotes" = false;
       "window.restoreWindows" = "folders";

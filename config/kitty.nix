@@ -19,7 +19,7 @@
     themeFile = "Catppuccin-Mocha";
     font = {
       name = "FiraCode Nerd Font";
-      size = 15;
+      size = 18;
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
