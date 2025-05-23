@@ -53,6 +53,7 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt glob_dots
+unsetopt BEEP
 
 # Key bindings
 bindkey "$terminfo[kcuu1]" history-substring-search-up
