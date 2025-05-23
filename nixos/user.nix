@@ -11,7 +11,7 @@
     ../config/starship.nix
     ../config/tools.nix
     ../config/vscode.nix
-    ../config/zsh.nix
+    # ../config/zsh.nix
   ];
 
   # No need to change the version
@@ -22,28 +22,21 @@
 
   home.packages = with pkgs; [
     android-tools
-    ansible
     bitwarden
     gnomeExtensions.dash-to-dock
-    k3d
-    kubectl
-    kubernetes-helm
-    onlyoffice-desktopeditors
-    terraform
     vlc
     firefox
     google-chrome
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-    zsh-fzf-history-search
-    zsh-fzf-tab
-    zsh-nix-shell
   ];
 
   # User settings
   home = {
     username = "${nixos-username}";
     homeDirectory = "/home/${nixos-username}";
+  };
+
+  home.file = {
+    ".zshrc".source = ~/.zshrc;
   };
 
   # AutoUpgrade settings

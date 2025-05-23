@@ -1,0 +1,77 @@
+# Custom plugin manager for zsh
+export ZDOTDIR=$HOME/.config/zsh
+function zsh_add_file() {
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
+
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
+        # For plugins
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+    fi
+}
+
+# Plugins list
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-history-substring-search"
+zsh_add_plugin "Aloxaf/fzf-tab"
+zsh_add_plugin "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
+
+# Completion case unsesitive
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Combines ls and fzf for cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Load completions
+autoload -Uz compinit && compinit
+
+#SSH fix for kitty
+export TERM=xterm
+
+#Paths for macOS
+if [[ $(uname -m) == 'arm64' ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
+fi
+
+# ZSH options
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt glob_dots
+
+# Key bindings
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "^[[A" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[B" history-substring-search-down
+
+#Aliases
+alias cat='bat --theme=zenburn'
+alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
+alias grep='grep -n --color'
+alias la='eza -a'
+alias ll='ls -alh'
+alias ls='eza'
+alias lt='eza --tree'
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+if [[ $TERM != "dumb" ]]; then
+  eval "$(/usr/bin/starship init zsh)"
+fi
