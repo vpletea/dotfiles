@@ -34,10 +34,11 @@ autoload -Uz compinit && compinit
 #SSH fix for kitty
 export TERM=xterm
 
-#Paths for macOS
+# MacOS specific config
 if [[ $(uname -m) == 'arm64' ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
+    eval "$(ssh-agent -s)" > /dev/null
 fi
 
 # ZSH options
