@@ -30,8 +30,9 @@
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
 	];
-  # Enable zsh
+  # Enable zsh and starship
   programs.zsh.enable = true;
+  programs.starship.enable = true;
 
   home.file = {
     ".zshrc".source = ../config/zshrc;
