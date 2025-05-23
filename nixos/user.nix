@@ -35,8 +35,9 @@
     homeDirectory = "/home/${nixos-username}";
   };
 
+
   home.file = {
-    "./config/zshrc".source = ~/.zshrc;
+    ".zshrc".source = ../config/zshrc;
   };
 
   # AutoUpgrade settings
