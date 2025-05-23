@@ -36,7 +36,7 @@
   };
 
   home.file = {
-    ".zshrc".source = ~/.zshrc;
+    "../config/zshrc".source = ~/.zshrc;
   };
 
   # AutoUpgrade settings
