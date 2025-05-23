@@ -3,14 +3,14 @@
 {
   imports =
   [
-    ../config/aliases.nix
+    # ../config/aliases.nix
     ../config/git.nix
     ../config/kitty.nix
     ../config/ssh.nix
     ../config/starship.nix
     ../config/tools.nix
     ../config/vscode.nix
-    ../config/zsh.nix
+    # ../config/zsh.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
@@ -23,9 +23,6 @@
     htop
     k3d
     terraform
-    zsh-fzf-history-search
-    zsh-fzf-tab
-    zsh-nix-shell
   ];
 
   # User settings
@@ -35,6 +32,11 @@
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
 	];
+
+  home.file = {
+    ".zshrc".source = ../config/zshrc;
+  };
+
   # Garbage control - removes older generations
   nix.gc = {
     automatic = true;

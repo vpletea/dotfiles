@@ -19,9 +19,8 @@ function zsh_add_plugin() {
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
-zsh_add_plugin "chisui/zsh-nix-shell"
-zsh_add_plugin "Aloxaf/fzf-tab"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
+zsh_add_plugin "Aloxaf/fzf-tab"
 
 # Completion case unsesitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
