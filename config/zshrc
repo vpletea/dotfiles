@@ -40,6 +40,14 @@ if [[ $(uname -m) == 'arm64' ]]; then
     export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
 fi
 
+# Kitty specific config
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
+
 # ZSH options
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
