@@ -15,9 +15,6 @@
   # No need to change the version
   home.stateVersion = "24.05";
 
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
-
   home.packages = with pkgs; [
     ansible
     htop

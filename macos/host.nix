@@ -6,14 +6,10 @@
     ../config/global.nix
   ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
-  # nix.package = pkgs.nix;
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   # Hobrew packages - GUI apps not availbale in nix repo
   homebrew = {
@@ -23,6 +19,9 @@
       cleanup = "uninstall";
       upgrade = true;
     };
+    brews = [
+      "openssh"
+    ];
     casks = [
       "adobe-acrobat-reader"
       "amazon-workspaces"
@@ -37,6 +36,7 @@
       "winbox"
     ];
   };
+
 
   # Macos quality of life settings
   system.startup.chime = false;

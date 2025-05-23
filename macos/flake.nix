@@ -24,6 +24,9 @@ outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
       {
         # Define your hostname.
         networking.hostName = "${macos-hostname}";
+        system.primaryUser = "${macos-username}";
+        # Allow unfree software
+        nixpkgs.config.allowUnfree = true;
         # Define user account
         users.users."${macos-username}" = {
           name = "${macos-username}";
