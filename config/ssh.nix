@@ -6,12 +6,12 @@
   programs.ssh = {
     enable = true;
     extraConfig = ''
-    StrictHostKeyChecking no
     CanonicalizeHostname yes
     CanonicalDomains h-net.xyz
     Host github.com
         User vpletea
         HostName github.com
+        StrictHostKeyChecking no
     Host *.h-net.xyz
         User devops
     '';
