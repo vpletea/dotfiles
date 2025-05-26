@@ -38,10 +38,7 @@ export TERM=xterm
 if [[ $(uname -m) == 'arm64' ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
-    # # launchctl load /Library/LaunchAgents/com.nix.ssh-agent.plist
-    # ssh-add id_ed25519_sk
-    launchctl stop com.openssh.ssh-agent                                                                                                                  main[!] took 37s
-    sudo launchctl disable system/com.openssh.ssh-agent
+    launchctl stop com.openssh.ssh-agent
 fi
 
 # Kitty specific config
@@ -72,9 +69,6 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "^[[A" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey "^[[B" history-substring-search-down
-
-# # Add ssh key from Yubikey
-# ssh-add -K
 
 #Aliases
 alias cat='bat --theme=zenburn'
