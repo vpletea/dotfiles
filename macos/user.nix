@@ -21,6 +21,7 @@
     k3d
     terraform
     nerd-fonts.jetbrains-mono
+    # openssh
   ];
 
   # User settings

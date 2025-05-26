@@ -38,6 +38,10 @@ export TERM=xterm
 if [[ $(uname -m) == 'arm64' ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
+    # # launchctl load /Library/LaunchAgents/com.nix.ssh-agent.plist
+    # ssh-add id_ed25519_sk
+    launchctl stop com.openssh.ssh-agent                                                                                                                  main[!] took 37s
+    sudo launchctl disable system/com.openssh.ssh-agent
 fi
 
 # Kitty specific config
