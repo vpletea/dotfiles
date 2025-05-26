@@ -17,9 +17,6 @@
       cleanup = "uninstall";
       upgrade = true;
     };
-    brews = [
-      "openssh"
-    ];
     casks = [
       "adobe-acrobat-reader"
       "amazon-workspaces"

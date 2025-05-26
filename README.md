@@ -19,6 +19,8 @@
   ```
   darwin-rebuild switch --flake .#macos
   ```
+- Note on ssh_sk keys: add the sk key by using the command ``` ssh-keygen -K ``` and rename the imported key to something like ``` id_ed25519_sk ```
+
 
 ### NixOS
 - Install Nixos with Gnome Desktop from https://nixos.org/download/#nix-install-linux
