@@ -3,23 +3,18 @@
 {
   imports =
   [
-    # ../config/aliases.nix
     ../config/git.nix
     ../config/kitty.nix
     ../config/ssh.nix
-    # ../config/starship.nix
     ../config/tools.nix
     ../config/vscode.nix
-    # ../config/zsh.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    ansible
+    devbox
     htop
-    k3d
-    terraform
     nerd-fonts.jetbrains-mono
     openssh
   ];
