@@ -21,7 +21,7 @@
   ```
 - Note on ssh_sk keys:
     - Import the key using ``` ssh-keygen -K ```
-    - Add the imported key via zshrc using this line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
+    - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
 
 
 ### NixOS
