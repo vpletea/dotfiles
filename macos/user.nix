@@ -3,7 +3,6 @@
 {
   imports =
   [
-    # ../config/aliases.nix
     ../config/git.nix
     ../config/kitty.nix
     ../config/ssh.nix
