@@ -59,3 +59,13 @@
   ```
   sudo nixos-rebuild switch --impure --flake .#nixos
   ```
+
+###
+- Sample devbox.json file:
+  ```
+   {
+      "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
+      "packages": ["k3d", "terraform", "kubectl", "kubernetes-helm"],
+   }
+   ```
+- Place this in your git folder project and run ``` devbox shell ```
