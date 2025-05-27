@@ -28,8 +28,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Combines ls and fzf for cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-# Load completions
-autoload -Uz compinit && compinit
+# Smarter completion initialization
+export skip_global_compinit=1
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
 
 #SSH fix for kitty
 export TERM=xterm
@@ -53,6 +59,8 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 # ZSH options
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
