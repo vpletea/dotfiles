@@ -8,24 +8,22 @@
     ../config/gnome.nix
     ../config/kitty.nix
     ../config/ssh.nix
-    # ../config/starship.nix
     ../config/tools.nix
     ../config/vscode.nix
-    # ../config/zsh.nix
   ];
 
   # No need to change the version
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    android-tools
     bitwarden
-    gnomeExtensions.dash-to-dock
-    vlc
+    devbox
     firefox
+    gnomeExtensions.dash-to-dock
     google-chrome
-    onlyoffice-desktopeditors
     nerd-fonts.jetbrains-mono
+    onlyoffice-desktopeditors
+    vlc
   ];
 
   # User settings
