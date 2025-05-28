@@ -3,6 +3,7 @@
   # Vscode Setup
   programs.vscode = {
     enable = true;
+    package = pkgs.vscodium;
     mutableExtensionsDir = true;
     profiles.default = {
       enableUpdateCheck = false;

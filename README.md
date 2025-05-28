@@ -1,6 +1,6 @@
 # Flake installation
 ### MacOS
-- Install Nix using Lix installer: https://lix.systems/install/
+- Install Nix from: https://nixos.org/download/#nix-install-macos
 - Install Homebrew from:  https://brew.sh/
 - Run git:
   ```
@@ -13,15 +13,15 @@
   ```
 - Install the flake:
   ```
-  nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
+  sudo nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
   ```
 - After the first run we can use:
   ```
-  darwin-rebuild switch --flake .#macos
+  sudo darwin-rebuild switch --flake .#macos
   ```
 - Note on ssh_sk keys:
     - Import the key using ``` ssh-keygen -K ```
-    - Add the imported key via zshrc using this line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
+    - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
 
 
 ### NixOS
