@@ -7,7 +7,7 @@
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
-        "code.desktop"
+        "codium.desktop"
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
