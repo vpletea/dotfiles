@@ -13,8 +13,8 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    devbox
     htop
+    mise
     nerd-fonts.jetbrains-mono
     openssh
   ];

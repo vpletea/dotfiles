@@ -16,10 +16,10 @@
 
   home.packages = with pkgs; [
     bitwarden
-    devbox
     firefox
     gnomeExtensions.dash-to-dock
     google-chrome
+    mise
     nerd-fonts.jetbrains-mono
     onlyoffice-desktopeditors
     vlc
