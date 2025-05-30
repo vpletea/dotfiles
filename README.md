@@ -61,11 +61,10 @@
   ```
 
 ###
-- Sample devbox.json file:
+- For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file:
   ```
-   {
-      "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
-      "packages": ["k3d", "terraform", "kubectl", "kubernetes-helm"],
-   }
+  [tools]
+  "aqua:hashicorp/terraform" = "1.12.1"
+  "aqua:ahmetb/kubectx" = "latest"
    ```
-- Place this in your git folder project and run ``` devbox shell ```
+- Place this in your git folder project and run ``` mise install ```
