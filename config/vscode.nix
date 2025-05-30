@@ -26,7 +26,7 @@
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.bracketPairColorization.enabled" = true;
         "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono', 'monospace', monospace";
-        "editor.fontSize" = 18;
+        "editor.fontSize" = 16;
         "editor.formatOnSave" = false;
         "editor.formatOnType" = true;
         "editor.guides.bracketPairs" = true;

@@ -19,7 +19,7 @@
     themeFile = "Catppuccin-Mocha";
     font = {
       name = "JetBrainsMono Nerd Font Mono";
-      size = 18;
+      size = 16;
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
