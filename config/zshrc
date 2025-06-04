@@ -1,3 +1,36 @@
+# ZSH Completions:
+# Case unsesitive
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Combines ls and fzf for cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# Load completions
+autoload -Uz compinit && compinit
+
+# ZSH options
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt glob_dots
+unsetopt BEEP
+
+# Key bindings
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "^[[A" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[B" history-substring-search-down
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# Load zsh plugins
 # Custom plugin manager for zsh
 export ZPLUGINS=$HOME/.config/zsh
 function zsh_add_file() {
@@ -22,15 +55,6 @@ zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
 zsh_add_plugin "Aloxaf/fzf-tab"
 
-# Completion case unsesitive
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-# Combines ls and fzf for cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
-# Load completions
-autoload -Uz compinit && compinit
-
 #SSH fix for kitty
 export TERM=xterm
 
@@ -52,27 +76,6 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     unfunction kitty-integration
 fi
 
-# ZSH options
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt glob_dots
-unsetopt BEEP
-
-# Key bindings
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "^[[A" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "^[[B" history-substring-search-down
-
 #Aliases
 alias cat='bat --theme=zenburn'
 alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
@@ -89,4 +92,3 @@ alias code='codium'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(mise activate zsh)"
-eval "$(starship init zsh)"
