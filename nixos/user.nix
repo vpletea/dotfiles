@@ -19,10 +19,9 @@
     firefox
     gnomeExtensions.dash-to-dock
     google-chrome
-    mise
-    nerd-fonts.jetbrains-mono
     onlyoffice-desktopeditors
     vlc
+    winbox4
   ];
 
   # User settings

@@ -14,8 +14,6 @@
 
   home.packages = with pkgs; [
     htop
-    mise
-    nerd-fonts.jetbrains-mono
     openssh
   ];
 

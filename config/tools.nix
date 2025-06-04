@@ -26,4 +26,8 @@
       style = "plain";
     };
   };
+  home.packages = with pkgs; [
+    mise
+    nerd-fonts.jetbrains-mono
+  ];
 }
