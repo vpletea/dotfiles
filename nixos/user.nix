@@ -30,10 +30,6 @@
     homeDirectory = "/home/${nixos-username}";
   };
 
-  # Enable zsh and starship
-  programs.zsh.enable = true;
-  programs.starship.enable = true;
-
   home.file = {
     ".zshrc".source = ../config/zshrc;
     ".config/starship.toml".source = ../config/starship.toml;
