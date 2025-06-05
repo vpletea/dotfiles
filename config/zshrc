@@ -6,19 +6,13 @@ PLUGIN_DIR="$HOME/.config/zsh"
 PLUGIN_LOCK="$PLUGIN_DIR/.plugins.lock"
 [ -d "$PLUGIN_DIR" ] || mkdir -p "$PLUGIN_DIR"
 
-# Reinstall function
-update-plugins() {
-  rm -fr "$PLUGIN_DIR"
-  echo "Plugin lock removed. Restart your shell to reinstall plugins."
-}
-
 # Define plugins: "github_repo name"
 plugins=(
 "romkatv/zsh-defer"
 "zsh-users/zsh-autosuggestions"
 "zsh-users/zsh-history-substring-search"
 "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
-"Aloxaf/fzf-tab"
+"aloxaf/fzf-tab"
 "zsh-users/zsh-syntax-highlighting"
 )
 
@@ -34,15 +28,14 @@ if [ ! -f "$PLUGIN_LOCK" ]; then
 fi
 
 # Source plugins
-fpath+=($PLUGIN_DIR/zsh-defer)
-autoload -Uz zsh-defer
+source "$PLUGIN_DIR/zsh-defer/zsh-defer.plugin.zsh"
+source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Defer loading
+zsh-defer source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 zsh-defer source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
 zsh-defer source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 zsh-defer source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
-zsh-defer source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-zsh-defer source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 #SSH fix for kitty
 export TERM=xterm
@@ -90,9 +83,9 @@ unsetopt BEEP
 
 
 # Case unsesitive cd completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zsh-defer zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Combines ls and fzf for cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zsh-defer zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Initialize completions with defer
 autoload -Uz compinit
@@ -101,7 +94,6 @@ if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; t
 else
     zsh-defer compinit -C
 fi
-
 
 #Aliases
 alias cat='bat --theme=zenburn'
@@ -116,6 +108,6 @@ alias kd='k3d cluster delete'
 alias code='codium'
 
 # Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(mise activate zsh)"
+zsh-defer eval "$(fzf --zsh)"
+zsh-defer eval "$(zoxide init --cmd cd zsh)"
+zsh-defer eval "$(mise activate zsh)"
