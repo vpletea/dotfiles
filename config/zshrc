@@ -1,43 +1,16 @@
-# ZSH Completions:
-# Case unsesitive
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-# Combines ls and fzf for cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-# Smarter completion initialization
-autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    compinit
-else
-    compinit -C
-fi
-
-# ZSH options
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt glob_dots
-unsetopt BEEP
-
-# Key bindings
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "^[[A" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "^[[B" history-substring-search-down
-
 # Starship prompt
 eval "$(starship init zsh)"
 
-# Load zsh plugins
+# MacOS specific config
+if [[ $(uname -m) == 'arm64' ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
+    # SSH agent setup
+    launchctl stop com.openssh.ssh-agent
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
+fi
+
 # Custom plugin manager for zsh
 export ZPLUGINS=$HOME/.config/zsh
 function zsh_add_file() {
@@ -57,23 +30,13 @@ function zsh_add_plugin() {
 
 # Plugins list
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
 zsh_add_plugin "Aloxaf/fzf-tab"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
 #SSH fix for kitty
 export TERM=xterm
-
-# MacOS specific config
-if [[ $(uname -m) == 'arm64' ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
-    # SSH agent setup
-    launchctl stop com.openssh.ssh-agent
-    eval "$(ssh-agent -s)" > /dev/null
-    ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
-fi
 
 # Kitty specific config
 if test -n "$KITTY_INSTALLATION_DIR"; then
@@ -81,6 +44,43 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+fi
+
+# Key bindings
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "^[[A" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[B" history-substring-search-down
+
+# ZSH options
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt glob_dots
+unsetopt BEEP
+
+
+# Case unsesitive cd completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Combines ls and fzf for cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Smarter completion initialization
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
 fi
 
 #Aliases
