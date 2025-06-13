@@ -68,11 +68,14 @@
   ```
 
 ###
-- For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file:
+- For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file below. Note that for ansible you have to add python and pipx in that file:
   ```
-   [tools]
+  [tools]
   "terraform" = "1.12.1"
   "kubectx" = "latest"
   "kubectl" = "latest"
+  "ansible" = "latest"
+  "python" = "latest"
+  "pipx" = "latest"
    ```
 - Place this in your git folder project and run ``` mise install ```

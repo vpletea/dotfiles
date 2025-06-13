@@ -31,8 +31,5 @@
   home.packages = with pkgs; [
     mise
     nerd-fonts.jetbrains-mono
-    # Miscellaneous tools for ansible on mise
-    python3
-    pipx
   ];
 }
