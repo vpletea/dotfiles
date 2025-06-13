@@ -1,10 +1,16 @@
 # Flake installation
 ### MacOS
-- Install Nix from: https://nixos.org/download/#nix-install-macos
-- Install Homebrew from:  https://brew.sh/
+- Install Nix:
+  ```
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+  ```
+- Install Homebrew:
+  ```
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
 - Run git:
   ```
-    nix-shell -p git
+  nix-shell -p git
   ```
 - Clone the repo and switch to macos directory:
   ```
