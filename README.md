@@ -63,8 +63,9 @@
 ###
 - For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file:
   ```
-  [tools]
-  "aqua:hashicorp/terraform" = "1.12.1"
-  "aqua:ahmetb/kubectx" = "latest"
+ [tools]
+"terraform" = "1.12.1"
+"kubectx" = "latest"
+"kubectl" = "latest"
    ```
 - Place this in your git folder project and run ``` mise install ```
