@@ -25,11 +25,13 @@
   ```
   sudo darwin-rebuild switch --flake .#macos
   ```
-- Note on ssh_sk keys:
+- Notes:
+- ssh_sk keys:
     - Import the key using ``` ssh-keygen -K ```
     - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
-- If mkdir fails with 'Operation not permitted':
+- mkdir fails with 'Operation not permitted':
     - add nix and determinate-nixd to the "allow full disk access" security list
+- nix complains about $HOME not being owned by your user when using sudo then use sudo -i 
 
 ### NixOS
 - Install Nixos with Gnome Desktop from https://nixos.org/download/#nix-install-linux
