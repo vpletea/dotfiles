@@ -6,12 +6,11 @@ PLUGIN_DIR="$HOME/.config/zsh"
 
 # Define plugins: "github_repo name"
 plugins=(
-"romkatv/zsh-defer"
 "zsh-users/zsh-autosuggestions"
-"zsh-users/zsh-history-substring-search"
-"joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
-"aloxaf/fzf-tab"
 "zsh-users/zsh-syntax-highlighting"
+"zsh-users/zsh-history-substring-search"
+"aloxaf/fzf-tab" # Fuzzy completion and preview for zsh
+"joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
 )
 
 # Only install plugins if plugin directory does not exist
@@ -27,10 +26,10 @@ source "$PLUGIN_DIR/zsh-defer/zsh-defer.plugin.zsh"
 source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Defer loading
-zsh-defer source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-zsh-defer source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
-zsh-defer source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
-zsh-defer source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
+source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
+source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 
 #SSH fix for kitty
 export TERM=xterm
@@ -77,16 +76,16 @@ setopt glob_dots
 unsetopt BEEP
 
 # Case unsesitive cd completion
-zsh-defer zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Combines ls and fzf for cd
-zsh-defer zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-# Initialize completions with defer
+# Initialize completions
 autoload -Uz compinit
 if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    zsh-defer compinit
+    compinit
 else
-    zsh-defer compinit -C
+    compinit -C
 fi
 
 #Aliases
@@ -101,6 +100,6 @@ alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
 alias kd='k3d cluster delete'
 
 # Shell integrations
-zsh-defer eval "$(fzf --zsh)"
-zsh-defer eval "$(zoxide init --cmd cd zsh)"
-zsh-defer eval "$(mise activate zsh)"
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(mise activate zsh)"
