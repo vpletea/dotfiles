@@ -22,10 +22,7 @@ for plugin in "${plugins[@]}"; do
 done
 
 # Source plugins
-source "$PLUGIN_DIR/zsh-defer/zsh-defer.plugin.zsh"
 source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# Defer loading
 source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
 source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
