@@ -29,7 +29,7 @@
     - Import the key using ``` ssh-keygen -K ```
     - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
 - If mkdir fails with 'Operation not permitted':
-    - add nix to the "allow full disk access" security list
+    - add nix and determinate-nixd to the "allow full disk access" security list
 
 ### NixOS
 - Install Nixos with Gnome Desktop from https://nixos.org/download/#nix-install-linux
