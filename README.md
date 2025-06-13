@@ -1,10 +1,16 @@
 # Flake installation
 ### MacOS
-- Install Nix from: https://nixos.org/download/#nix-install-macos
-- Install Homebrew from:  https://brew.sh/
+- Install Nix:
+  ```
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+  ```
+- Install Homebrew:
+  ```
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
 - Run git:
   ```
-    nix-shell -p git
+  nix-shell -p git
   ```
 - Clone the repo and switch to macos directory:
   ```
@@ -22,7 +28,8 @@
 - Note on ssh_sk keys:
     - Import the key using ``` ssh-keygen -K ```
     - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
-
+- If mkdir fails with 'Operation not permitted':
+    - add nix to the "allow full disk access" security list
 
 ### NixOS
 - Install Nixos with Gnome Desktop from https://nixos.org/download/#nix-install-linux
@@ -61,11 +68,11 @@
   ```
 
 ###
-- Sample devbox.json file:
+- For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file:
   ```
-   {
-      "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.2/.schema/devbox.schema.json",
-      "packages": ["k3d", "terraform", "kubectl", "kubernetes-helm"],
-   }
+ [tools]
+"terraform" = "1.12.1"
+"kubectx" = "latest"
+"kubectl" = "latest"
    ```
-- Place this in your git folder project and run ``` devbox shell ```
+- Place this in your git folder project and run ``` mise install ```

@@ -16,13 +16,12 @@
 
   home.packages = with pkgs; [
     bitwarden
-    devbox
     firefox
     gnomeExtensions.dash-to-dock
     google-chrome
-    nerd-fonts.jetbrains-mono
     onlyoffice-desktopeditors
     vlc
+    winbox4
   ];
 
   # User settings
@@ -30,10 +29,6 @@
     username = "${nixos-username}";
     homeDirectory = "/home/${nixos-username}";
   };
-
-  # Enable zsh and starship
-  programs.zsh.enable = true;
-  programs.starship.enable = true;
 
   home.file = {
     ".zshrc".source = ../config/zshrc;

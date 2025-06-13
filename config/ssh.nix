@@ -1,6 +1,5 @@
 { pkgs, lib, inputs, customArgs, ... }:
 
-
 {
   # SSH setup
   programs.ssh = {

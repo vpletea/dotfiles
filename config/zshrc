@@ -1,35 +1,35 @@
+# Starship prompt
+eval "$(starship init zsh)"
+
 # Custom plugin manager for zsh
-export ZPLUGINS=$HOME/.config/zsh
-function zsh_add_file() {
-    [ -f "$ZPLUGINS/$1" ] && source "$ZPLUGINS/$1"
-}
+PLUGIN_DIR="$HOME/.config/zsh"
 
-function zsh_add_plugin() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZPLUGINS/plugins/$PLUGIN_NAME" ]; then
-        # For plugins
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
-    else
-        git clone "https://github.com/$1.git" "$ZPLUGINS/plugins/$PLUGIN_NAME"
-    fi
-}
+# Define plugins: "github_repo name"
+plugins=(
+"zsh-users/zsh-autosuggestions"
+"zsh-users/zsh-syntax-highlighting"
+"zsh-users/zsh-history-substring-search"
+"aloxaf/fzf-tab" # Fuzzy completion and preview for zsh
+"joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
+)
 
-# Plugins list
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "zsh-users/zsh-history-substring-search"
-zsh_add_plugin "joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
-zsh_add_plugin "Aloxaf/fzf-tab"
+# Only install plugins if plugin directory does not exist
+for plugin in "${plugins[@]}"; do
+  plugin_name=${plugin##*/}
+  if [ ! -d "$PLUGIN_DIR/$plugin_name" ]; then
+    git clone --quiet "https://github.com/$plugin" "$PLUGIN_DIR/$plugin_name" --depth=1
+  fi
+done
 
-# Completion case unsesitive
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Source plugins
+source "$PLUGIN_DIR/zsh-defer/zsh-defer.plugin.zsh"
+source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-# Combines ls and fzf for cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
-# Load completions
-autoload -Uz compinit && compinit
+# Defer loading
+source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
+source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 
 #SSH fix for kitty
 export TERM=xterm
@@ -52,7 +52,15 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     unfunction kitty-integration
 fi
 
+# Key bindings
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "^[[A" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[B" history-substring-search-down
+
 # ZSH options
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -67,11 +75,18 @@ setopt hist_find_no_dups
 setopt glob_dots
 unsetopt BEEP
 
-# Key bindings
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "^[[A" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey "^[[B" history-substring-search-down
+# Case unsesitive cd completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Combines ls and fzf for cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Initialize completions
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
 
 #Aliases
 alias cat='bat --theme=zenburn'
@@ -87,4 +102,4 @@ alias kd='k3d cluster delete'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
