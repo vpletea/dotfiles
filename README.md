@@ -26,9 +26,6 @@
   sudo darwin-rebuild switch --flake .#macos
   ```
 - Notes:
-  - ssh_sk keys:
-      - Import the key using ``` ssh-keygen -K ```
-      - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
   - mkdir fails with 'Operation not permitted':
       - add nix and determinate-nixd to the "allow full disk access" security list
   - sudo nix complains about $HOME not being owned by your user
@@ -70,7 +67,7 @@
   sudo nixos-rebuild switch --impure --flake .#nixos
   ```
 
-###
+### Mise
 - For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file below. Note that for ansible you have to add python and pipx in that file:
   ```
   [tools]
@@ -82,3 +79,20 @@
   "pipx" = "latest"
    ```
 - Place this in your git folder project and run ``` mise install ```
+
+### SSH keys - i'm using ssh-keys backed by yubikeys
+- ssh agent:
+    - Import the key using ``` ssh-keygen -K ```
+    - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
+- remote server:
+    - read the public key:
+      ```
+      cat id_ed25519_sk_rk_Yubikey-USB-C.pub
+      sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILQwflbQ5CDJhaGSigNSrq0CmZbL82cdtBY2nylJAM9ZAAAAEXNzaDpZdWJpa2V5LVVTQi1D ssh:Yubikey-USB-C
+      ```
+    - prepare the key by replacing the "ssh:Yubikey-USB-C" with user@server:
+      ```
+      cat .ssh/authorized_keys 
+      sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILQwflbQ5CDJhaGSigNSrq0CmZbL82cdtBY2nylJAM9ZAAAAEXNzaDpZdWJpa2V5LVVTQi1D devops@gcp
+      ```
+
