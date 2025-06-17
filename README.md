@@ -26,6 +26,14 @@
   sudo darwin-rebuild switch --flake .#macos
   ```
 - Notes:
+  - edit /etc/nix/nix.conf to comment the flakehub line:
+    ```
+    #extra-nix-path = nixpkgs=flake:https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*.tar.gz
+    ```
+  - add the nixpkgs line in /etc/nix/nix.custom.conf:
+    ```
+    extra-nix-path = nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
+    ```
   - mkdir fails with 'Operation not permitted':
       - add nix and determinate-nixd to the "allow full disk access" security list
   - sudo nix complains about $HOME not being owned by your user
