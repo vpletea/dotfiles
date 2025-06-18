@@ -9,9 +9,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 5;
 
-  # Required because we use determinate nix installer
-  nix.enable = false;
-
   # Homebrew packages - GUI apps not availbale in nix repo
   homebrew = {
     enable = true;
