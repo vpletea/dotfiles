@@ -15,6 +15,7 @@
     firefox
     gnomeExtensions.dash-to-dock
     google-chrome
+    kitty
     onlyoffice-desktopeditors
     vlc
     winbox4

@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     htop
     openssh
+    kitty
   ];
 
   # User settings
