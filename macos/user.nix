@@ -3,9 +3,9 @@
 {
   imports =
   [
-    ../config/git.nix
-    ../config/kitty.nix
-    ../config/ssh.nix
+    # ../config/git.nix
+    # ../config/kitty.nix
+    # ../config/ssh.nix
     ../config/tools.nix
     ../config/vscode.nix
   ];
@@ -28,6 +28,9 @@
   home.file = {
     ".zshrc".source = ../config/zshrc;
     ".config/starship.toml".source = ../config/starship.toml;
+    ".ssh/config".source = ../config/ssh;
+    ".config/git/config".source = ../config/git;
+    ".config/kitty/kitty.conf".source = ../config/kitty;
   };
 
   # Garbage control - removes older generations
