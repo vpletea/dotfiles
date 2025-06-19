@@ -4,7 +4,6 @@
     imports =
   [
     ../config/tools.nix
-    ../config/vscode.nix
   ];
 
   # No need to change the version
