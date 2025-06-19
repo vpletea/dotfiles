@@ -3,10 +3,6 @@
 
     imports =
   [
-    ../config/git.nix
-    ../config/gnome.nix
-    ../config/kitty.nix
-    ../config/ssh.nix
     ../config/tools.nix
     ../config/vscode.nix
   ];
@@ -31,8 +27,11 @@
   };
 
   home.file = {
-    ".zshrc".source = ../config/zshrc;
+    ".config/git/config".source = ../config/git;
+    ".config/kitty/kitty.conf".source = ../config/kitty;
+    ".ssh/config".source = ../config/ssh;
     ".config/starship.toml".source = ../config/starship.toml;
+    ".zshrc".source = ../config/zshrc;
   };
 
   # AutoUpgrade settings
