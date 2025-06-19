@@ -4,6 +4,9 @@
 
   # Customize Gnome settings
   dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
+    "org/gnome/system/location" = {
+      enabled = true; # Example longitude
+      };
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
