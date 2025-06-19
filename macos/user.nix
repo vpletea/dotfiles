@@ -23,9 +23,9 @@
 	];
 
   home.file = {
-    ".config/git/config".source = ../config/git;
-    ".config/kitty/kitty.conf".source = ../config/kitty;
-    ".ssh/config".source = ../config/ssh;
+    ".config/git/config".source = ../config/git.conf;
+    ".config/kitty/kitty.conf".source = ../config/kitty.conf;
+    ".ssh/config".source = ../config/ssh.conf;
     ".config/starship.toml".source = ../config/starship.toml;
     ".zshrc".source = ../config/zshrc;
   };
