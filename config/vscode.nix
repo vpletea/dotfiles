@@ -18,6 +18,7 @@
         bbenoist.nix
         hashicorp.terraform
         tim-koehler.helm-intellisense
+        tamasfe.even-better-toml
         # Github Copilot
         github.copilot
         github.copilot-chat
