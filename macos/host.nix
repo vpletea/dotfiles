@@ -29,6 +29,7 @@
       "rancher"
       "rectangle"
       "winbox"
+      "zerotier-one"
     ];
   };
 
