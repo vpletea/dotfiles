@@ -5,9 +5,6 @@
   # Enable flakes support
   nix.settings.experimental-features = "nix-command flakes";
 
-    # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
