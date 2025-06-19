@@ -8,6 +8,10 @@
   # No need to change the version
   home.stateVersion = "24.05";
 
+  # Global shell
+  programs.zsh.enable = true;
+  programs.starship.enable = true;
+
   home.packages = with pkgs; [
     htop
     openssh

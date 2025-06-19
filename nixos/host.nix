@@ -23,8 +23,10 @@
 
   # Nixos specific zsh settings
   users.defaultUserShell = pkgs.zsh;
-  programs.starship.enable = true;
   programs.zsh.enable = true;
+
+  # Enable starship prompt
+  programs.starship.enable = true;
 
   # Newtorking settings
   networking.networkmanager.enable = true;
