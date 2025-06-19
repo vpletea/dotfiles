@@ -5,7 +5,7 @@
   # Customize Gnome settings
   dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
     "org/gnome/system/location" = {
-      enabled = true; # Example longitude
+      enabled = true;
       };
     "org/gnome/shell" = {
       favorite-apps = [
