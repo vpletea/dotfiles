@@ -1,10 +1,11 @@
 { pkgs, inputs, ...}:
 
 {
-  imports =
-  [
-    ../config/global.nix
-  ];
+  # Enable flakes support
+  nix.settings.experimental-features = "nix-command flakes";
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   system.stateVersion = 5;
@@ -29,6 +30,7 @@
       "rancher"
       "rectangle"
       "winbox"
+      "zerotier-one"
     ];
   };
 

@@ -1,12 +1,12 @@
 { pkgs, inputs, ...}:
 
 {
-  imports =
-  [
-    ../config/global.nix
-    ../config/graphics.nix
-    ../config/power.nix
-  ];
+
+  # Enable flakes support
+  nix.settings.experimental-features = "nix-command flakes";
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Bootloader setup
   boot.loader.systemd-boot.enable = true;
@@ -25,8 +25,10 @@
 
   # Nixos specific zsh settings
   users.defaultUserShell = pkgs.zsh;
-  programs.starship.enable = true;
   programs.zsh.enable = true;
+
+  # Enable starship prompt
+  programs.starship.enable = true;
 
   # Newtorking settings
   networking.networkmanager.enable = true;
@@ -77,6 +79,54 @@
 
   # Yubikey required service
   services.pcscd.enable = true;
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+  services.xserver.excludePackages = [pkgs.xterm];
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.gnome.core-apps.enable = false;
+
+  # Configure keymap in X11
+  services.xserver = {
+    xkb.layout = "us";
+    xkb.variant = "";
+  };
+
+  # Accelerated Video Playback
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  # Power settings
+  services.power-profiles-daemon.enable = false;
+  services.thermald.enable = true;
+  powerManagement.enable = true;
+
+  # Auto-cpufreq settings
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+      energy_performance_preference = "balance_power";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 
   # NixOS garbage control - removes older generations
   nix.gc = {
