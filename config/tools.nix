@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    git
     mise
     nerd-fonts.jetbrains-mono
   ];

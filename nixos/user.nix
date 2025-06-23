@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, ...}:
+{ pkgs, inputs, nixos-username, lib, ...}:
 {
 
     imports =
@@ -39,6 +39,9 @@
     "org/gnome/system/location" = {
       enabled = true;
       };
+    "org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
+    };
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
