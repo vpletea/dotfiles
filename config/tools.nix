@@ -3,6 +3,8 @@
 {
   home.packages = with pkgs; [
     git
+    htop
+    kitty
     mise
     nerd-fonts.jetbrains-mono
   ];

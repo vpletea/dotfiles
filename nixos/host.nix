@@ -43,7 +43,6 @@
     gnome-console
     gnome-disk-utility
     nautilus # File manager
-    htop
     loupe # Image viewer
     plymouth
     vim
