@@ -3,7 +3,7 @@
 {
   imports =
   [
-    ../config/tools.nix
+    ../config/common.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
