@@ -24,7 +24,7 @@
         # Define your hostname.
         networking.hostName = "${nixos-hostname}";
         # Allow unfree software
-       nixpkgs.config.allowUnfree = true;
+        nixpkgs.config.allowUnfree = true;
         # Define user account
         users.users."${nixos-username}" = {
           isNormalUser = true;
