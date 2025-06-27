@@ -35,9 +35,6 @@
 
   # Customize Gnome settings
   dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
-    "org/gnome/desktop/input-sources/xkb-options = {
-      "caps:escape" = true;
-    };
     "org/gnome/system/location" = {
       enabled = true;
       };
