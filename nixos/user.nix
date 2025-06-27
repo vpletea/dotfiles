@@ -35,6 +35,9 @@
 
   # Customize Gnome settings
   dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
+    "org/gnome/desktop/default-applications/terminal" = {
+      exec = "kitty";
+    };
     "org/gnome/system/location" = {
       enabled = true;
       };
