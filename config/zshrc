@@ -87,11 +87,9 @@ fi
 
 #Aliases
 alias cat='bat'
-alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
 alias grep='grep -n --color'
-alias la='eza -a'
-alias ll='ls -alh'
 alias ls='eza'
+alias ll='ls -alh'
 alias lt='eza --tree'
 alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
 alias kd='k3d cluster delete'
