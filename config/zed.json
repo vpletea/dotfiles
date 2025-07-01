@@ -54,19 +54,20 @@
   "ui_font_size": 16,
   "base_keymap": "VSCode",
   "auto_install_extensions": {
+    "ansible": true,
+    "bash": true,
     "catppuccin": true,
     "copilot": true,
-    "terraform": true,
-    "helm": true,
-    "ansible": true,
-    "toml": true,
-    "nix": true,
-    "markdown": true,
-    "yaml": true,
-    "json": true,
     "docker": true,
-    "bash": true,
     "git": true,
-    "git-firefly": true,   "github.copilot": true
+    "git-firefly": true,
+    "github.copilot": true,
+    "helm": true,
+    "json": true,
+    "markdown": true,
+    "nix": true,
+    "terraform": true,
+    "toml": true,
+    "yaml": true
   }
 }
