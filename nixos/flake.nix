@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ...}:
+  outputs = inputs @ { nixpkgs, home-manager, ...}:
 
   let
     nixos-username = "valentin";
