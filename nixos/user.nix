@@ -25,15 +25,6 @@
     homeDirectory = "/home/${nixos-username}";
   };
 
-  home.file = {
-    ".config/git/config".source = ../config/git.conf;
-    ".config/kitty/kitty.conf".source = ../config/kitty.conf;
-    ".ssh/config".source = ../config/ssh.conf;
-    ".config/starship.toml".source = ../config/starship.toml;
-    ".config/zed/settings.json".source = ../config/zed.json;
-    ".zshrc".source = ../config/zshrc;
-  };
-
   # Customize Gnome settings
   dconf.settings = let inherit (lib.hm.gvariant) mkUint32; in {
     "org/gnome/desktop/default-applications/terminal" = {
