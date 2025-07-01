@@ -93,6 +93,7 @@ alias ll='ls -alh'
 alias lt='eza --tree'
 alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
 alias kd='k3d cluster delete'
+alias code='zeditor'
 
 # Shell integrations
 eval "$(fzf --zsh)"
