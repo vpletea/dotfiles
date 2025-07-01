@@ -1,8 +1,15 @@
 {
   "theme": "Catppuccin Mocha",
+  "restore_on_startup": "last_workspace",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  "indent_guides": {
+    "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware"
   },
   "collaboration_panel": {
       "button": false
@@ -44,11 +51,6 @@
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "ui_font_size": 16,
   "base_keymap": "VSCode",
-  "collaboration": {
-    "status_badge": {
-      "enabled": false
-    }
-  },
   "auto_install_extensions": {
     "catppuccin": true,
     "copilot": true,

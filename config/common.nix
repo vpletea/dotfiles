@@ -25,18 +25,11 @@
   # Useful programs
   programs.zsh.enable = true;
   programs.starship.enable = true;
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    
-  };
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
   programs.eza = {
     enable = true;
-    enableZshIntegration = true;
+
     git = true;
     extraOptions = [
       "--group-directories-first"
