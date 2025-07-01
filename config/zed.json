@@ -6,8 +6,6 @@
   },
   "vim_mode": false,
   "tab_size": 2,
-  "preferred_line_length": 80,
-  "soft_wrap": "preferred_line_length",
   "format_on_save": "on",
   "formatter": "language_server",
   "autosave": {

@@ -1,4 +1,4 @@
-{ pkgs, inputs, nixos-username, lib, ...}:
+{ pkgs, lib, nixos-username, ...}:
 {
 
     imports =

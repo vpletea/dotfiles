@@ -1,4 +1,4 @@
-{ inputs, pkgs, macos-username, ...}:
+{ pkgs, macos-username, ...}:
 
 {
   imports =
