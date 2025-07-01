@@ -1,6 +1,8 @@
 {
   "theme": "Catppuccin Mocha",
   "restore_on_startup": "last_workspace",
+  "relative_line_numbers": true,
+  "relative_path": true,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -55,6 +57,8 @@
     "catppuccin": true,
     "copilot": true,
     "terraform": true,
+    "helm": true,
+    "ansible": true,
     "toml": true,
     "nix": true,
     "markdown": true,
@@ -63,6 +67,6 @@
     "docker": true,
     "bash": true,
     "git": true,
-    "github.copilot": true
+    "git-firefly": true,   "github.copilot": true
   }
 }
