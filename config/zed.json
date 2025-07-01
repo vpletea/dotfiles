@@ -45,18 +45,18 @@
       "enabled": false
     }
   },
-  "extensions": [
-    "catppuccin.catppuccin",
-    "zed.copilot",
-    "zed.terraform",
-    "zed.toml",
-    "zed.nix",
-    "zed.markdown",
-    "zed.yaml",
-    "zed.json",
-    "zed.docker",
-    "zed.bash",
-    "zed.git",
-    "github.copilot"
-  ]
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "copilot": true,
+    "terraform": true,
+    "toml": true,
+    "nix": true,
+    "markdown": true,
+    "yaml": true,
+    "json": true,
+    "docker": true,
+    "bash": true,
+    "git": true,
+    "github.copilot": true
+  }
 }
