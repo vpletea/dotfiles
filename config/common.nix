@@ -23,13 +23,15 @@
   };
   
   # Useful programs
-  programs.zsh.enable = true;
-  programs.starship.enable = true;
-  programs.fzf.enable = true;
-  programs.zoxide.enable = true;
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "zenburn";
+      style = "plain";
+    };
+  };
   programs.eza = {
     enable = true;
-
     git = true;
     extraOptions = [
       "--group-directories-first"
@@ -37,11 +39,8 @@
       "--color=auto"
     ];
   };
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "gruvbox-dark";
-      style = "plain";
-    };
-  };
+  programs.fzf.enable = true;
+  programs.starship.enable = true;
+  programs.zoxide.enable = true;
+  programs.zsh.enable = true;
 }

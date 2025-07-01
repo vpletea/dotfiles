@@ -86,7 +86,7 @@ else
 fi
 
 #Aliases
-alias cat='bat --theme=zenburn'
+alias cat='bat'
 alias eza='eza --git --group-directories-first --header '\''--color=auto'\'''
 alias grep='grep -n --color'
 alias la='eza -a'
