@@ -29,6 +29,7 @@
     ".config/kitty/kitty.conf".source = ../config/kitty.conf;
     ".ssh/config".source = ../config/ssh.conf;
     ".config/starship.toml".source = ../config/starship.toml;
+    ".config/zed/settings.json".source = ../config/zed.json;
     ".zshrc".source = ../config/zshrc;
   };
 
