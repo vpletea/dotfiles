@@ -3,6 +3,14 @@
   "restore_on_startup": "last_workspace",
   "relative_line_numbers": true,
   "relative_path": true,
+  "buffer_font_size": 16,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "ui_font_size": 16,
+  "base_keymap": "VSCode",
+  "vim_mode": false,
+  "tab_size": 2,
+  "format_on_save": "on",
+  "show_copilot_suggestions": true,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -16,9 +24,6 @@
   "collaboration_panel": {
       "button": false
   },
-  "vim_mode": false,
-  "tab_size": 2,
-  "format_on_save": "on",
   "formatter": "language_server",
   "autosave": {
     "after_delay": {
@@ -33,13 +38,6 @@
       "program": "zsh"
     }
   },
-  "language_overrides": {
-    "Nix": {
-      "format_on_save": "off"
-    }
-  },
-  "show_copilot_suggestions": true,
-  "projects_online_by_default": true,
   "languages": {
     "Nix": {
       "formatter": {
@@ -49,10 +47,6 @@
       }
     }
   },
-  "buffer_font_size": 16,
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
-  "ui_font_size": 16,
-  "base_keymap": "VSCode",
   "auto_install_extensions": {
     "ansible": true,
     "bash": true,
