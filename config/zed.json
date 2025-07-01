@@ -4,6 +4,9 @@
     "diagnostics": false,
     "metrics": false
   },
+  "collaboration_panel": {
+      "button": false
+  },
   "vim_mode": false,
   "tab_size": 2,
   "format_on_save": "on",
