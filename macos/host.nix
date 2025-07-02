@@ -36,8 +36,6 @@
 
 
   # Macos quality of life settings
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
   system.startup.chime = false;
   system.defaults = {
     dock.mru-spaces = false;
