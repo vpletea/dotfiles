@@ -21,7 +21,6 @@
     ".config/zed/settings.json".source = ../config/zed.json;
     ".zshrc".source = ../config/zshrc;
   };
-  
   # Useful programs
   programs.bat = {
     enable = true;
