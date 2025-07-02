@@ -1,4 +1,4 @@
-{ pkgs, inputs, ...}:
+{ ...}:
 
 {
   # Enable flakes support

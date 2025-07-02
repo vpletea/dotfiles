@@ -1,9 +1,9 @@
-{ inputs, pkgs, macos-username, ...}:
+{ pkgs, macos-username, ...}:
 
 {
   imports =
   [
-    ../config/tools.nix
+    ../config/common.nix
   ];
   # No need to change the version
   home.stateVersion = "24.05";
@@ -13,9 +13,7 @@
   programs.starship.enable = true;
 
   home.packages = with pkgs; [
-    htop
     openssh
-    kitty
   ];
 
   # User settings
@@ -25,14 +23,6 @@
 		"/run/current-system/sw/bin"
 		"$HOME/.nix-profile/bin"
 	];
-
-  home.file = {
-    ".config/git/config".source = ../config/git.conf;
-    ".config/kitty/kitty.conf".source = ../config/kitty.conf;
-    ".ssh/config".source = ../config/ssh.conf;
-    ".config/starship.toml".source = ../config/starship.toml;
-    ".zshrc".source = ../config/zshrc;
-  };
 
   # Garbage control - removes older generations
   nix.gc = {

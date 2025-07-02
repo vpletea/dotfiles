@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, ...}:
+outputs = inputs @ { nix-darwin, home-manager, ...}:
 
   let
     macos-username = "valentin.pletea";

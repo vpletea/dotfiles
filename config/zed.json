@@ -1,0 +1,67 @@
+{
+  "restore_on_startup": "last_workspace",
+  "show_copilot_suggestions": true,
+  "relative_line_numbers": true,
+  "relative_path": true,
+  "tab_size": 2,
+  "format_on_save": "on",
+  "theme": "Catppuccin Mocha",
+  "buffer_font_size": 16,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "ui_font_size": 16,
+  "base_keymap": "VSCode",
+  "vim_mode": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "indent_guides": {
+    "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware"
+  },
+  "collaboration_panel": {
+      "button": false
+  },
+  "formatter": "language_server",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font Mono",
+    "font_size": 16,
+    "blinking": "on",
+    "shell": {
+      "program": "zsh"
+    }
+  },
+  "languages": {
+    "Nix": {
+      "formatter": {
+        "external": {
+          "command": "nixpkgs-fmt"
+        }
+      }
+    }
+  },
+  "auto_install_extensions": {
+    "ansible": true,
+    "bash": true,
+    "catppuccin": true,
+    "copilot": true,
+    "docker": true,
+    "git": true,
+    "git-firefly": true,
+    "github.copilot": true,
+    "helm": true,
+    "json": true,
+    "markdown": true,
+    "nix": true,
+    "terraform": true,
+    "toml": true,
+    "yaml": true
+  }
+}
