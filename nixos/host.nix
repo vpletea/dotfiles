@@ -47,7 +47,11 @@
     plymouth
     vim
   ];
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    nil
+    nixd
+  ];
   # Packages uninstalled system wide
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
