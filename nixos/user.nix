@@ -39,7 +39,7 @@
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
-        "code.desktop"
+        "dev.zed.Zed.desktop"
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
