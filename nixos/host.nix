@@ -20,7 +20,8 @@
   
   # Disable TPM2 support
   systemd.tpm2.enable = false;
-  # Nixos specific zsh settings
+  
+  # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
@@ -35,7 +36,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Packages installed system wide
-  environment.systemPackages = with pkgs; [ # Use "sudo ventoy-web" for the Web GUI
+  environment.systemPackages = with pkgs; [
     file-roller # File archiver
     gnome-console
     gnome-disk-utility
@@ -51,9 +52,7 @@
   ];
   
   # Packages uninstalled system wide
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-  ];
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 
   # Docker setup
   virtualisation.docker.enable = true;
