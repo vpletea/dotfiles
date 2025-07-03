@@ -1,7 +1,6 @@
 {
   "restore_on_startup": "last_workspace",
   "show_copilot_suggestions": true,
-  "relative_line_numbers": true,
   "relative_path": true,
   "tab_size": 2,
   "format_on_save": "on",
