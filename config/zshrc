@@ -39,15 +39,15 @@ if [[ $(uname -m) == 'arm64' ]]; then
 fi
 
 
-# #SSH fix for kitty
-# export TERM=xterm
-# # Kitty specific config
-# if test -n "$KITTY_INSTALLATION_DIR"; then
-#     export KITTY_SHELL_INTEGRATION="enabled"
-#     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-#     kitty-integration
-#     unfunction kitty-integration
-# fi
+#SSH fix for kitty
+export TERM=xterm
+# Kitty specific config
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
 
 # Key bindings
 bindkey "$terminfo[kcuu1]" history-substring-search-up
