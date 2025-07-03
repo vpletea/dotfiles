@@ -1,7 +1,6 @@
 { pkgs, ...}:
 
 {
-
   # Enable flakes support
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -9,21 +8,20 @@
   nixpkgs.config.allowUnfree = true;
 
   # Bootloader setup
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = 0;  #### Use the space key at boot for generations menu
-  boot.plymouth.enable = true;
-  boot.initrd.systemd.enable = true;
-  boot.kernelParams = ["quiet"];
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    loader.timeout = 0;  #### Use the space key at boot for generations menu
+    plymouth.enable = true;
+    initrd.systemd.enable = true;
+    initrd.systemd.tpm2.enable = false;
+    kernelParams = ["quiet"];
+  };
+  
+  # Disable TPM2 support
   systemd.tpm2.enable = false;
-  boot.initrd.systemd.tpm2.enable = false;
-
-  # Enable ZFS support - enable for mounting truenas drives
-  # boot.supportedFilesystems = [ "zfs" ];
-  # boot.zfs.forceImportRoot = false;
-  # networking.hostId = "4e98920d";
-
-  # Nixos specific zsh settings
+  
+  # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
@@ -38,7 +36,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Packages installed system wide
-  environment.systemPackages = with pkgs; [ # Use "sudo ventoy-web" for the Web GUI
+  environment.systemPackages = with pkgs; [
     file-roller # File archiver
     gnome-console
     gnome-disk-utility
@@ -52,10 +50,9 @@
     nil
     nixd
   ];
+  
   # Packages uninstalled system wide
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-  ];
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 
   # Docker setup
   virtualisation.docker.enable = true;
@@ -84,20 +81,16 @@
   services.pcscd.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.excludePackages = [pkgs.xterm];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-apps.enable = false;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    excludePackages = [pkgs.xterm];
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
     xkb.layout = "us";
     xkb.variant = "";
   };
-
+  services.gnome.core-apps.enable = false;
+  
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
@@ -138,7 +131,6 @@
     options = "--delete-older-than 10d";
   };
 
-  # It‘s perfectly fine and recommended to leave this value
-  # at the release version of the first install of this system.
+  # Leave this value at the release version of the first install of this system.
   system.stateVersion = "24.05";
 }

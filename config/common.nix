@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     git
     htop
+    k3d
     kitty
     mise
     nil

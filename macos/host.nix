@@ -34,7 +34,6 @@
     ];
   };
 
-
   # Macos quality of life settings
   system.startup.chime = false;
   system.defaults = {
