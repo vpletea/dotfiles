@@ -55,6 +55,4 @@
   };
   # Enable touch id for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
-  # Zsh settings
-  programs.zsh.enable = true;
 }
