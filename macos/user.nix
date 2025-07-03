@@ -19,10 +19,10 @@
   # User settings
   home.username = "${macos-username}";
   home.homeDirectory = "/Users/${macos-username}";
-	home.sessionPath = [
-		"/run/current-system/sw/bin"
-		"$HOME/.nix-profile/bin"
-	];
+  home.sessionPath = [
+  "/run/current-system/sw/bin"
+  "$HOME/.nix-profile/bin"
+  ];
 
   # Garbage control - removes older generations
   nix.gc = {
