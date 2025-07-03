@@ -25,7 +25,6 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
-
   # Newtorking settings
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
