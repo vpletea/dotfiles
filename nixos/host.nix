@@ -25,8 +25,6 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
-  # Enable starship prompt
-  programs.starship.enable = true;
 
   # Newtorking settings
   networking.networkmanager.enable = true;
