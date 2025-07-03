@@ -1,4 +1,5 @@
 # Flake installation
+
 ### MacOS
 - Install Nix:
   ```
