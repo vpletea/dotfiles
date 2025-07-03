@@ -3,7 +3,6 @@
 {
   # User installed packages
   home.packages = with pkgs; [
-    fzf
     git
     htop
     k3d
@@ -12,9 +11,7 @@
     nil
     nixd
     nerd-fonts.jetbrains-mono
-    starship
     zed-editor
-    zoxide
   ];
   # User settings for various applications
   home.file = {
@@ -42,4 +39,8 @@
       "--color=auto"
     ];
   };
+  programs.fzf.enable = true;
+  programs.starship.enable = true;
+  programs.zoxide.enable = true;
+  programs.zsh.enable = true;
 }
