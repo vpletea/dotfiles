@@ -5,21 +5,19 @@
   home.packages = with pkgs; [
     git
     htop
-    # kitty
+    kitty
     mise
     nil
     nixd
     nerd-fonts.jetbrains-mono
-    wezterm
     zed-editor
   ];
   # User settings for various applications
   home.file = {
     ".config/git/config".source = ../config/git.conf;
-    # ".config/kitty/kitty.conf".source = ../config/kitty.conf;
+    ".config/kitty/kitty.conf".source = ../config/kitty.conf;
     ".ssh/config".source = ../config/ssh.conf;
     ".config/starship.toml".source = ../config/starship.toml;
-    ".config/wezterm/wezterm.lua".source = ../config/wezterm.lua;
     ".config/zed/settings.json".source = ../config/zed.json;
     ".zshrc".source = ../config/zshrc;
   };
