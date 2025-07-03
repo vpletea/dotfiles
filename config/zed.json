@@ -57,6 +57,7 @@
     "github.copilot": true,
     "helm": true,
     "json": true,
+    "lua": true,
     "markdown": true,
     "nix": true,
     "terraform": true,

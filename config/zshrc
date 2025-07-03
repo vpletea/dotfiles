@@ -28,9 +28,6 @@ source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zs
 source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 
-#SSH fix for kitty
-export TERM=xterm
-
 # MacOS specific config
 if [[ $(uname -m) == 'arm64' ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -41,13 +38,16 @@ if [[ $(uname -m) == 'arm64' ]]; then
     ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-A ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C > /dev/null
 fi
 
-# Kitty specific config
-if test -n "$KITTY_INSTALLATION_DIR"; then
-    export KITTY_SHELL_INTEGRATION="enabled"
-    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-    kitty-integration
-    unfunction kitty-integration
-fi
+
+# #SSH fix for kitty
+# export TERM=xterm
+# # Kitty specific config
+# if test -n "$KITTY_INSTALLATION_DIR"; then
+#     export KITTY_SHELL_INTEGRATION="enabled"
+#     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+#     kitty-integration
+#     unfunction kitty-integration
+# fi
 
 # Key bindings
 bindkey "$terminfo[kcuu1]" history-substring-search-up
