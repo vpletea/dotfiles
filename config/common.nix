@@ -3,11 +3,15 @@
 {
   # User installed packages
   home.packages = with pkgs; [
+    android-tools
+    docker-client
     fzf
     git
     htop
     k3d
     kitty
+    kubectl
+    lima
     mise
     nil
     nixd

@@ -21,13 +21,11 @@
     casks = [
       "adobe-acrobat-reader"
       "amazon-workspaces"
-      "android-platform-tools"
       "bitwarden"
       "caffeine"
       "firefox"
       "google-chrome"
       "microsoft-edge"
-      "rancher"
       "rectangle"
       "winbox"
       "zerotier-one"

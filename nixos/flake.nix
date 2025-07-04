@@ -29,7 +29,7 @@
         users.users."${nixos-username}" = {
           isNormalUser = true;
           description = nixos-username;
-          extraGroups = [ "networkmanager" "wheel" "docker" ];
+          extraGroups = [ "networkmanager" "wheel" ];
       };
       }
       home-manager.nixosModules.home-manager

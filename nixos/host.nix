@@ -45,13 +45,6 @@
     nixd
   ];
 
-  # Packages uninstalled system wide
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
-
-  # Docker setup
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
