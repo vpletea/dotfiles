@@ -17,10 +17,10 @@
     initrd.systemd.tpm2.enable = false;
     kernelParams = ["quiet"];
   };
-  
+
   # Disable TPM2 support
   systemd.tpm2.enable = false;
-  
+
   # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -47,7 +47,7 @@
     nil
     nixd
   ];
-  
+
   # Packages uninstalled system wide
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 
@@ -77,17 +77,17 @@
   # Yubikey required service
   services.pcscd.enable = true;
 
-  # Enable the X11 windowing system.
+  # Enable windowing system
   services.xserver = {
     enable = true;
     excludePackages = [pkgs.xterm];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
+    # xkb.layout = "us";
+    # xkb.variant = "";
   };
   services.gnome.core-apps.enable = false;
-  
+
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
