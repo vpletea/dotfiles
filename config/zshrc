@@ -31,7 +31,6 @@ source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 # MacOS specific config
 if [[ $(uname -m) == 'arm64' ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    export PATH="/Users/valentin.pletea/.rd/bin:$PATH"
     # SSH agent setup
     launchctl stop com.openssh.ssh-agent
     eval "$(ssh-agent -s)" > /dev/null
@@ -91,8 +90,6 @@ alias grep='grep -n --color'
 alias ls='eza'
 alias ll='ls -alh'
 alias lt='eza --tree'
-alias kc='k3d cluster create -p 80:80@loadbalancer -p 443:443@loadbalancer'
-alias kd='k3d cluster delete'
 alias code='zeditor'
 
 # Shell integrations
