@@ -11,6 +11,7 @@
     k3d
     kitty
     kubectl
+    kubectx
     lima
     mise
     nil
