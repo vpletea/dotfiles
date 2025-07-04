@@ -29,9 +29,6 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
     file-roller # File archiver
@@ -83,8 +80,6 @@
     excludePackages = [pkgs.xterm];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    # xkb.layout = "us";
-    # xkb.variant = "";
   };
   services.gnome.core-apps.enable = false;
 
