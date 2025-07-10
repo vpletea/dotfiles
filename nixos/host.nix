@@ -17,10 +17,10 @@
     initrd.systemd.tpm2.enable = false;
     kernelParams = ["quiet"];
   };
-  
+
   # Disable TPM2 support
   systemd.tpm2.enable = false;
-  
+
   # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -28,9 +28,6 @@
   # Newtorking settings
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
@@ -47,13 +44,6 @@
     nil
     nixd
   ];
-  
-  # Packages uninstalled system wide
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
-
-  # Docker setup
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -77,17 +67,15 @@
   # Yubikey required service
   services.pcscd.enable = true;
 
-  # Enable the X11 windowing system.
+  # Enable windowing system
   services.xserver = {
     enable = true;
     excludePackages = [pkgs.xterm];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
   };
   services.gnome.core-apps.enable = false;
-  
+
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
