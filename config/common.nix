@@ -8,7 +8,6 @@
     fzf
     git
     htop
-    k3d
     kitty
     kubectl
     kubectx
