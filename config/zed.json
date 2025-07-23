@@ -1,4 +1,11 @@
 {
+  "ssh_connections": [
+    {
+      "host": "192.168.1.201",
+      "username": "valentin",
+      "projects": [{ "paths": ["/home/valentin"] }]
+    }
+  ],
   "restore_on_startup": "last_workspace",
   "show_copilot_suggestions": true,
   "relative_path": true,
