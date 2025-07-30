@@ -30,8 +30,8 @@ source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 
 # MacOS specific config
 if [[ $(uname -s) == 'Darwin' ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)" > /dev/null
-    eval "$(/usr/local/bin/brew shellenv)" > /dev/null
+    path+=('/opt/homebrew/bin/brew')
+    path+=('/usr/local/bin/brew')
     eval "$(ssh-agent -s)" > /dev/null
 fi
 
