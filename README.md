@@ -1,38 +1,7 @@
-# Flake installation
+# Multi OS dotfiles and configurations
 
-### MacOS
-- Install Nix:
-  ```
-  curl -sSf -L https://install.lix.systems/lix | sh -s -- install
-  ```
-- Install Homebrew:
-  ```
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
-- Run git:
-  ```
-  nix-shell -p git
-  ```
-- Clone the repo and switch to macos directory:
-  ```
-    git clone https://github.com/vpletea/dotfiles.git
-    cd dotfiles/macos
-  ```
-- Install the flake:
-  ```
-  sudo nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#macos
-  ```
-- After the first run we can use:
-  ```
-  sudo darwin-rebuild switch --flake .#macos
-  ```
-- Notes:
-  - mkdir fails with 'Operation not permitted':
-      - add nix to the "allow full disk access" security list
-  - sudo nix complains about $HOME not being owned by your user
-     - cand be ignored for most tasks for other like gc we can use sudo -i 
-
-### NixOS
+# NixOS 
+### Machine settings
 - Install Nixos with Gnome Desktop from https://nixos.org/download/#nix-install-linux
 - Run git:
   ```
@@ -54,22 +23,43 @@
   ```
   sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup
   ```
-
-### Updates
-- To update the flake go to your OS directory and run the following command:
+- To update the flake run the following command:
   ```
   nix flake update
   ```
-- Run the install flake command depending on your OS:
+### Dotfiles setup
+- Run chezmoi init:
   ```
-  darwin-rebuild switch --flake .#macos
+  chezmoi init https://github.com/vpletea/dotfiles.git
   ```
+- Apply the configuration:
   ```
-  sudo nixos-rebuild switch --impure --flake .#nixos
+  chezmoi apply
   ```
 
-### Mise
-- For temporary dev environments i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file below. Note that for ansible you have to add python and pipx in that file:
+## MacOS
+### Machine settings
+- Install Homebrew:
+  ```
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+- Install chezmoi:
+  ```
+  brew install chezmoi
+  ```
+### Dotfiles setup
+- Run chezmoi init:
+  ```
+  chezmoi init https://github.com/vpletea/dotfiles.git
+  ```
+- Apply the configuration:
+  ```
+  chezmoi apply
+  ```
+
+
+## Mise
+- For project related tooling i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file below:
   ```
   [tools]
   "terraform" = "1.12.1"
@@ -79,9 +69,9 @@
   "python" = "latest"
   "pipx" = "latest"
    ```
-- Place this in your git folder project and run ``` mise install ```
+- Place this in your git folder project and run ``` mise install -a ```
 
-### SSH keys - i'm using ssh-keys backed by yubikeys
+### SSH keys backed by yubikey
 - ssh agent:
     - Import the key using ``` ssh-keygen -K ```
     - Add the imported key or keys via zshrc using a similar line ``` ssh-add -q ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C ```
