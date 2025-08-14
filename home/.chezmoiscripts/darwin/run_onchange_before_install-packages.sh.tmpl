@@ -1,0 +1,37 @@
+{{- if eq .chezmoi.os "darwin" }}
+#!/bin/sh
+{{ $brews := list
+     "bat"
+     "chezmoi"
+     "curl"
+     "eza"
+     "fzf"
+     "git"
+     "jq"
+     "starship"
+     "zoxide"
+      -}}
+{{ $casks := list
+      "adobe-acrobat-reader"
+      "amazon-workspaces"
+      "bitwarden"
+      "caffeine"
+      "firefox"
+      "google-chrome"
+      "font-jetbrains-mono-nerd-font"
+      "kitty"
+      "microsoft-edge"
+      "rectangle"
+      "winbox"
+      "zed"
+      "zerotier-one" -}}
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+{{- end }}
