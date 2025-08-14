@@ -18,7 +18,13 @@
 
   # Disable TPM2 support
   systemd.tpm2.enable = false;
+  
+  # Set your time zone.
+  time.timeZone = "Europe/Bucharest";
 
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  
   # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
