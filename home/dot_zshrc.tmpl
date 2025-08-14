@@ -28,15 +28,15 @@ source "$PLUGIN_DIR/zsh-history-substring-search/zsh-history-substring-search.zs
 source "$PLUGIN_DIR/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh"
 source "$PLUGIN_DIR/fzf-tab/fzf-tab.plugin.zsh"
 
+{{- if eq .chezmoi.os "darwin" }}
 # MacOS specific config
-if [[ $(uname -s) == 'Darwin' ]]; then
-    path+=('/opt/homebrew/bin/brew')
-    path+=('/usr/local/bin/brew')
-    eval "$(ssh-agent -s)" > /dev/null
-fi
-
+path+=('/opt/homebrew/bin/brew')
+path+=('/usr/local/bin/brew')
+eval "$(ssh-agent -s)" > /dev/null
+{{- end }}
 
 #SSH fix for kitty
+{{- if lookPath "kitty" }}
 export TERM=xterm
 # Kitty specific config
 if test -n "$KITTY_INSTALLATION_DIR"; then
@@ -45,6 +45,7 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     kitty-integration
     unfunction kitty-integration
 fi
+{{- end }}
 
 # Key bindings
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -83,12 +84,23 @@ else
 fi
 
 #Aliases
-alias cat='bat'
 alias grep='grep -n --color'
-alias ls='eza'
 alias ll='ls -alh'
+
+{{- if lookPath "bat" }}
+alias cat='bat'
+{{- end }}
+
+{{- if lookPath "eza" }}
+alias ls='eza'
 alias lt='eza --tree'
+{{- end }}
+
+{{- if lookPath "zeditor" }}
 alias code='zeditor'
+{{- end }}
+
+
 
 # Shell integrations
 eval "$(fzf --zsh)"
