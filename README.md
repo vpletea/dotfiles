@@ -37,7 +37,7 @@
   chezmoi apply
   ```
 
-## MacOS
+# MacOS
 ### Machine settings
 - Install Homebrew:
   ```
@@ -58,7 +58,7 @@
   ```
 
 
-## Mise
+# Mise
 - For project related tooling i use mise ( https://mise.jdx.dev/ ). Sample .mise.toml file below:
   ```
   [tools]
@@ -71,6 +71,7 @@
    ```
 - Place this in your git folder project and run ``` mise install -a ```
 
+# SSH keys
 ### SSH keys backed by yubikey
 - ssh agent:
     - Import the key using ``` ssh-keygen -K ```
