@@ -4,6 +4,7 @@
   # User installed packages
   home.packages = with pkgs; [
     android-tools
+    chezmoi
     docker-client
     fzf
     git

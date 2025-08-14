@@ -1,11 +1,9 @@
-{ pkgs, ...}:
+{ pkgs, nixos-username, nixos-hostname,  ... }:
 
 {
-  # Enable flakes support
-  nix.settings.experimental-features = "nix-command flakes";
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+  ];
 
   # Bootloader setup
   boot = {
@@ -29,15 +27,49 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
+  # Define your hostname.
+  networking.hostName = "${nixos-hostname}";
+  # Allow unfree software
+  nixpkgs.config.allowUnfree = true;
+  # Define user account
+  users.users."${nixos-username}" = {
+    isNormalUser = true;
+    description = nixos-username;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
   # Packages installed system wide
   environment.systemPackages = with pkgs; [
+    # System pkgs
+    plymouth
+    vim
+
+    # General pkgs
+    bat
+    bitwarden
+    chezmoi
+    eza
+    firefox
+    fzf
+    git
+    gnomeExtensions.dash-to-dock
+    google-chrome
+    kitty
+    mise
+    nerd-fonts.jetbrains-mono
+    onlyoffice-desktopeditors
+    starship
+    vlc
+    winbox4
+    zed-editor
+    zoxide
+
+    # Gnome related pkgs
     file-roller # File archiver
     gnome-console
     gnome-disk-utility
     nautilus # File manager
     loupe # Image viewer
-    plymouth
-    vim
   ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -109,13 +141,18 @@
     };
   };
 
-  # NixOS garbage control - removes older generations
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 10d";
+  nix = {
+    # Enable flakes support
+    settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        warn-dirty = false;
+    };
+    # Automate garbage collection
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 15";
+    };
   };
-
-  # Leave this value at the release version of the first install of this system.
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11"; # Set the state version - no need to change
 }
