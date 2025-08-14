@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "darwin" }}
 #!/bin/sh
 {{ $brews := list
      "bat"
@@ -33,4 +32,3 @@ brew "{{ . }}"
 cask "{{ . }}"
 {{ end -}}
 EOF
-{{- end }}
