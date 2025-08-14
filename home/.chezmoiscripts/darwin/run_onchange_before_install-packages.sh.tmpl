@@ -1,4 +1,5 @@
 #!/bin/sh
+launchctl stop com.openssh.ssh-agent
 {{ $brews := list
      "bat"
      "chezmoi"
@@ -8,6 +9,7 @@
      "git"
      "jq"
      "mise"
+     "openssh"
      "starship"
      "zoxide" -}}
 {{ $casks := list
