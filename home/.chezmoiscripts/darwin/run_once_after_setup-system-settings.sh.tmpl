@@ -1,13 +1,12 @@
-{{- if eq .chezmoi.os "darwin" }}
+{{- if (eq .chezmoi.os "darwin") -}}
+
 #!/bin/sh
 # Dock settings
 defaults write com.apple.dock "orientation" -string "bottom"
 defaults write com.apple.dock "tilesize" -int "40"
 defaults write com.apple.dock "autohide" -bool "false"
 defaults write com.apple.dock "show-recents" -bool "false"
-defaults delete com.apple.dock magnification && killall Dock
-defaults write com.apple.screencapture "location" -string "~/Pictures" && killall SystemUIServer
-killall Dock
+defaults delete com.apple.dock magnification
 
 # Disable hot corners
 defaults write com.apple.dock wvous-tl-corner -int 0
@@ -21,6 +20,9 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Kill the Dock to apply changes
 killall Dock
+
+# Set screencapture location
+defaults write com.apple.screencapture "location" -string "~/Pictures" && killall SystemUIServer
 
 # Finder settings
 defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
