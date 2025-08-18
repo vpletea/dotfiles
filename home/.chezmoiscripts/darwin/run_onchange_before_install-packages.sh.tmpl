@@ -2,7 +2,7 @@
 
 #!/bin/sh
 # Stop builtin ssh agent
-launchctl stop com.openssh.ssh-agent
+sudo launchctl stop com.openssh.ssh-agent
 # Install packages
 brew bundle --file=/dev/stdin <<EOF
 # specify a directory to install
