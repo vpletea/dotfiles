@@ -1,0 +1,27 @@
+{{ $gitArgs := "clone.args = ['--depth', '1']\n    pull.args = ['--ff-only']" }}
+
+[".config/zsh/zsh-autosuggestions"]
+    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    {{ $gitArgs }}
+[".config/zsh/zsh-syntax-highlighting"]
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    {{ $gitArgs }}
+[".config/zsh/zsh-history-substring-search"]
+    url = "https://github.com/zsh-users/zsh-history-substring-search.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    {{ $gitArgs }}
+[".config/zsh/fzf-tab"] # Fuzzy completion and preview for zsh
+    url = "https://github.com/aloxaf/fzf-tab.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    {{ $gitArgs }}
+[".config/zsh/zsh-fzf-history-search"] # Use ^r for fuzzy search history
+    url = "https://github.com/joshskidmore/zsh-fzf-history-search.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    {{ $gitArgs }}
