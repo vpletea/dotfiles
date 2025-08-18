@@ -40,4 +40,7 @@ killall Finder
 # Disable apple intelligence
 defaults write com.apple.CloudSubscriptionFeatures.optIn "545129924" -bool "false"
 
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
 {{ end -}}
