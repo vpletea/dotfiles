@@ -39,6 +39,13 @@
 
 # MacOS
 ### Machine settings
+- Enable Touch ID for sudo
+  ```
+  cd /etc/pam.d
+  sudo cp sudo_local.template sudo_local
+  sudo pico sudo_local
+  ```
+- Uncomment the line that contains pam_tid.so
 - Install Homebrew:
   ```
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
