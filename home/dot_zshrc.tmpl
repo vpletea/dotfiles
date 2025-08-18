@@ -4,23 +4,6 @@ eval "$(starship init zsh)"
 # Custom plugin manager for zsh
 PLUGIN_DIR="$HOME/.config/zsh"
 
-# Define plugins: "github_repo name"
-plugins=(
-"zsh-users/zsh-autosuggestions"
-"zsh-users/zsh-syntax-highlighting"
-"zsh-users/zsh-history-substring-search"
-"aloxaf/fzf-tab" # Fuzzy completion and preview for zsh
-"joshskidmore/zsh-fzf-history-search" # Use ^r for fuzzy search history
-)
-
-# Only install plugins if plugin directory does not exist
-for plugin in "${plugins[@]}"; do
-  plugin_name=${plugin##*/}
-  if [ ! -d "$PLUGIN_DIR/$plugin_name" ]; then
-    git clone --quiet "https://github.com/$plugin" "$PLUGIN_DIR/$plugin_name" --depth=1
-  fi
-done
-
 # Source plugins
 source "$PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -35,8 +18,8 @@ path+=('/usr/local/bin/brew')
 eval "$(ssh-agent -s)" > /dev/null
 {{- end }}
 
-#SSH fix for kitty
 {{- if lookPath "kitty" }}
+#SSH fix for kitty
 export TERM=xterm
 # Kitty specific config
 if test -n "$KITTY_INSTALLATION_DIR"; then
