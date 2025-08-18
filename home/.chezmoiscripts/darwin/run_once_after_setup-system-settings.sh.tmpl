@@ -1,0 +1,41 @@
+{{- if eq .chezmoi.os "darwin" }}
+#!/bin/sh
+# Dock settings
+defaults write com.apple.dock "orientation" -string "bottom"
+defaults write com.apple.dock "tilesize" -int "40"
+defaults write com.apple.dock "autohide" -bool "false"
+defaults write com.apple.dock "show-recents" -bool "false"
+defaults delete com.apple.dock magnification && killall Dock
+defaults write com.apple.screencapture "location" -string "~/Pictures" && killall SystemUIServer
+killall Dock
+
+# Disable hot corners
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-modifier -int 0
+defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-br-corner -int 0
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Kill the Dock to apply changes
+killall Dock
+
+# Finder settings
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+defaults write com.apple.finder "ShowPathbar" -bool "true"
+defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
+defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "false"
+defaults write com.apple.universalaccess "showWindowTitlebarIcons" -bool "true"
+
+# Kill the Finder to apply changes
+killall Finder
+
+# Disable apple intelligence
+defaults write com.apple.CloudSubscriptionFeatures.optIn "545129924" -bool "false"
+
+{{ end -}}
