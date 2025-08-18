@@ -1,37 +1,37 @@
-#!/bin/sh
-launchctl stop com.openssh.ssh-agent
-{{ $brews := list
-     "bat"
-     "chezmoi"
-     "curl"
-     "eza"
-     "fzf"
-     "git"
-     "jq"
-     "mise"
-     "openssh"
-     "starship"
-     "zoxide" -}}
-{{ $casks := list
-      "adobe-acrobat-reader"
-      "amazon-workspaces"
-      "bitwarden"
-      "caffeine"
-      "firefox"
-      "google-chrome"
-      "font-jetbrains-mono-nerd-font"
-      "kitty"
-      "microsoft-edge"
-      "rectangle"
-      "winbox"
-      "zed"
-      "zerotier-one" -}}
+{{- if (eq .chezmoi.os "darwin") -}}
 
+#!/bin/sh
+# Stop builtin ssh agent
+launchctl stop com.openssh.ssh-agent
+# Install packages
 brew bundle --file=/dev/stdin <<EOF
-{{ range ($brews | sortAlpha | uniq) -}}
-brew "{{ . }}"
-{{ end -}}
-{{ range ($casks | sortAlpha | uniq) -}}
-cask "{{ . }}"
-{{ end -}}
+# specify a directory to install
+cask_args appdir: '/Applications'
+# install packages
+brew 'bat'
+brew 'chezmoi'
+brew 'curl'
+brew 'eza'
+brew 'fzf'
+brew 'git'
+brew 'jq'
+brew 'mise'
+brew 'openssh'
+brew 'starship'
+brew 'zoxide'
+cask 'adobe-acrobat-reader'
+cask 'amazon-workspaces'
+cask 'bitwarden'
+cask 'caffeine'
+cask 'firefox'
+cask 'google-chrome'
+cask 'font-jetbrains-mono-nerd-font'
+cask 'kitty'
+cask 'microsoft-edge'
+cask 'rectangle'
+cask 'winbox'
+cask 'zed'
+cask 'zerotier-one'
 EOF
+
+{{ end -}}
