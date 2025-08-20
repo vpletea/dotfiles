@@ -3,7 +3,13 @@
     {
       "host": "192.168.1.201",
       "username": "valentin",
-      "projects": [{ "paths": ["/home/valentin"] }]
+      "projects": [
+        {
+          "paths": [
+            "/home/valentin"
+          ]
+        }
+      ]
     }
   ],
   "restore_on_startup": "last_workspace",
@@ -28,7 +34,7 @@
     "background_coloring": "indent_aware"
   },
   "collaboration_panel": {
-      "button": false
+    "button": false
   },
   "formatter": "language_server",
   "autosave": {
@@ -48,7 +54,7 @@
     "Nix": {
       "formatter": {
         "external": {
-          "command": "nixpkgs-fmt"
+          "command": "nixfmt"
         }
       }
     }
