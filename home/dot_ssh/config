@@ -9,11 +9,11 @@ Host *
 Host github.com
   User vpletea
   HostName github.com
-  IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-A 
+  IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
   IdentitiesOnly yes
 Host *.h-net.xyz
   User valentin
-  IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-A 
+  IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
   IdentitiesOnly yes
