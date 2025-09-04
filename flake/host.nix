@@ -1,4 +1,9 @@
-{ pkgs, nixos-username, nixos-hostname,  ... }:
+{
+  pkgs,
+  nixos-username,
+  nixos-hostname,
+  ...
+}:
 
 {
   imports = [
@@ -9,22 +14,22 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    loader.timeout = 0;  #### Use the space key at boot for generations menu
+    loader.timeout = 0; # ### Use the space key at boot for generations menu
     plymouth.enable = true;
     initrd.systemd.enable = true;
     initrd.systemd.tpm2.enable = false;
-    kernelParams = ["quiet"];
+    kernelParams = [ "quiet" ];
   };
 
   # Disable TPM2 support
   systemd.tpm2.enable = false;
-  
+
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  
+
   # Zsh settings
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -41,7 +46,10 @@
   users.users."${nixos-username}" = {
     isNormalUser = true;
     description = nixos-username;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # Packages installed system wide
@@ -58,6 +66,7 @@
     firefox
     fzf
     git
+    htop
     gnomeExtensions.dash-to-dock
     google-chrome
     kitty
@@ -108,7 +117,7 @@
   # Enable windowing system
   services.xserver = {
     enable = true;
-    excludePackages = [pkgs.xterm];
+    excludePackages = [ pkgs.xterm ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
@@ -126,7 +135,9 @@
       libvdpau-va-gl
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   # Power settings
   services.power-profiles-daemon.enable = false;
@@ -150,8 +161,11 @@
   nix = {
     # Enable flakes support
     settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-        warn-dirty = false;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
     };
     # Automate garbage collection
     gc = {
