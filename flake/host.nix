@@ -111,6 +111,11 @@
   # SSH agent setup
   programs.ssh.startAgent = true;
 
+  # Enable udev access for Keychron HID devices
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="3434", MODE="0666"
+  '';
+  
   # Yubikey required service
   services.pcscd.enable = true;
 
