@@ -11,7 +11,7 @@
      "github.copilot-chat" }}
 
 set -euf
-SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/home/dot_config/vscode/settings.json"
+SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/dot_config/vscode/settings.json"
 case "{{ .chezmoi.os }}" in
   linux)
     TARGET_DIR="$HOME/.config/vscode"
