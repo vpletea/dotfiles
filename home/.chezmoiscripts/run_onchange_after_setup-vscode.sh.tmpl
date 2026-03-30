@@ -1,52 +1,36 @@
-#!/bin/sh
-set -eu
+{{ if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) (not .headless) -}}
 
-CHEZMOI_OS="{{ .chezmoi.os }}"
-SOURCE_SETTINGS="$HOME/.config/vscode/settings.json"
+{{ $extensions := list
+     "catppuccin.catppuccin-vsc"
+     "waderyan.gitblame"
+     "oderwat.indent-rainbow"
+     "bbenoist.nix"
+     "hashicorp.terraform"
+     "tim-koehler.helm-intellisense"
+     "github.copilot"
+     "github.copilot-chat" -}}
 
-case "$CHEZMOI_OS" in
+#!/bin/bash
+
+set -eufo pipefail
+
+SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/home/dot_config/vscode/settings.json"
+
+case "{{ .chezmoi.os }}" in
   linux)
     TARGET_DIR="$HOME/.config/vscode"
     ;;
   darwin)
     TARGET_DIR="$HOME/Library/Application Support/Code/User"
     ;;
-  *)
-    echo "Unsupported OS '$CHEZMOI_OS'. Skipping VS Code setup."
-    exit 0
-    ;;
 esac
 
 TARGET_SETTINGS="$TARGET_DIR/settings.json"
 mkdir -p "$TARGET_DIR"
+cp "$SOURCE_SETTINGS" "$TARGET_SETTINGS"
 
-if [ -f "$SOURCE_SETTINGS" ]; then
-  cp "$SOURCE_SETTINGS" "$TARGET_SETTINGS"
-  echo "VS Code settings synced to $TARGET_SETTINGS"
-else
-  echo "No source settings found at $SOURCE_SETTINGS. Skipping settings sync."
-fi
+{{ range $extensions -}}
+code --force --install-extension {{ . }}
+{{ end -}}
 
-if ! command -v code >/dev/null 2>&1; then
-  echo "VS Code CLI 'code' not found. Skipping extension installation."
-  exit 0
-fi
-
-for extension in \
-  redhat.ansible \
-  mads-hartmann.bash-ide-vscode \
-  Catppuccin.catppuccin-vsc \
-  GitHub.copilot \
-  GitHub.copilot-chat \
-  ms-azuretools.vscode-docker \
-  eamodio.gitlens \
-  mhutchie.git-graph \
-  Tim-Koehler.helm-intellisense \
-  yzhang.markdown-all-in-one \
-  jnoortheen.nix-ide \
-  hashicorp.terraform \
-  tamasfe.even-better-toml \
-  redhat.vscode-yaml
-do
-  code --install-extension "$extension" --force
-done
+{{ end -}}
