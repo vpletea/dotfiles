@@ -24,8 +24,8 @@
   "gitblame.inlineMessageEnabled": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace', monospace",
   "terminal.integrated.fontSize": 18,
   "terminal.integrated.profiles.linux": {
