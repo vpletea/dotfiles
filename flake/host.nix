@@ -18,7 +18,12 @@
     plymouth.enable = true;
     initrd.systemd.enable = true;
     initrd.systemd.tpm2.enable = false;
-    kernelParams = [ "quiet" ];
+    kernelParams = [
+      "quiet"
+      "pcie_aspm=force"
+      "i915.enable_psr=1"
+      "i915.enable_fbc=1"
+      "i915.enable_dc=2" ];
   };
 
   # Disable TPM2 support
@@ -60,7 +65,7 @@
 
     # General pkgs
     bat
-    bitwarden
+    bitwarden-desktop
     chezmoi
     eza
     firefox
@@ -73,6 +78,7 @@
     mise
     nerd-fonts.jetbrains-mono
     onlyoffice-desktopeditors
+    proton-authenticator
     starship
     vlc
     winbox4
@@ -109,24 +115,27 @@
   };
 
   # SSH agent setup
+  services.gnome.gcr-ssh-agent.enable = false;
   programs.ssh.startAgent = true;
 
   # Enable udev access for Keychron HID devices
   services.udev.extraRules = ''
     ATTRS{idVendor}=="3434", MODE="0666"
   '';
-  
+
   # Yubikey required service
   services.pcscd.enable = true;
 
   # Enable windowing system
-  services.xserver = {
-    enable = true;
-    excludePackages = [ pkgs.xterm ];
+  services = {
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+    };
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    gnome.core-apps.enable = false;
   };
-  services.gnome.core-apps.enable = false;
 
   # Accelerated Video Playback
   nixpkgs.config.packageOverrides = pkgs: {
@@ -143,6 +152,7 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };
+
 
   # Power settings
   services.power-profiles-daemon.enable = false;
