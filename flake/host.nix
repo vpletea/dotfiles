@@ -172,26 +172,28 @@
   };
 
   nix = {
-    # Enable flakes support
     settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      warn-dirty = false;
+      auto-optimise-store = true;
+      max-jobs = "auto";
+      cores = 0;
+      builders-use-substitutes = true;
+
       substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
       ];
+
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FS+4G4G9h1QbC9yQzQ0imeISFRCGDpa2BkLomPvA="
       ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      warn-dirty = false;
     };
-    # Automate garbage collection
+
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 15";
+      options = "--delete-older-than 15d";
     };
   };
   system.stateVersion = "24.11"; # Set the state version - no need to change

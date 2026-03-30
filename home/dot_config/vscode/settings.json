@@ -1,0 +1,28 @@
+{
+  "window.restoreWindows": "all",
+  "workbench.editor.labelFormat": "medium",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "editor.fontSize": 16,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "window.zoomLevel": 1,
+  "telemetry.telemetryLevel": "off",
+  "editor.guides.indentation": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": {
+      "path": "zsh"
+    }
+  },
+  "[nix]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  }
+}
