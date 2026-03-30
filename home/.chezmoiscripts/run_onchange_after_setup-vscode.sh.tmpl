@@ -1,4 +1,4 @@
-{{- if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
+{{- if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
 #!/bin/sh
 {{- $extensions := list
      "catppuccin.catppuccin-vsc"
@@ -10,7 +10,7 @@
      "github.copilot"
      "github.copilot-chat" }}
 
-set -eufo pipefail
+set -euf
 SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/home/dot_config/vscode/settings.json"
 case "{{ .chezmoi.os }}" in
   linux)
