@@ -9,12 +9,17 @@
      "tim-koehler.helm-intellisense"
      "github.copilot"
      "github.copilot-chat" }}
+{{- $settingsPath := "dot_config/code/settings.json" }}
+{{- $settingsHash := include $settingsPath | sha256sum }}
 
 set -euf
-SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/dot_config/code/settings.json"
+SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/{{ $settingsPath }}"
+# Include the source settings hash in the rendered script so chezmoi reruns this
+# onchange hook when settings.json changes, even if the script logic stays the same.
+# settings.json sha256: {{ $settingsHash }}
 case "{{ .chezmoi.os }}" in
   linux)
-    TARGET_DIR="$HOME/.config/vscode"
+    TARGET_DIR="$HOME/.config/Code/User"
     ;;
   darwin)
     TARGET_DIR="$HOME/Library/Application Support/Code/User"
