@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Notion
+Comment=Open Notion
+Exec=xdg-open https://www.notion.so/
+Icon=web-browser
+Terminal=false
+Categories=Office;Network;
+StartupNotify=true
