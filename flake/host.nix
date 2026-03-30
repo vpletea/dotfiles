@@ -113,8 +113,8 @@
   };
 
   # SSH agent setup
-  services.gnome.gcr-ssh-agent.enable = true;
-  programs.ssh.startAgent = false;
+  services.gnome.gcr-ssh-agent.enable = false;
+  programs.ssh.startAgent = true;
 
   # Enable udev access for Keychron HID devices
   services.udev.extraRules = ''
