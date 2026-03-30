@@ -1,6 +1,6 @@
-{{ if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
-
-{{ $extensions := list
+{{- if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) }}
+#!/bin/sh
+{{- $extensions := list
      "catppuccin.catppuccin-vsc"
      "waderyan.gitblame"
      "oderwat.indent-rainbow"
@@ -8,14 +8,10 @@
      "hashicorp.terraform"
      "tim-koehler.helm-intellisense"
      "github.copilot"
-     "github.copilot-chat" -}}
-
-#!/bin/bash
+     "github.copilot-chat" }}
 
 set -eufo pipefail
-
 SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/home/dot_config/vscode/settings.json"
-
 case "{{ .chezmoi.os }}" in
   linux)
     TARGET_DIR="$HOME/.config/vscode"
