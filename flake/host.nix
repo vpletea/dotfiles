@@ -79,13 +79,13 @@
     kitty
     mise
     nerd-fonts.jetbrains-mono
+    notion-app
     onlyoffice-desktopeditors
     proton-authenticator
     starship
     vlc
     vscode.fhs
     winbox4
-    zed-editor
     zoxide
 
     # Gnome related pkgs
