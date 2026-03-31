@@ -5,7 +5,7 @@
 
 set -euf
 
-SOURCE_CONFIG="{{ .chezmoi.sourceDir }}/home/{{ $configPath }}"
+SOURCE_CONFIG="{{ .chezmoi.sourceDir }}/{{ $configPath }}"
 # Include the source config hash in the rendered script so chezmoi reruns this
 # onchange hook when the Ghostty config changes, even if the script logic stays
 # the same.
