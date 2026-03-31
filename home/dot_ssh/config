@@ -21,5 +21,6 @@ Host *.h-net.xyz
   User valentin
   CanonicalizeHostname yes
   CanonicalDomains h-net.xyz
+  StrictHostKeyChecking no
   IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
