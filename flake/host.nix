@@ -98,10 +98,6 @@
     loupe # Image viewer
   ];
 
-  fonts.packages = with pkgs; [
-    noto-fonts-cjk-sans
-  ];
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
