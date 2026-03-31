@@ -79,7 +79,6 @@
     htop
     gnomeExtensions.dash-to-dock
     google-chrome
-    kitty
     mise
     nerd-fonts.jetbrains-mono
     onlyoffice-desktopeditors

@@ -1,8 +1,8 @@
-# Ghostty config migrated from kitty.conf.
+# Ghostty terminal config.
 #
 # Notes:
-# - Ghostty doesn't expose Kitty's tab bar placement/style knobs, so the
-#   bottom powerline tab bar is not translated 1:1.
+# - Ghostty doesn't expose every tab bar placement/style knob, so the
+#   previous bottom powerline tab bar setup is not represented 1:1.
 # - Ghostty scrollback is sized in bytes rather than lines.
 # - Forcing X11 is typically handled at launch time on GTK systems rather than
 #   with a Ghostty config key.
