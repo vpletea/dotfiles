@@ -154,21 +154,22 @@
 
 
   # Power settings
-  services.power-profiles-daemon.enable = false;
-  services.thermald.enable = true;
   powerManagement.enable = true;
+  services.thermald.enable = true;
+  services.power-profiles-daemon.enable = false;
 
   # Auto-cpufreq settings
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
-      governor = "powersave";
+      governor = "schedutil";
       turbo = "never";
-      energy_performance_preference = "balance_power";
+      energy_performance_preference = "power";
     };
     charger = {
-      governor = "performance";
+      governor = "schedutil";
       turbo = "auto";
+      energy_performance_preference = "balance_performance";
     };
   };
 
