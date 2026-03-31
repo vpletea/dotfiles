@@ -10,15 +10,12 @@
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 16
 
-# Keep Hangul rendering on a dedicated fallback instead of leaving it up to the
-# system fallback chain.
-font-codepoint-map = U+1100-U+11FF,U+3130-U+318F,U+A960-U+A97F,U+AC00-U+D7AF,U+D7B0-U+D7FF=Noto Sans CJK KR
-
 shell-integration = detect
 
 copy-on-select = clipboard
 scrollback-limit = 16777216
 window-show-tab-bar = auto
+maximize = true
 
 keybind = performable:ctrl+c=copy_to_clipboard
 keybind = ctrl+v=paste_from_clipboard
