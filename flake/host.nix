@@ -75,6 +75,7 @@
     firefox
     fzf
     git
+    ghostty
     htop
     gnomeExtensions.dash-to-dock
     google-chrome

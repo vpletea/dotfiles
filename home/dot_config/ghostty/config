@@ -1,0 +1,49 @@
+# Ghostty config migrated from kitty.conf.
+#
+# Notes:
+# - Ghostty doesn't expose Kitty's tab bar placement/style knobs, so the
+#   bottom powerline tab bar is not translated 1:1.
+# - Ghostty scrollback is sized in bytes rather than lines.
+# - Forcing X11 is typically handled at launch time on GTK systems rather than
+#   with a Ghostty config key.
+
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 16
+
+# Keep Hangul rendering on a dedicated fallback instead of leaving it up to the
+# system fallback chain.
+font-codepoint-map = U+1100-U+11FF,U+3130-U+318F,U+A960-U+A97F,U+AC00-U+D7AF,U+D7B0-U+D7FF=Noto Sans CJK KR
+
+shell-integration = detect
+
+copy-on-select = clipboard
+scrollback-limit = 16777216
+window-show-tab-bar = auto
+
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+foreground = cdd6f4
+background = 1e1e2e
+selection-foreground = 1e1e2e
+selection-background = f5e0dc
+
+cursor-color = f5e0dc
+cursor-text = 1e1e2e
+
+palette = 0=#45475a
+palette = 1=#f38ba8
+palette = 2=#a6e3a1
+palette = 3=#f9e2af
+palette = 4=#89b4fa
+palette = 5=#f5c2e7
+palette = 6=#94e2d5
+palette = 7=#bac2de
+palette = 8=#585b70
+palette = 9=#f38ba8
+palette = 10=#a6e3a1
+palette = 11=#f9e2af
+palette = 12=#89b4fa
+palette = 13=#f5c2e7
+palette = 14=#94e2d5
+palette = 15=#a6adc8

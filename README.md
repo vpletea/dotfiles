@@ -50,9 +50,9 @@
   ```
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
-- Install chezmoi:
+- Install base packages:
   ```
-  brew install chezmoi
+  ./homebrew.sh
   ```
 ### Dotfiles setup
 - Run chezmoi init:
@@ -94,4 +94,3 @@
       cat .ssh/authorized_keys 
       sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILQwflbQ5CDJhaGSigNSrq0CmZbL82cdtBY2nylJAM9ZAAAAEXNzaDpZdWJpa2V5LVVTQi1D devops@gcp
       ```
-

@@ -1,0 +1,26 @@
+{{- if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
+#!/bin/sh
+{{- $configPath := "dot_config/ghostty/config" }}
+{{- $configHash := include $configPath | sha256sum }}
+
+set -euf
+
+SOURCE_CONFIG="{{ .chezmoi.sourceDir }}/home/{{ $configPath }}"
+# Include the source config hash in the rendered script so chezmoi reruns this
+# onchange hook when the Ghostty config changes, even if the script logic stays
+# the same.
+# ghostty config sha256: {{ $configHash }}
+
+case "{{ .chezmoi.os }}" in
+  linux)
+    TARGET_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
+    ;;
+  darwin)
+    TARGET_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
+    ;;
+esac
+
+TARGET_CONFIG="$TARGET_DIR/config"
+mkdir -p "$TARGET_DIR"
+cp "$SOURCE_CONFIG" "$TARGET_CONFIG"
+{{ end -}}
