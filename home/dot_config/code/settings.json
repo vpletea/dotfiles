@@ -16,6 +16,8 @@
   "files.insertFinalNewline": false,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "github.copilot.inlineSuggest.enable": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "extensions.autoCheckUpdates": true,
   "extensions.ignoreRecommendations": true,
   "git.confirmSync": false,
