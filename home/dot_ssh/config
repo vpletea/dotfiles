@@ -7,7 +7,8 @@ Host *
   CanonicalizeHostname yes
   CanonicalDomains h-net.xyz
 Host github.com
-  User vpletea
+  # GitHub SSH always authenticates as the "git" user.
+  User git
   HostName github.com
   IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
