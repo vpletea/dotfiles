@@ -111,6 +111,10 @@
 
   # SSH agent setup
   services.gnome.gcr-ssh-agent.enable = false;
+  services.gnome.gnome-keyring = {
+    enable = true;
+    components = [ "pkcs11" "secrets" ];
+  };
   programs.ssh.startAgent = true;
 
   # Enable udev access for Keychron HID devices
