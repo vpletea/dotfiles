@@ -78,6 +78,7 @@
     ghostty
     htop
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.forge
     google-chrome
     kitty
     mise
