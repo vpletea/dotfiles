@@ -20,10 +20,12 @@
     initrd.systemd.tpm2.enable = false;
     kernelParams = [
       "quiet"
-      "pcie_aspm=force"
-      "i915.enable_psr=1"
-      "i915.enable_fbc=1"
-      "i915.enable_dc=2" ];
+      # "pcie_aspm=force"
+      # # Favor display stability over the deepest Intel panel power savings.
+      # "i915.enable_psr=0"
+      # "i915.enable_fbc=0"
+      # "i915.enable_dc=0"
+      ];
   };
 
   # Disable TPM2 support
