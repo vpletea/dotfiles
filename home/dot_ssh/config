@@ -3,6 +3,7 @@ Host *
   IdentityAgent ~/.ssh/agent.sock
   IdentitiesOnly yes
   AddKeysToAgent Yes
+  StrictHostKeyChecking accept-new
   Compression no
   ServerAliveInterval 0
   ServerAliveCountMax 3
