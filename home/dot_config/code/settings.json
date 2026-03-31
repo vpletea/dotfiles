@@ -27,7 +27,7 @@
   "remote.SSH.path": "/run/current-system/sw/bin/ssh",
   "remote.SSH.configFile": "/home/valentin/.ssh/config",
   "remote.SSH.useLocalServer": false,
-  "remote.SSH.showLoginTerminal": true,
+  "remote.SSH.showLoginTerminal": false,
   "remote.SSH.lockfilesInTmp": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorBlinking": true,
