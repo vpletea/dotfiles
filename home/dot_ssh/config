@@ -14,7 +14,8 @@ Host github.com
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
   IdentitiesOnly yes
 Host gitea.com
-  User vpletea
+  # Gitea Git remotes also authenticate as the "git" user.
+  User git
   HostName gitea.com
   IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
