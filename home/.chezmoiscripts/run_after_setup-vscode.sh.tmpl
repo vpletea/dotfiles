@@ -1,0 +1,47 @@
+{{- if and (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
+#!/bin/sh
+{{- $extensions := list
+     "catppuccin.catppuccin-vsc"
+     "waderyan.gitblame"
+     "oderwat.indent-rainbow"
+     "bbenoist.nix"
+     "hashicorp.terraform"
+     "tim-koehler.helm-intellisense"
+     "openai.chatgpt"
+     "github.copilot"
+     "github.copilot-chat" }}
+{{- $settingsPath := "dot_config/code/settings.json" }}
+
+set -euf
+SOURCE_SETTINGS="{{ .chezmoi.sourceDir }}/{{ $settingsPath }}"
+case "{{ .chezmoi.os }}" in
+  linux)
+    TARGET_DIR="$HOME/.config/Code/User"
+    ;;
+  darwin)
+    TARGET_DIR="$HOME/Library/Application Support/Code/User"
+    ;;
+esac
+
+TARGET_SETTINGS="$TARGET_DIR/settings.json"
+mkdir -p "$TARGET_DIR"
+cp "$SOURCE_SETTINGS" "$TARGET_SETTINGS"
+
+if ! command -v code >/dev/null 2>&1; then
+  exit 0
+fi
+
+LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
+mkdir -p "$LOG_DIR"
+
+# Install extensions in a detached process so `chezmoi update` doesn't block
+# the current terminal session. Running this hook after every apply/update also
+# restores extensions that were removed locally.
+nohup setsid sh -c '
+  set -eu
+{{ range $extensions -}}
+  code --force --install-extension "{{ . }}"
+{{ end -}}
+' >"$LOG_DIR/chezmoi-vscode-extensions.log" 2>&1 </dev/null &
+
+{{ end -}}
