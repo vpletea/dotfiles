@@ -1,12 +1,14 @@
 Host *
-  ForwardAgent yes
-  IdentityAgent ~/.ssh/agent.sock
-  IdentitiesOnly yes
   AddKeysToAgent Yes
-  StrictHostKeyChecking accept-new
+  CanonicalDomains h-net.xyz
+  CanonicalizeHostname yes
   Compression no
+  ForwardAgent yes
+  IdentitiesOnly yes
+  IdentityAgent ~/.ssh/agent.sock
   ServerAliveInterval 0
   ServerAliveCountMax 3
+  StrictHostKeyChecking accept-new
 Host github.com
   User git
   HostName github.com
@@ -19,8 +21,5 @@ Host gitea.com
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
 Host *.h-net.xyz
   User valentin
-  CanonicalizeHostname yes
-  CanonicalDomains h-net.xyz
-  StrictHostKeyChecking no
   IdentityFile ~/.ssh/id_ed25519_sk_rk_YubiKey-USB-A
   IdentityFile ~/.ssh/id_ed25519_sk_rk_Yubikey-USB-C
