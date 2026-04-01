@@ -23,6 +23,8 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.mergeEditor": true,
+  "git.terminalAuthentication": false,
+  "git.useIntegratedAskPass": false,
   "gitblame.inlineMessageEnabled": true,
   "remote.SSH.path": "/run/current-system/sw/bin/ssh",
   "remote.SSH.configFile": "/home/valentin/.ssh/config",

@@ -81,7 +81,7 @@
     proton-authenticator
     starship
     vlc
-    vscode.fhs
+    vscode
     winbox4
     zoxide
 
